@@ -1,0 +1,5281 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../0/">
+      
+      
+        <link rel="next" href="../2/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Primer on Latency and Bandwidth - Tad Zeila Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#primer-on-latency-and-bandwidth" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tad Zeila Book" class="md-header__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tad Zeila Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Primer on Latency and Bandwidth
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Literature/literature-list/" class="md-tabs__link">
+          
+  
+  
+  Văn Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../science-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../science-it-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học Máy Tính
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Group/KLNTTL/klnttl/" class="md-tabs__link">
+          
+  
+  
+  Bộ Sách
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Philosophy/philosophy/" class="md-tabs__link">
+          
+  
+  
+  Triết Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Paper/paper-list/" class="md-tabs__link">
+          
+  
+  
+  Bài Báo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Psychology/psychology-list/" class="md-tabs__link">
+          
+  
+  
+  Tâm Lý Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NonFig/nonfig-list/" class="md-tabs__link">
+          
+  
+  
+  NonFig
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-tabs__link">
+          
+  
+  
+  Tư Duy
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tad Zeila Book" class="md-nav__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    Tad Zeila Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About me
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Văn Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Văn Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Literature/literature-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vũ Trụ Trong Vỏ Hạt Dẻ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vũ Trụ Trong Vỏ Hạt Dẻ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 1 - LƯỢC SỬ VỀ THUYẾT TƯƠNG ĐỐI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 2 - HÌNH DÁNG CỦA THỜI GIAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 6 - TƯƠNG LAI CỦA CHÚNG TA? CÓ THỂ LÀ STARTREK HAY KHÔNG?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 7 - MÀNG VŨ TRỤ MỚI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    THUẬT NGỮ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học Máy Tính
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học Máy Tính
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-it-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    High Performance Browser Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Browser Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking 101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Networking 101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Primer on Latency and Bandwidth
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer on Latency and Bandwidth
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#speed-is-a-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Is a Feature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-many-components-of-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Many Components of Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-of-light-and-propagation-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed of Light and Propagation Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-mile-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last-Mile Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidth-in-core-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth in Core Networks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidth-at-the-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth at the Network Edge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivering-higher-bandwidth-and-lower-latencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delivering Higher Bandwidth and Lower Latencies
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of TCP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of UDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transport Layer Security (TLS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Wireless Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wifi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hiểu biết sâu sắc về Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hiểu biết sâu sắc về Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHương 1 - Chuẩn bị trước khi đọc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2 - Hiểu sâu sắc về JNI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Competitive Programmer's Handbook
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Competitive Programmer's Handbook
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Part I - Basic technique
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part I - Basic technique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2: Time complexity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Rust by Example
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rust by Example
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Begin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bộ Sách
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bộ Sách
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khái Lược Những Tư Tưởng Lớn
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Khái Lược Những Tư Tưởng Lớn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/klnttl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mô tả
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kinh Doanh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kinh Doanh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mở đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giới Thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Khởi Đầu Nhỏ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Triết Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời cảm ơn & Giới thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN MỘT: SỰ HÌNH THÀNH CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN HAI: CÁC KỸ THUẬT TÂM LÝ CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BA: LỜI KHUYÊN CỦA CÁC NHÀ KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BỐN: CHỦ NGHĨA KHẮC KỶ TRONG CUỘC SỐNG HIỆN ĐẠI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 1. TRIẾT HỌC HIỆN SINH LÀ GÌ?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2. NHỮNG ĐỀ TÀI CHÍNH CỦA TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 3. HAI NGÀNH CỦA PHONG TRÀO TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 4. KIERKEGAARD ÔNG TỔ HIỆN SINH TRUNG THỰC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 5. NIETZSCHE ÔNG TỔ HIỆN SINH VÔ THẦN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 6. HUSSERL ~ ÔNG TỔ VĂN CHƯƠNG TRIẾT LÝ HIỆN TƯỢNG HỌC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 7. JASPERS HIỆN SINH VÀ SIÊU VIỆT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 8. MARCEL HIỆN SINH VÀ HUYỀN NHIỆM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 9. SARTRE - HIỆN SINH PHI LÝ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 10. HEIDEGGER HIỆN SINH VÀ HIỆN HỮU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức (Tập 1)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức (Tập 1)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời tựa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 27
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 28
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 32
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 33
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 34
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 35
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 38
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 39
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 40
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 41
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 42
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 43
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bài Báo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bài Báo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/paper-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Câu chuyện về crypto duy nhất bạn cần
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Câu chuyện về crypto duy nhất bạn cần
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I. Sổ cái - Bitcoin và Blockchain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    II. Nó có nghĩa là gì
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    III. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IV. Sự tin tưởng - Tiền Bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    V. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VI. Sự tin tưởng - Tiền bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android Binder
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Android Binder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Multitasking, Processes and Threads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Implementation of the Binder Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Example IPC Message Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Discussion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/stoic-virtue-and-mental-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chủ nghĩa khắc kỷ, Đức hạnh và Sức khỏe tâm thần
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tâm Lý Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tâm Lý Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/psychology-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/stoic-virtue-and-mental-health.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    NonFig
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            NonFig
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nonfig-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Thiên Nga Đen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Thiên Nga Đen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LỜI BẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Mở Đầu - XOAY QUANH BỘ LÔNG CHIM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Một - PHẢN THƯ VIỆN CỦA UMBERTO ECO HAY CÁCH CHÚNG TA TÌM KIẾM SỰ PHÊ CHUẨN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nhung-quy-luat-cua-ban-chat-con-nguoi/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Những Quy Luật Của Bản Chất Con Người - Robert Greene
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tư Duy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tư Duy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nghệ Thuật Tư Duy Rành Mạch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            Nghệ Thuật Tư Duy Rành Mạch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lởi Mở Đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mục Lục
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nội Dung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời Kết
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#speed-is-a-feature" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed Is a Feature
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-many-components-of-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Many Components of Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-of-light-and-propagation-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Speed of Light and Propagation Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#last-mile-latency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Last-Mile Latency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidth-in-core-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth in Core Networks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bandwidth-at-the-network-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bandwidth at the Network Edge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivering-higher-bandwidth-and-lower-latencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delivering Higher Bandwidth and Lower Latencies
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="primer-on-latency-and-bandwidth">Primer on Latency and Bandwidth</h1>
+<div style="text-align: center; font-style: italic; font-color: gray;">(Sơ lược về độ trễ và băng thông)</div>
+
+<blockquote>
+<p><a href="https://hpbn.co/primer-on-latency-and-bandwidth/">Primer on Latency and Bandwidth</a></p>
+</blockquote>
+<h2 id="speed-is-a-feature">Speed Is a Feature</h2>
+<blockquote>
+<p>Tốc độ là một tính năng</p>
+</blockquote>
+<p>Sự xuất hiện và tăng trưởng nhanh chóng của ngành tối ưu hóa hiệu suất web (WPO) trong vài năm qua là dấu hiệu nhận biết về tầm quan trọng ngày càng tăng cũng như nhu cầu về tốc độ và trải nghiệm người dùng nhanh hơn của người dùng. Và đây không chỉ đơn giản là nhu cầu tâm lý về tốc độ trong thế giới ngày càng tăng tốc và kết nối của chúng ta, mà là một yêu cầu được thúc đẩy bởi các kết quả thực nghiệm, được đo lường dựa trên hiệu quả kinh doanh cuối cùng của nhiều doanh nghiệp trực tuyến:
+- Các trang web nhanh hơn dẫn đến sự tham gia của người dùng tốt hơn.
+- Các trang web nhanh hơn sẽ giữ chân người dùng tốt hơn.
+- Các trang web nhanh hơn sẽ dẫn đến tỷ lệ chuyển đổi cao hơn.</p>
+<p>Nói một cách đơn giản, tốc độ là một tính năng. Và để cung cấp nó, chúng ta cần hiểu nhiều yếu tố và hạn chế cơ bản đang diễn ra. Trong chương này, chúng ta sẽ tập trung vào hai thành phần quan trọng quyết định hiệu suất của tất cả lưu lượng mạng: độ trễ và băng thông ( Hình 1-1 ).</p>
+<p><strong><em>Độ trễ</em></strong><br>
+&emsp;Thời gian từ nguồn gửi một gói tin đến đích nhận được nó</p>
+<p><strong><em>Băng thông</em></strong><br>
+&emsp;Thông lượng tối đa của đường truyền thông logic hoặc vật lý</p>
+<figure>
+    <img alt="alt text" src="../img/1-1.png" />
+    <figcaption>Hình 1-1. Độ trễ và băng thông</figcaption>
+</figure>
+<p>Khi hiểu rõ hơn về cách băng thông và độ trễ phối hợp với nhau, chúng ta sẽ có các công cụ để tìm hiểu sâu hơn về các đặc tính bên trong và hiệu suất của TCP, UDP cũng như tất cả các giao thức ứng dụng ở trên chúng.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Giảm độ trễ xuyên Đại Tây Dương với Hibernia Express</strong></p>
+<p>Độ trễ là một tiêu chí quan trọng đối với nhiều thuật toán giao dịch tần suất cao trên thị trường tài chính, nơi mà chỉ cần một chút chênh lệch vài mili giây cũng có thể dẫn đến hàng triệu khoản lỗ hoặc lợi nhuận.</p>
+<p>Vào tháng 9 năm 2015, Hibernia Networks đã ra mắt một tuyến cáp quang mới ("Hibernia Express") được thiết kế riêng để đảm bảo độ trễ thấp nhất giữa New York và London bằng cách đi theo tuyến đường vòng lớn giữa các thành phố. Tổng chi phí của dự án ước tính là 300 triệu đô la trở lên và tuyến đường mới tự hào có độ trễ 58,95 ms giữa các thành phố, giúp nó có lợi thế ~5 mili giây so với tất cả các tuyến xuyên Đại Tây Dương hiện có khác. Điều này tương đương với 60 triệu đô la trở lên cho mỗi mili giây được tiết kiệm!</p>
+<p>Độ trễ rất đắt - theo nghĩa đen và nghĩa bóng.</p>
+</div>
+<h2 id="the-many-components-of-latency">The Many Components of Latency</h2>
+<blockquote>
+<p>Nhiều thành phần của độ trễ</p>
+</blockquote>
+<p>Độ trễ là thời gian cần thiết để một tin nhắn hoặc một gói di chuyển từ điểm xuất phát đến điểm đích. Đó là một định nghĩa đơn giản và hữu ích, nhưng nó thường ẩn chứa nhiều thông tin hữu ích - mọi hệ thống đều chứa nhiều nguồn hoặc thành phần, góp phần tạo nên tổng thời gian cần thiết để gửi một tin nhắn và điều quan trọng là phải hiểu những thành phần này là gì. là gì và điều gì quyết định hiệu suất của họ.</p>
+<p>Hãy cùng xem xét kỹ hơn một số thành phần chung góp phần tạo nên một bộ định tuyến thông thường trên Internet, có chức năng chuyển tiếp tin nhắn giữa máy khách và máy chủ:</p>
+<ul>
+<li>Độ trễ lan truyền <em>(Propagation delay)</em><ul>
+<li>Lượng thời gian cần thiết để một tin nhắn truyền từ người gửi đến người nhận, là hàm của khoảng cách theo tốc độ mà tín hiệu truyền đi.</li>
+</ul>
+</li>
+<li>Độ trễ truyền tải <em>(Transmission delay)</em><ul>
+<li>Lượng thời gian cần thiết để đẩy tất cả các bit của gói vào liên kết, đây là hàm số của độ dài gói và tốc độ dữ liệu của liên kết.</li>
+</ul>
+</li>
+<li>Sự chậm trễ trong xử lý <em>(Processing delay)</em><ul>
+<li>Lượng thời gian cần thiết để xử lý tiêu đề gói, kiểm tra lỗi cấp độ bit và xác định đích đến của gói.</li>
+</ul>
+</li>
+<li>Độ trễ xếp hàng <em>(Queuing delay)</em><ul>
+<li>Khoảng thời gian gói tin phải chờ trong hàng đợi cho đến khi có thể được xử lý.</li>
+</ul>
+</li>
+</ul>
+<p>Độ trễ tổng thể giữa máy khách và máy chủ là tổng của tất cả các độ trễ vừa được liệt kê. Thời gian lan truyền được quyết định bởi khoảng cách và môi trường mà tín hiệu đi qua — như chúng ta sẽ thấy, tốc độ lan truyền thường nằm trong một hệ số hằng số nhỏ của tốc độ ánh sáng. Mặt khác, độ trễ truyền được quyết định bởi tốc độ dữ liệu khả dụng của liên kết truyền và không liên quan gì đến khoảng cách giữa máy khách và máy chủ. Ví dụ, giả sử chúng ta muốn truyền một tệp 10 Mb qua hai liên kết: 1 Mbps và 100 Mbps. Sẽ mất 10 giây để đưa toàn bộ tệp "lên dây" qua liên kết 1 Mbps và chỉ mất 0,1 giây qua liên kết 100 Mbps.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Tốc độ dữ liệu mạng thường được đo bằng bit trên giây (bps), trong khi tốc độ dữ liệu cho thiết bị không thuộc mạng thường được hiển thị bằng byte trên giây (Bps). Đây là nguyên nhân gây nhầm lẫn phổ biến, hãy chú ý đến các đơn vị.</p>
+<p>Ví dụ: để đặt một tệp 10 megabyte (MB) "trên dây" qua liên kết 1Mbps, chúng ta sẽ cần 80 giây. 10MB bằng 80Mb vì mỗi byte có 8 bit!</p>
+</div>
+<p>Tiếp theo, khi gói tin đến bộ định tuyến, bộ định tuyến phải kiểm tra tiêu đề gói tin để xác định tuyến đi và có thể chạy các kiểm tra khác trên dữ liệu — điều này cũng mất thời gian. Phần lớn logic này hiện nay thường được thực hiện trong phần cứng, do đó độ trễ rất nhỏ, nhưng chúng vẫn tồn tại. Và cuối cùng, nếu các gói tin đến với tốc độ nhanh hơn tốc độ mà bộ định tuyến có thể xử lý, thì các gói tin sẽ được xếp hàng bên trong bộ đệm đến. Không có gì ngạc nhiên khi thời gian dữ liệu được xếp hàng bên trong bộ đệm được gọi là độ trễ xếp hàng.</p>
+<p>Mỗi gói truyền qua mạng sẽ phát sinh nhiều trường hợp của từng độ trễ này. Khoảng cách giữa nguồn và đích càng xa thì thời gian lan truyền càng lâu. Chúng ta càng gặp nhiều bộ định tuyến trung gian trong quá trình thực hiện thì độ trễ xử lý và truyền cho mỗi gói càng cao. Cuối cùng, lưu lượng truy cập dọc theo đường dẫn càng cao thì khả năng gói của chúng ta bị xếp hàng và bị trì hoãn bên trong một hoặc nhiều bộ đệm càng cao.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Bufferbloat trong bộ định tuyến cục bộ của bạn</strong></p>
+<p><code>Bufferbloat</code> là thuật ngữ được Jim Gettys đặt ra và phổ biến vào năm 2010 và là một ví dụ điển hình về độ trễ hàng đợi ảnh hưởng đến hiệu suất chung của mạng.</p>
+<p>Vấn đề cơ bản là nhiều bộ định tuyến hiện đang vận chuyển với bộ đệm đến lớn với giả định rằng việc loại bỏ các gói tin phải được tránh bằng mọi giá. Tuy nhiên, điều này phá vỡ các cơ chế tránh tắc nghẽn của TCP (mà chúng ta sẽ đề cập trong chương tiếp theo) và đưa độ trễ cao và thay đổi vào mạng.</p>
+<p>Tin vui là thuật toán quản lý hàng đợi hoạt động CoDel mới đã được đề xuất để giải quyết vấn đề này và hiện được triển khai trong nhân Linux 3.5+. Để tìm hiểu thêm, hãy tham khảo "<a href="https://queue.acm.org/detail.cfm?id=2209336">Kiểm soát độ trễ hàng đợi</a>" trong Hàng đợi ACM.</p>
+</div>
+<h2 id="speed-of-light-and-propagation-latency">Speed of Light and Propagation Latency</h2>
+<blockquote>
+<p>Tốc độ ánh sáng và độ trễ lan truyền</p>
+</blockquote>
+<p>Như Einstein đã nêu trong lý thuyết tương đối đặc biệt của mình, tốc độ ánh sáng là tốc độ tối đa mà mọi năng lượng, vật chất và thông tin có thể truyền đi. Quan sát này đặt ra một giới hạn cứng và một bộ điều chỉnh về thời gian truyền của bất kỳ gói mạng nào.</p>
+<p>Tin tốt là tốc độ ánh sáng rất cao: 299.792.458 mét mỗi giây, hay 186.282 dặm mỗi giây. Tuy nhiên, và luôn có một điều, đó là tốc độ ánh sáng trong chân không. Thay vào đó, các gói của chúng ta truyền qua một phương tiện như dây đồng hoặc cáp quang, điều này sẽ làm chậm tín hiệu (<code>Bảng 1-1</code>). Tỷ lệ giữa tốc độ ánh sáng và tốc độ truyền gói tin trong vật liệu được gọi là chiết suất của vật liệu. Giá trị càng lớn thì ánh sáng truyền đi trong môi trường đó càng chậm.</p>
+<p>Giá trị chiết suất điển hình của sợi quang, qua đó hầu hết các gói của chúng tôi truyền đi trong khoảng cách xa, có thể thay đổi trong khoảng từ 1,4 đến 1,6 - chậm nhưng chắc chắn, chúng tôi đang thực hiện những cải tiến về chất lượng vật liệu và có thể hạ thấp hệ số khúc xạ mục lục. Nhưng để đơn giản, nguyên tắc chung là giả sử tốc độ ánh sáng trong sợi quang là khoảng 200.000.000 mét mỗi giây, tương ứng với chiết suất ~ 1,5. Phần đáng chú ý về điều này là chúng ta đã ở trong một hệ số không đổi nhỏ của tốc độ tối đa! Một thành tựu kỹ thuật đáng kinh ngạc theo đúng nghĩa của nó.</p>
+<div class="center-table">
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Tuyến đường</th>
+<th style="text-align: center;">Khoảng cách</th>
+<th style="text-align: center;">Thời gian, ánh sáng<br>trong chân không</th>
+<th style="text-align: center;">Thời gian, ánh sáng<br>trong sợi vải</th>
+<th style="text-align: center;">Thời gian khứ hồi<br>(RTT) trong sợi quang</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">New York đến San Francisco</td>
+<td style="text-align: center;">4.148 km</td>
+<td style="text-align: center;">14 giây</td>
+<td style="text-align: center;">21 giây</td>
+<td style="text-align: center;">42 giây</td>
+</tr>
+<tr>
+<td style="text-align: left;">New York tới London</td>
+<td style="text-align: center;">5.585 km</td>
+<td style="text-align: center;">19 giây</td>
+<td style="text-align: center;">28 mili giây</td>
+<td style="text-align: center;">42 giây</td>
+</tr>
+<tr>
+<td style="text-align: left;">New York đến Sydney</td>
+<td style="text-align: center;">15.993 km</td>
+<td style="text-align: center;">53 giây</td>
+<td style="text-align: center;">80 giây</td>
+<td style="text-align: center;">160 giây</td>
+</tr>
+<tr>
+<td style="text-align: left;">Chu vi xích đạo</td>
+<td style="text-align: center;">40.075 km</td>
+<td style="text-align: center;">133,7 mili giây</td>
+<td style="text-align: center;">200 mili giây</td>
+<td style="text-align: center;">200 mili giây</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="text-align: center; font-style: italic;">Bảng 1-1. Độ trễ tín hiệu trong chân không và sợi quang.</div>
+
+<p>Tốc độ ánh sáng rất nhanh nhưng vẫn phải mất 160 mili giây để thực hiện hành trình khứ hồi (RTT) từ New York đến Sydney. Trên thực tế, những con số trong Bảng 1-1 cũng lạc quan một cách phi thực tế ở chỗ chúng cho rằng gói tin truyền qua cáp quang dọc theo đường vòng lớn (khoảng cách ngắn nhất giữa hai điểm trên địa cầu) giữa các thành phố. Trong thực tế, điều đó hiếm khi xảy ra và gói tin sẽ đi một chặng đường dài hơn nhiều giữa New York và Sydney. Mỗi bước nhảy dọc theo tuyến đường này sẽ đưa ra các độ trễ định tuyến, xử lý, xếp hàng và truyền bổ sung. Kết quả là RTT thực tế giữa New York và Sydney, qua các mạng hiện có của chúng tôi, hoạt động trong phạm vi 200–300 mili giây. Sau tất cả, điều đó có vẻ vẫn khá nhanh, phải không?</p>
+<p>Chúng ta không quen đo lường những cuộc gặp gỡ hàng ngày của mình bằng mili giây, nhưng các nghiên cứu đã chỉ ra rằng hầu hết chúng ta sẽ báo cáo một cách đáng tin cậy về "độ trễ" có thể cảm nhận được khi độ trễ trên 100–200 mili giây được đưa vào hệ thống. Khi vượt quá ngưỡng độ trễ 300 mili giây, tương tác thường được báo cáo là "chậm" và ở ngưỡng 1.000 mili giây (1 giây), nhiều người dùng đã thực hiện chuyển đổi ngữ cảnh trong đầu trong khi chờ phản hồi - xem <code>Tốc độ, Hiệu suất, và Nhận thức của Con người</code>.</p>
+<p>Vấn đề rất đơn giản, để mang lại trải nghiệm tốt nhất và giữ cho người dùng của chúng tôi tham gia vào nhiệm vụ trong tầm tay, chúng tôi cần các ứng dụng của mình phản hồi trong vòng hàng trăm mili giây. Điều đó không để lại cho chúng tôi, và đặc biệt là mạng, nhiều chỗ cho lỗi. <strong>Để thành công, độ trễ mạng phải được quản lý cẩn thận và là tiêu chí thiết kế rõ ràng ở mọi giai đoạn phát triển.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Các dịch vụ mạng phân phối nội dung (CDN) mang lại nhiều lợi ích, nhưng lợi ích quan trọng nhất trong số đó là việc phân phối nội dung trên toàn cầu và cung cấp nội dung đó từ vị trí gần đó đến máy khách giúp chúng ta giảm đáng kể thời gian truyền tải của tất cả các gói dữ liệu.</p>
+<p>Chúng ta có thể không thể khiến các gói tin di chuyển nhanh hơn, nhưng chúng ta có thể giảm khoảng cách bằng cách định vị máy chủ của mình gần người dùng hơn một cách chiến lược! Tận dụng CDN để phục vụ dữ liệu của bạn có thể mang lại lợi ích hiệu suất đáng kể.</p>
+</div>
+<h2 id="last-mile-latency">Last-Mile Latency</h2>
+<blockquote>
+<p>Độ trễ ở chặng cuối</p>
+</blockquote>
+<p>Trớ trêu thay, đó thường là ở những dặm cuối cùng, chứ không phải đoạn băng qua đại dương hay lục địa, nơi xuất hiện độ trễ đáng kể: vấn đề khét tiếng ở dặm cuối. Để kết nối nhà hoặc văn phòng của bạn với Internet, ISP địa phương của bạn cần định tuyến cáp khắp vùng lân cận, tổng hợp tín hiệu và chuyển tiếp đến nút định tuyến cục bộ. Trong thực tế, tùy thuộc vào loại kết nối, phương pháp định tuyến và công nghệ được triển khai, chỉ riêng vài bước nhảy đầu tiên này có thể mất hàng chục mili giây.</p>
+<p>Theo báo cáo "Đo lường băng thông rộng của Mỹ" hàng năm do Ủy ban Truyền thông Liên bang (FCC) thực hiện, độ trễ ở dặm cuối đối với băng thông rộng trên mặt đất (DSL, cáp, cáp quang) ở Hoa Kỳ vẫn tương đối ổn định theo thời gian: cáp quang có hiệu suất trung bình tốt nhất (10-20 ms), tiếp theo là cáp (15-40 ms) và DSL (30-65 ms).</p>
+<p>Trên thực tế, điều này chuyển thành độ trễ 10-65 ms chỉ đến nút đo gần nhất trong mạng lõi của ISP, trước khi gói tin được định tuyến đến đích! Báo cáo của FCC tập trung vào Hoa Kỳ, nhưng độ trễ chặng cuối là một thách thức đối với tất cả các nhà cung cấp Internet, bất kể địa lý. Đối với những người tò mò, một thông tin đơn giản traceroutethường có thể cho bạn biết rất nhiều về cấu trúc và hiệu suất của nhà cung cấp Internet của bạn.</p>
+<div class="highlight"><pre><span></span><code>traceroute<span class="w"> </span>google.com
+<span class="w">  </span>traceroute<span class="w"> </span>to<span class="w"> </span>google.com<span class="w"> </span><span class="o">(</span><span class="m">74</span>.125.224.102<span class="o">)</span>,<span class="w"> </span><span class="m">64</span><span class="w"> </span>hops<span class="w"> </span>max,<span class="w"> </span><span class="m">52</span><span class="w"> </span>byte<span class="w"> </span>packets
+<span class="w">   </span><span class="m">1</span><span class="w">  </span><span class="m">10</span>.1.10.1<span class="w"> </span><span class="o">(</span><span class="m">10</span>.1.10.1<span class="o">)</span><span class="w">  </span><span class="m">7</span>.120<span class="w"> </span>ms<span class="w">  </span><span class="m">8</span>.925<span class="w"> </span>ms<span class="w">  </span><span class="m">1</span>.199<span class="w"> </span>ms<span class="w"> </span>
+<span class="w">   </span><span class="m">2</span><span class="w">  </span><span class="m">96</span>.157.100.1<span class="w"> </span><span class="o">(</span><span class="m">96</span>.157.100.1<span class="o">)</span><span class="w">  </span><span class="m">20</span>.894<span class="w"> </span>ms<span class="w">  </span><span class="m">32</span>.138<span class="w"> </span>ms<span class="w">  </span><span class="m">28</span>.928<span class="w"> </span>ms
+<span class="w">   </span><span class="m">3</span><span class="w">  </span>x.santaclara.xxxx.com<span class="w"> </span><span class="o">(</span><span class="m">68</span>.85.191.29<span class="o">)</span><span class="w">  </span><span class="m">9</span>.953<span class="w"> </span>ms<span class="w">  </span><span class="m">11</span>.359<span class="w"> </span>ms<span class="w">  </span><span class="m">9</span>.686<span class="w"> </span>ms
+<span class="w">   </span><span class="m">4</span><span class="w">  </span>x.oakland.xxx.com<span class="w"> </span><span class="o">(</span><span class="m">68</span>.86.143.98<span class="o">)</span><span class="w">  </span><span class="m">24</span>.013<span class="w"> </span>ms<span class="w"> </span><span class="m">21</span>.423<span class="w"> </span>ms<span class="w"> </span><span class="m">19</span>.594<span class="w"> </span>ms
+<span class="w">   </span><span class="m">5</span><span class="w">  </span><span class="m">68</span>.86.91.205<span class="w"> </span><span class="o">(</span><span class="m">68</span>.86.91.205<span class="o">)</span><span class="w">  </span><span class="m">16</span>.578<span class="w"> </span>ms<span class="w">  </span><span class="m">71</span>.938<span class="w"> </span>ms<span class="w">  </span><span class="m">36</span>.496<span class="w"> </span>ms
+<span class="w">   </span><span class="m">6</span><span class="w">  </span>x.sanjose.ca.xxx.com<span class="w"> </span><span class="o">(</span><span class="m">68</span>.86.85.78<span class="o">)</span><span class="w">  </span><span class="m">17</span>.135<span class="w"> </span>ms<span class="w">  </span><span class="m">17</span>.978<span class="w"> </span>ms<span class="w">  </span><span class="m">22</span>.870<span class="w"> </span>ms
+<span class="w">   </span><span class="m">7</span><span class="w">  </span>x.529bryant.xxx.com<span class="w"> </span><span class="o">(</span><span class="m">68</span>.86.87.142<span class="o">)</span><span class="w">  </span><span class="m">25</span>.568<span class="w"> </span>ms<span class="w">  </span><span class="m">22</span>.865<span class="w"> </span>ms<span class="w">  </span><span class="m">23</span>.392<span class="w"> </span>ms
+<span class="w">   </span><span class="m">8</span><span class="w">  </span><span class="m">66</span>.208.228.226<span class="w"> </span><span class="o">(</span><span class="m">66</span>.208.228.226<span class="o">)</span><span class="w">  </span><span class="m">40</span>.582<span class="w"> </span>ms<span class="w">  </span><span class="m">16</span>.058<span class="w"> </span>ms<span class="w">  </span><span class="m">15</span>.629<span class="w"> </span>ms
+<span class="w">   </span><span class="m">9</span><span class="w">  </span><span class="m">72</span>.14.232.136<span class="w"> </span><span class="o">(</span><span class="m">72</span>.14.232.136<span class="o">)</span><span class="w">  </span><span class="m">20</span>.149<span class="w"> </span>ms<span class="w">  </span><span class="m">20</span>.210<span class="w"> </span>ms<span class="w">  </span><span class="m">18</span>.020<span class="w"> </span>ms
+<span class="w">  </span><span class="m">10</span><span class="w">  </span><span class="m">64</span>.233.174.109<span class="w"> </span><span class="o">(</span><span class="m">64</span>.233.174.109<span class="o">)</span><span class="w">  </span><span class="m">63</span>.946<span class="w"> </span>ms<span class="w">  </span><span class="m">18</span>.995<span class="w"> </span>ms<span class="w">  </span><span class="m">18</span>.150<span class="w"> </span>ms
+<span class="w">  </span><span class="m">11</span><span class="w">  </span>x.1e100.net<span class="w"> </span><span class="o">(</span><span class="m">74</span>.125.224.102<span class="o">)</span><span class="w">  </span><span class="m">18</span>.467<span class="w"> </span>ms<span class="w">  </span><span class="m">17</span>.839<span class="w"> </span>ms<span class="w">  </span><span class="m">17</span>.958<span class="w"> </span>ms
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<ul>
+<li>1st hop: local wireless router</li>
+<li>10st hop: Google server</li>
+</ul>
+</div>
+<p>Trong ví dụ trước, gói tin bắt đầu ở thành phố Sunnyvale, chuyển đến Santa Clara, sau đó là Oakland, quay trở lại San Jose, được định tuyến đến trung tâm dữ liệu "529 Bryant", tại thời điểm đó, nó được định tuyến đến Google và đến đích ở lần chuyển tiếp thứ 11. Toàn bộ quá trình này mất trung bình 18 mili giây. Không tệ, xét về mọi mặt, nhưng trong cùng thời gian đó, gói tin có thể đi qua hầu hết lục địa Hoa Kỳ!</p>
+<p>Độ trễ chặng cuối có thể thay đổi rất nhiều giữa các ISP do công nghệ được triển khai, cấu trúc mạng và thậm chí là thời gian trong ngày. Là người dùng cuối và nếu bạn đang muốn cải thiện tốc độ duyệt web của mình, hãy đảm bảo đo lường và so sánh độ trễ chặng cuối của các nhà cung cấp khác nhau có sẵn trong khu vực của bạn.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Độ trễ chứ không phải băng thông mới là điểm nghẽn hiệu suất của hầu hết các trang web! Để hiểu lý do tại sao, chúng ta cần hiểu cơ chế của giao thức TCP và HTTP - những chủ đề chúng ta sẽ đề cập trong các chương tiếp theo. Tuy nhiên, nếu bạn tò mò, vui lòng bỏ qua phần <a href="">Thêm băng thông không quan trọng</a> (nhiều) .</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Đo độ trễ bằng Traceroute</strong></p>
+<p>Traceroute là một công cụ chẩn đoán mạng đơn giản để xác định đường dẫn định tuyến của gói và độ trễ của mỗi bước nhảy mạng trong mạng IP. Để xác định các bước nhảy riêng lẻ, nó sẽ gửi một chuỗi các gói đến đích với "giới hạn bước nhảy" tăng dần (1, 2, 3, v.v.). Khi đạt đến giới hạn số bước nhảy, thiết bị trung gian sẽ trả về thông báo Đã vượt quá thời gian ICMP, cho phép công cụ đo độ trễ cho mỗi bước nhảy mạng.</p>
+<p>Trên nền tảng Unix, công cụ này có thể được chạy từ dòng lệnh thông qua traceroute, còn trên Windows, nó được gọi là <code>tracert</code>.</p>
+</div>
+<h2 id="bandwidth-in-core-networks">Bandwidth in Core Networks</h2>
+<blockquote>
+<p>Băng thông trong mạng lõi</p>
+</blockquote>
+<p>Một sợi quang hoạt động như một "ống dẫn ánh sáng" đơn giản, dày hơn một chút so với sợi tóc người, được thiết kế để truyền ánh sáng giữa hai đầu của cáp. Dây kim loại cũng được sử dụng nhưng dễ bị mất tín hiệu, nhiễu điện từ và chi phí bảo trì trọn đời cao hơn. Rất có thể các gói tin của bạn sẽ đi qua cả hai loại cáp, nhưng đối với bất kỳ bước nhảy xa nào, chúng sẽ được truyền qua liên kết sợi quang.</p>
+<p>Sợi quang có một lợi thế riêng biệt khi nói đến băng thông vì mỗi sợi có thể mang nhiều bước sóng (kênh) ánh sáng khác nhau thông qua một quá trình được gọi là ghép kênh phân chia bước sóng (WDM). Do đó, tổng băng thông của một liên kết sợi là bội số của tốc độ dữ liệu trên mỗi kênh và số kênh ghép kênh.</p>
+<p>Tính đến đầu năm 2010, các nhà nghiên cứu đã có thể ghép kênh hơn 400 bước sóng với công suất đỉnh là 171 Gbit/giây trên mỗi kênh, tương đương với hơn 70 Tbit/giây tổng băng thông cho một liên kết sợi quang duy nhất! Chúng ta sẽ cần hàng nghìn liên kết dây đồng (điện) để phù hợp với thông lượng này. Không có gì ngạc nhiên khi hầu hết các bước nhảy đường dài, chẳng hạn như truyền dữ liệu dưới biển giữa các lục địa, hiện được thực hiện qua các liên kết sợi quang. Mỗi cáp mang một số sợi quang (bốn sợi là số lượng phổ biến), tương đương với dung lượng băng thông là hàng trăm terabit mỗi giây cho mỗi cáp.</p>
+<h2 id="bandwidth-at-the-network-edge">Bandwidth at the Network Edge</h2>
+<blockquote>
+<p>Băng thông ở biên mạng</p>
+</blockquote>
+<p>Các xương sống, hay các liên kết sợi quang, tạo thành các đường dẫn dữ liệu cốt lõi của Internet có khả năng di chuyển hàng trăm terabit mỗi giây. Tuy nhiên, dung lượng khả dụng tại các cạnh của mạng ít hơn rất nhiều và thay đổi rất nhiều tùy thuộc vào công nghệ được triển khai: quay số, DSL, cáp, nhiều công nghệ không dây, cáp quang đến tận nhà và thậm chí là hiệu suất của bộ định tuyến cục bộ. Băng thông khả dụng cho người dùng là một hàm của liên kết dung lượng thấp nhất giữa máy khách và máy chủ đích ( Hình 1-1 ).</p>
+<p>Akamai Technologies vận hành một CDN toàn cầu, với các máy chủ được đặt trên toàn cầu và cung cấp báo cáo hàng quý miễn phí trên trang web của Akamai về tốc độ băng thông rộng trung bình, theo dõi từ máy chủ của họ. <code>Bảng 1-2</code> ghi lại các xu hướng vĩ mô tính đến cuối năm 2015.</p>
+<div class="center-table">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Thứ hạng</th>
+<th style="text-align: center;">Quốc gia</th>
+<th style="text-align: center;">Mbps trung bình</th>
+<th style="text-align: center;">Thay đổi theo năm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Toàn cầu</td>
+<td style="text-align: center;">5.1</td>
+<td style="text-align: center;">14%</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">Hàn Quốc</td>
+<td style="text-align: center;">20,5</td>
+<td style="text-align: center;">-19%</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">Thụy Điển</td>
+<td style="text-align: center;">17.4</td>
+<td style="text-align: center;">23%</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">Na Uy</td>
+<td style="text-align: center;">16,4</td>
+<td style="text-align: center;">44%</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">Thụy sĩ</td>
+<td style="text-align: center;">16.2</td>
+<td style="text-align: center;">12%</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">Hồng Kông</td>
+<td style="text-align: center;">15.8</td>
+<td style="text-align: center;">-2,7%</td>
+</tr>
+<tr>
+<td style="text-align: center;">…</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">Hoa Kỳ</td>
+<td style="text-align: center;">12,6</td>
+<td style="text-align: center;">9,4%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="text-align: center; font-style: italic">Bảng 1-2. Tốc độ băng thông trung bình mà máy chủ Akamai nhìn thấy trong quý 3 năm 2015</div>
+
+<p>Dữ liệu trước đó không bao gồm lưu lượng truy cập từ các nhà mạng di động, một chủ đề mà chúng ta sẽ quay lại sau để xem xét chi tiết hơn. Hiện tại, có thể nói rằng tốc độ di động rất thay đổi và thường chậm hơn. Tuy nhiên, ngay cả khi tính đến điều đó, băng thông băng thông rộng toàn cầu trung bình vào cuối năm 2015 chỉ là 5,1 Mbps! Hàn Quốc dẫn đầu thế giới với thông lượng trung bình 20,5 Mbps và Hoa Kỳ đứng ở vị trí thứ 21 với 12,6 Mbps.</p>
+<p>Là một điểm tham chiếu, việc phát trực tuyến video HD có thể yêu cầu tốc độ từ 2 đến 10 Mbps tùy thuộc vào độ phân giải và codec. Vì vậy, một người dùng trung bình ở Hoa Kỳ có thể truyền phát video có độ phân giải cao ở biên mạng, nhưng làm như vậy cũng sẽ tiêu tốn phần lớn dung lượng liên kết của họ - không phải là một câu chuyện hứa hẹn cho một hộ gia đình có nhiều người dùng.</p>
+<p>Tìm ra điểm nghẽn băng thông ở đâu đối với bất kỳ người dùng cụ thể nào thường là một bài tập không hề đơn giản nhưng quan trọng. Một lần nữa, đối với những người tò mò, có một số dịch vụ trực tuyến, chẳng hạn như <a href="http://speedtest.net/">speedtest.net</a> do Ookla vận hành ( Hình 1-2 ), cung cấp các thử nghiệm ngược dòng và xuôi dòng đối với máy chủ gần đó - chúng ta sẽ hiểu tại sao việc chọn máy chủ cục bộ lại quan trọng quan trọng trong cuộc thảo luận của chúng tôi về TCP. Chạy thử nghiệm một trong những dịch vụ này là cách tốt để kiểm tra xem kết nối của bạn có đáp ứng tốc độ được quảng cáo của ISP địa phương hay không.</p>
+<figure>
+    <img alt="alt text" src="../img/1-2.png" />
+    <figcaption>Hình 1-2. Kiểm tra ngược dòng và hạ lưu (speedtest.net)</figcaption>
+</figure>
+<h2 id="delivering-higher-bandwidth-and-lower-latencies">Delivering Higher Bandwidth and Lower Latencies</h2>
+<blockquote>
+<p>Cung cấp băng thông cao hơn và độ trễ thấp hơn</p>
+</blockquote>
+<p>Nhu cầu về băng thông rộng hơn của chúng ta đang tăng nhanh, phần lớn là do sự phổ biến ngày càng tăng của video phát trực tuyến, hiện chiếm hơn một nửa lưu lượng truy cập Internet. Tin tốt là, mặc dù có thể không rẻ, nhưng có nhiều chiến lược khả dụng để chúng ta tăng dung lượng khả dụng: chúng ta có thể thêm nhiều sợi quang hơn vào các liên kết cáp quang của mình, chúng ta có thể triển khai nhiều liên kết hơn trên các tuyến đường tắc nghẽn hoặc chúng ta có thể cải thiện các kỹ thuật WDM để truyền nhiều dữ liệu hơn qua các liên kết hiện có.</p>
+<p>TeleGeography, một công ty tư vấn và nghiên cứu thị trường viễn thông, ước tính rằng tính đến năm 2011, chúng tôi đang sử dụng trung bình chỉ 20% công suất sẵn có của các tuyến cáp quang dưới biển được triển khai. Quan trọng hơn nữa, từ năm 2007 đến năm 2011, hơn một nửa công suất tăng thêm của các tuyến cáp xuyên Thái Bình Dương là do nâng cấp WDM: các liên kết sợi giống nhau, công nghệ tốt hơn ở cả hai đầu để ghép dữ liệu. Tất nhiên, chúng ta không thể mong đợi những tiến bộ này sẽ tiếp tục vô thời hạn, vì mọi phương tiện đều đạt đến điểm lợi nhuận giảm dần. Tuy nhiên, miễn là tính kinh tế của doanh nghiệp cho phép, không có lý do cơ bản nào khiến thông lượng băng thông không thể tăng theo thời gian - nếu vẫn thất bại, chúng ta có thể bổ sung thêm nhiều liên kết sợi quang.</p>
+<p>Mặt khác, cải thiện độ trễ lại là một câu chuyện rất khác. Chất lượng của các liên kết sợi quang có thể được cải thiện để đưa chúng ta đến gần hơn một chút với tốc độ ánh sáng: vật liệu tốt hơn với chiết suất thấp hơn và bộ định tuyến nhanh hơn trên đường đi. Tuy nhiên, do tốc độ hiện tại của chúng ta đã ở khoảng ~2/3 tốc độ ánh sáng nên điều chúng ta có thể mong đợi nhiều nhất từ ​​chiến lược này chỉ là cải thiện khiêm tốn 30%. Thật không may, đơn giản là không có cách nào tránh được các định luật vật lý: tốc độ ánh sáng đặt ra một giới hạn cứng rắn cho độ trễ tối thiểu.</p>
+<p>Ngoài ra, vì chúng ta không thể làm cho ánh sáng truyền đi nhanh hơn nên chúng ta có thể làm cho khoảng cách ngắn hơn - khoảng cách ngắn nhất giữa hai điểm bất kỳ trên địa cầu được xác định bởi đường đi vòng tròn lớn giữa chúng. Tuy nhiên, việc lắp đặt cáp mới không phải lúc nào cũng khả thi do những hạn chế do địa hình, lý do xã hội và chính trị, và tất nhiên, các chi phí liên quan.</p>
+<p>Do đó, để cải thiện hiệu suất của các ứng dụng, chúng tôi cần kiến ​​trúc và tối ưu hóa các giao thức cũng như mã mạng với nhận thức rõ ràng về những hạn chế của băng thông sẵn có và tốc độ ánh sáng: chúng tôi cần giảm các chuyến đi khứ hồi, di chuyển dữ liệu đến gần hơn client và xây dựng các ứng dụng có thể ẩn độ trễ thông qua bộ nhớ đệm, tìm nạp trước và nhiều kỹ thuật tương tự, như được giải thích trong các chương tiếp theo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../0/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../2/" class="md-footer__link md-footer__link--next" aria-label="Next: Building Blocks of TCP">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Building Blocks of TCP
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dothanhdathp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/tad.zeila?locale=vi_VN" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.footer", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.js"></script>
+      
+        <script src="../../../assets/scripts/katex.js"></script>
+      
+        <script src="../../../assets/scripts/keyevent.js"></script>
+      
+        <script src="../../../assets/scripts/katex.min.js"></script>
+      
+        <script src="../../../assets/scripts/auto-render.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

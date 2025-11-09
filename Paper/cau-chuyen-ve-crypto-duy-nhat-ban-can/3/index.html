@@ -1,0 +1,5423 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../2/">
+      
+      
+        <link rel="next" href="../4/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>III. Hệ thống tài chính crypto - Tad Zeila Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#iii-he-thong-tai-chinh-crypto" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tad Zeila Book" class="md-header__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tad Zeila Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              III. Hệ thống tài chính crypto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Literature/literature-list/" class="md-tabs__link">
+          
+  
+  
+  Văn Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Science/science-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Science/science-it-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học Máy Tính
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Group/KLNTTL/klnttl/" class="md-tabs__link">
+          
+  
+  
+  Bộ Sách
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Philosophy/philosophy/" class="md-tabs__link">
+          
+  
+  
+  Triết Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../paper-list/" class="md-tabs__link">
+          
+  
+  
+  Bài Báo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Psychology/psychology-list/" class="md-tabs__link">
+          
+  
+  
+  Tâm Lý Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NonFig/nonfig-list/" class="md-tabs__link">
+          
+  
+  
+  NonFig
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-tabs__link">
+          
+  
+  
+  Tư Duy
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tad Zeila Book" class="md-nav__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    Tad Zeila Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About me
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Văn Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Văn Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Literature/literature-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/science-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vũ Trụ Trong Vỏ Hạt Dẻ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vũ Trụ Trong Vỏ Hạt Dẻ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 1 - LƯỢC SỬ VỀ THUYẾT TƯƠNG ĐỐI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 2 - HÌNH DÁNG CỦA THỜI GIAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 6 - TƯƠNG LAI CỦA CHÚNG TA? CÓ THỂ LÀ STARTREK HAY KHÔNG?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 7 - MÀNG VŨ TRỤ MỚI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/vu-tru-trong-vo-hat-de/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    THUẬT NGỮ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học Máy Tính
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học Máy Tính
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/science-it-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    High Performance Browser Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Browser Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking 101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Networking 101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer on Latency and Bandwidth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of TCP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of UDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transport Layer Security (TLS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Wireless Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/high-performance-browser-networking/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wifi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hiểu biết sâu sắc về Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hiểu biết sâu sắc về Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/hieu-biet-sau-sac-ve-android/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/hieu-biet-sau-sac-ve-android/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHương 1 - Chuẩn bị trước khi đọc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/hieu-biet-sau-sac-ve-android/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2 - Hiểu sâu sắc về JNI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Competitive Programmer's Handbook
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Competitive Programmer's Handbook
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/competitive-programmers-handbook/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Part I - Basic technique
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part I - Basic technique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/competitive-programmers-handbook/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/competitive-programmers-handbook/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2: Time complexity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Rust by Example
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rust by Example
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/rust-by-example/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Begin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Science/rust-by-example/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bộ Sách
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bộ Sách
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khái Lược Những Tư Tưởng Lớn
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Khái Lược Những Tư Tưởng Lớn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/klnttl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mô tả
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kinh Doanh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kinh Doanh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mở đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giới Thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Khởi Đầu Nhỏ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Triết Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời cảm ơn & Giới thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN MỘT: SỰ HÌNH THÀNH CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN HAI: CÁC KỸ THUẬT TÂM LÝ CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BA: LỜI KHUYÊN CỦA CÁC NHÀ KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BỐN: CHỦ NGHĨA KHẮC KỶ TRONG CUỘC SỐNG HIỆN ĐẠI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 1. TRIẾT HỌC HIỆN SINH LÀ GÌ?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2. NHỮNG ĐỀ TÀI CHÍNH CỦA TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 3. HAI NGÀNH CỦA PHONG TRÀO TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 4. KIERKEGAARD ÔNG TỔ HIỆN SINH TRUNG THỰC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 5. NIETZSCHE ÔNG TỔ HIỆN SINH VÔ THẦN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 6. HUSSERL ~ ÔNG TỔ VĂN CHƯƠNG TRIẾT LÝ HIỆN TƯỢNG HỌC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 7. JASPERS HIỆN SINH VÀ SIÊU VIỆT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 8. MARCEL HIỆN SINH VÀ HUYỀN NHIỆM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 9. SARTRE - HIỆN SINH PHI LÝ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 10. HEIDEGGER HIỆN SINH VÀ HIỆN HỮU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức (Tập 1)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức (Tập 1)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời tựa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 27
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 28
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 32
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 33
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 34
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 35
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 38
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 39
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 40
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 41
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 42
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 43
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bài Báo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bài Báo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../paper-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Câu chuyện về crypto duy nhất bạn cần
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Câu chuyện về crypto duy nhất bạn cần
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I. Sổ cái - Bitcoin và Blockchain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    II. Nó có nghĩa là gì
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    III. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    III. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mot-co-so-du-lieu-cham-chap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một cơ sở dữ liệu chậm chạp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Một cơ sở dữ liệu chậm chạp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ban-o-va-lanh-tho" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bản đồ và lãnh thổ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chuoi-khoi-doanh-nghiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chuỗi khối doanh nghiệp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-va-tokenomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token và tokenomics*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dao" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#danh-tinh-danh-tieng-bao-mat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Danh tính, danh tiếng, bảo mật
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nhung-cuon-so-cai-khong-the-bi-kiem-duyet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Những cuốn sổ cái không thể bị kiểm duyệt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Những cuốn sổ cái không thể bị kiểm duyệt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chong-kiem-duyet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chống kiểm duyệt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoac-khong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hoặc không
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khan-hiem-ky-thuat-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sự khan hiếm kỹ thuật số
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sự khan hiếm kỹ thuật số">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tu-tu-a-cai-gi-co" class="md-nav__link">
+    <span class="md-ellipsis">
+      Từ từ đã, cái gì cơ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhung-jpeg-hiem-ve-khi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Những JPEG hiếm về khỉ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vu-tru-ao-metaverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vũ trụ ảo - metaverse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IV. Sự tin tưởng - Tiền Bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    V. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VI. Sự tin tưởng - Tiền bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android Binder
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Android Binder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Multitasking, Processes and Threads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Implementation of the Binder Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Example IPC Message Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../android-binder/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Discussion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../stoic-virtue-and-mental-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chủ nghĩa khắc kỷ, Đức hạnh và Sức khỏe tâm thần
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tâm Lý Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tâm Lý Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/psychology-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/stoic-virtue-and-mental-health.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    NonFig
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            NonFig
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nonfig-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Thiên Nga Đen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Thiên Nga Đen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LỜI BẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Mở Đầu - XOAY QUANH BỘ LÔNG CHIM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Một - PHẢN THƯ VIỆN CỦA UMBERTO ECO HAY CÁCH CHÚNG TA TÌM KIẾM SỰ PHÊ CHUẨN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nhung-quy-luat-cua-ban-chat-con-nguoi/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Những Quy Luật Của Bản Chất Con Người - Robert Greene
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tư Duy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tư Duy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nghệ Thuật Tư Duy Rành Mạch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            Nghệ Thuật Tư Duy Rành Mạch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lởi Mở Đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mục Lục
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nội Dung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời Kết
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mot-co-so-du-lieu-cham-chap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Một cơ sở dữ liệu chậm chạp
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Một cơ sở dữ liệu chậm chạp">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ban-o-va-lanh-tho" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bản đồ và lãnh thổ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chuoi-khoi-doanh-nghiep" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chuỗi khối doanh nghiệp
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web3
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Web3">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token-va-tokenomics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Token và tokenomics*
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dao" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#danh-tinh-danh-tieng-bao-mat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Danh tính, danh tiếng, bảo mật
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nhung-cuon-so-cai-khong-the-bi-kiem-duyet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Những cuốn sổ cái không thể bị kiểm duyệt
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Những cuốn sổ cái không thể bị kiểm duyệt">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chong-kiem-duyet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chống kiểm duyệt
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hoac-khong" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hoặc không
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#su-khan-hiem-ky-thuat-so" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sự khan hiếm kỹ thuật số
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sự khan hiếm kỹ thuật số">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tu-tu-a-cai-gi-co" class="md-nav__link">
+    <span class="md-ellipsis">
+      Từ từ đã, cái gì cơ?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nhung-jpeg-hiem-ve-khi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Những JPEG hiếm về khỉ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vu-tru-ao-metaverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vũ trụ ảo - metaverse
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="iii-he-thong-tai-chinh-crypto">III. Hệ thống tài chính crypto</h1>
+<h2 id="mot-co-so-du-lieu-cham-chap">Một cơ sở dữ liệu chậm chạp</h2>
+<p>Đây là một sự khái quát hóa khác biệt chút chút về Bitcoin:</p>
+<figure>
+    <img alt="alt text" src="../img/image-49.png" />
+    <figcaption></figcaption>
+</figure>
+<h3 id="ban-o-va-lanh-tho">Bản đồ và lãnh thổ</h3>
+<p>“Cuộc sống hiện đại phần lớn được tạo nên bởi các mục dữ liệu trong các cơ sở dữ liệu,” tôi đã viết lúc mở đầu, và sau đó tôi liệt kê một vài thứ, bắt đầu với tiền. Có một lý do để tôi, cũng như Satoshi, bắt đầu với tiền. Một đồng đô la là một mục dữ liệu trong danh sách các đồng đô la. Nếu bạn có các đồng đô la, cái bạn có là một mục trong cơ sở dữ liệu của ngân hàng nói rằng bạn đang có bao nhiêu đô la. Mục dữ liệu này là các đồng đô la mà bạn có đó. Ngân hàng không có những túi vàng hay một thùng lớn đựng mấy tập tiền giấy để cơ sở dữ liệu của họ tham chiếu đến. Ngân hàng chỉ có mỗi cơ sở dữ liệu.</p>
+<p>Điều này thậm chí còn đúng hơn đối với Bitcoin. Hoàn toàn không có một tờ tiền giấy Bitcoin nào. Nếu sổ cái Bitcoin nói bạn có một Bitcoin, thì bạn có một Bitcoin. Một Bitcoin chỉ là như thế.</p>
+<p>Nhưng gần như không có thứ gì khác hoạt động theo kiểu đó. Nếu bạn sở hữu một ngôi nhà, theo một nghĩa pháp lý nào đó điều chính yếu ở đây là bạn sở hữu một mục dữ liệu trong một sổ đăng ký đất đai. Nhưng theo một số nghĩa quan trọng hơn nhiều, điều chính yếu là bạn sở hữu ngôi nhà đó. Nếu nhà của bạn bị cháy rụi, bạn không thể ngủ trong mấy giấy tờ pháp lý được.</p>
+<p>Ngược lại, nếu ai đó lẻn vào cơ quan đăng ký đất đai lúc nửa đêm và nhét vào một giấy tờ pháp lý mới ghi rằng họ mới là chủ sở hữu ngôi nhà, và sau đó họ đến nhà bạn và tống cổ bạn ra ngoài, bạn có thể đưa ra những phản đối hợp lý như “Nhưng toàn bộ đồ đạc của tôi ở đây mà,” hay “Nhưng tôi có các chìa khóa mà,” hoặc “Nhưng tất cả hàng xóm láng giềng đều biết tôi sống ở đây mà,” hay “Nhưng đây là địa chỉ ghi trên giấy phép lái xe của tôi,” và bạn có thể sẽ thuyết phục được tất cả mọi người – cảnh sát trưởng, tòa án, ngân hàng cho bạn vay thế chấp tài sản – rằng bạn trên thực tế mới là người sở hữu ngôi nhà và giấy tờ pháp lý kia là sai. Sổ đăng ký đất đai không có tính không thể thay đổi với quyền sở hữu nhà theo cách mà sổ cái Bitcoin có tính không thể thay đổi với quyền sở hữu Bitcoin.</p>
+<p>Nhưng ý tưởng về việc cho những cơ sở dữ liệu quan trọng về mấy thứ trong thế giới thực “lên chuỗi khối” – bạn không cần lo lắng quá nhiều về việc đang nói đến chuỗi khối nào – có rất nhiều sức hấp dẫn. Mọi người luôn luôn nói về việc chuyển các sổ đăng ký bất động sản thực hoặc bản lược khai hàng hóa hoặc gì gì đó lên chuỗi khối. </p>
+<p>Điều này hấp dẫn bởi, dưới khía cạnh là một cơ sở dữ liệu, chuỗi khối có một vài thuộc tính rất tốt. Các chuỗi khối công khai quan trọng như Bitcoin và Ethereum thì bảo đảm, mở, và không cần sự cho phép. Bất kỳ ai cũng có thể chứng minh họ sở hữu một Bitcoin, và quyền sở hữu đó không thể bị đảo ngược một cách tùy ý.</p>
+<figure>
+    <img alt="alt ztext" src="../img/image-50.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-51.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Nếu bạn muốn xây dựng một sàn giao dịch để trao đổi Ethereum, bạn có thể cứ thế mà làm thôi; chuỗi khối này công khai, và các tiêu chuẩn để xây dựng các chương trình Ethereum mở cho tất cả. Xây dựng một hệ thống mới để mua nhà thì cực kỳ khó. Bạn sẽ cần sự tham gia của rất nhiều ngân hàng và văn phòng đăng ký đất đai hạt và thẩm định viên. Nhưng nếu, bằng cách nào đó, những ngôi nhà được chuyển lên chuỗi khối, việc đó sẽ dẫn đến một sự cách tân trong việc không cần sự cho phép: Tất cả mọi người có thể xây dựng những chương trình và sàn giao dịch và phái sinh và các giao diện phục vụ cho việc mua nhà, và những thứ tốt nhất sẽ trụ lại.</p>
+<p>Vấn đề là những ngôi nhà không thể tồn tại trên chuỗi khối. Chúng tồn tại ở thế giới bên ngoài. Chúng có thể bị cháy sập các thứ. Kết nối các tạo phẩm điện tử trên chuỗi khối – token nhà? – với vật tham chiếu trong thế giới thực của nó – tức ngôi nhà – rất phức tạp về mặt triết học và thực tế.</p>
+<p>Việc kết nối tạo phẩm điện tử trên chuỗi khối—mã thông báo của ngôi nhà?—với vật tham chiếu trong thế giới thực của nó—ngôi nhà—rất phức tạp về mặt triết học và thực tế.</p>
+<p>Làm cách nào để tạo ra sự kết nối như vậy hầu như vẫn đang là một vấn đề chưa được giải, và rất có thể là không thể giải được, nhưng là một vấn đề quan trọng. Hệ thống tài chính của crypto được pháp triển rất tốt và có một số lợi thế về sự đổi mới trong tính cởi mở và tính không cần sự cho phép so với hệ thống tài chính truyền thống. Nếu bạn có thể hấp thụ thế giới vật lý vào hệ thống tài chính đó, bạn sẽ làm được một thứ rất hay ho.</p>
+<h3 id="chuoi-khoi-doanh-nghiep">Chuỗi khối doanh nghiệp</h3>
+<p>Một phiên bản kém tham vọng hơn của điều này là: Đây nhé, các ngân hàng vốn đã đang giữ rất nhiều các cơ sở dữ liệu để theo dõi rất nhiều thứ. Các đồng đô la không chỉ ở trong các tài khoản ngân hàng mà còn cả các khoản nợ, các chứng khoán có thể giao dịch, các hợp đồng phái sinh, tài trợ thương mại, tất tần tật mấy thứ kiểu vậy. Một vài trong số các cơ sở dữ liệu này thì chậm, một số thì được viết bằng Cobol, và một số yêu cầu sự trao đổi các bản fax để hoàn tất các giao dịch. Sẽ rất hay nếu các cơ sở dữ liệu này nhanh hơn, nếu chúng có thể liên lạc được với nhau một cách hiệu quả. Sẽ rất hay nếu như cơ sở dữ liệu của JPMorgan Chase có thể liên lạc được với cơ sở dữ liệu của Goldman Sach, nếu như bỏ đi quy trình dàn xếp giao dịch thủ công và dễ gây bất đồng giữa các ngân hàng.</p>
+<p>Năm 2010, nếu bạn là một chuyên viên cho vay thương mại của một ngân hàng, và bạn nghĩ,</p>
+<figure>
+    <img alt="alt text" src="../img/image-52.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>và bạn đến phòng Giám đốc Điều hành và nói,</p>
+<figure>
+    <img alt="alt text" src="../img/image-53.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>người Giám đốc Điều hành đó có lẽ sẽ nói mấy câu kiểu</p>
+<figure>
+    <img alt="alt text" src="../img/image-54.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Nhưng vào năm 2017, nếu bạn là một chuyên viên cho vay thương mại của một ngân hàng, hoặc một chuyên viên tư vấn chuỗi khối, hoặc thực lòng mà nói chỉ là một người bình thường đi bộ trên đường, và bạn bước vào phòng của một Giám đốc Điều hành của một ngân hàng và hét to từ</p>
+<figure>
+    <img alt="alt text" src="../img/image-55.png" />
+    <figcaption></figcaption>
+</figure>
+<p>thì người Giám đốc đó sẽ đưa ngay cho bạn một túi tiền. Rất rất rất nhiều người đã lợi dụng điều này. “Chuỗi khối” vào lúc đó là từ khiêu gợi nhất trong giới tài chính, và các ngân hàng đã rất hoan hỉ thông báo các sáng kiến chuỗi khối.</p>
+<p>Nói thực lòng, ý tưởng ở đây đôi khi mơ hồ, nhưng nhìn chung chúng ta đang nói về các chuỗi khối được cho phép, hoặc các chuỗi khối riêng tư. Các chuỗi khối công khai lớn thì nói chung không phải là thứ mà chủ ngân hàng sẽ thích. Việc toàn bộ các giao dịch là công khai thì tốt cho việc bảo đảm (mọi người có thể xác minh rằng mọi thứ đều đúng) nhưng cũng có mặt xấu (nếu các giao dịch có mong muốn được giữ bí mật). Thêm nữa, nó đơn giản là khá khó chịu xét về mặt điều tiết, quản lý. “Ai sẽ đảm bảo rằng các bản ghi giao dịch của bạn là đúng?” cơ quan quản lý ngân hàng sẽ hỏi, và ngân hàng sẽ trả lời, “Chà, chúng tôi cũng không thực sự biết rõ, nhưng chúng tôi nghĩ là một số nhóm đào coin nào đó ở Nga,” và cơ quan quản lý sẽ bắt đầu vã mồ hôi.</p>
+<p>Nhưng nhiều ý tưởng cơ bản của một chuỗi khối – một cuốn sổ cái ghi tất cả các giao dịch được chia sẻ không giấu diếm giữa tất cả các máy tính trên mạng lưới – có thể được thực hiện một cách riêng tư. Nếu bạn và 11 người bạn tụ tập lại và thống nhất rằng 12 người các bạn sẽ thực hiện các giao dịch với nhau, giữ một cuốn sổ cái, xác minh tất cả các giao dịch, và dùng các hàm băm mã hóa để đảm bảo sổ cái không bị thay đổi, thì các bạn có thể cứ thế làm vậy thôi. Nếu các bạn tin tưởng lẫn nhau và không để ai khác tham gia vào mạng lưới của các bạn – hoặc nếu các bạn chỉ để những người thân tín tham gia – thì các bạn sẽ không phải lo về vấn đề có thợ đào gian ác chiếm lấy mạng lưới. Chỉ có bạn và bạn bè thôi.</p>
+<p>Điều này có những thuận lợi về khía cạnh bảo đảm, cụ thể là về việc giải thích về khía cạnh bảo đảm cho các cơ quan quản lý ngân hàng. Các bạn cũng không phải công khai chuỗi khối của mình nếu không muốn, và có nhiều thuận lợi về mặt hiệu suất. Vì chỉ có 12 người các bạn xác minh các giao dịch, nên các bạn có thể làm việc này nhanh hơn. Các bạn không cần đào coin hoặc góp cổ phẩn: Đây là những cách dành cho các chuỗi khối công khai để đạt sự đồng thuận giữa những người phải chứng minh cam kết của họ với hệ thống. 12 người các bạn đều biết lẫn nhau và đã cùng xây dựng hệ thống, vậy nên sự đồng thuận của các bạn là đã đủ mà không cần thêm bất kỳ bằng chứng nào. Các bạn chỉ cần làm mỗi việc bỏ phiếu.</p>
+<figure>
+    <img alt="alt text" src="../img/image-56.png" />
+    <figcaption></figcaption>
+</figure>
+<h2 id="web3">Web3</h2>
+<p>Một sự thật quan trọng về Bitcoin đó là nó vừa là phương pháp kỹ thuật để gửi tiền vừa chính là tiền. Nghĩa là, Bitcoin là một hệ thống máy tính dùng để gửi đi các Bitcoin, và một Bitcoin là một thứ mà hệ thống Bitcoin gửi đi.</p>
+<p>Một vài thứ trong thế giới crypto là về công nghệ: Mọi người sử dụng các ý tưởng về các chuỗi khối và các hợp đồng thông minh và những thứ tương tự để xây dựng phần mềm. Một vài thứ khác trong thế giới crypto là về tiền: Mọi người gọi cho người môi giới để đặt cược giá của các token crypto sẽ tăng lên.</p>
+<p>Nhưng có nhiều thứ trong crypto là về cả hai điều đó:</p>
+<figure>
+    <img alt="alt text" src="../img/image-57.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Nhìn chung, điều này được gọi là “web3.” Ý tưởng là: web nguyên thủy là vào thời phát triển ban đầu của internet, lúc mà người ta xây dựng các giao thức do cộng đồng kiểm soát, mở, và phi tập trung cho internet. “Web 2.0,” hay “web2,” là khi các công ty công nghệ lớn về cơ bản là kiểm soát internet; hiện tại trải nghiệm của bạn với internet chủ yếu được trung gian thông qua Facebook, Google, Apple, Amazon, và họ kiếm cả núi tiền từ việc kiểm soát internet. Không có dự án phi tập trung mở nào dự tính sẽ cạnh tranh với họ. Nhưng web3 sẽ là khi mọi người xâu dựng các giao thức do cộng đồng kiểm soát mở phi tập trung cho internet lần nữa và cũng kiếm được rất nhiều tiền. Vì các giao thức phi tập trung sẽ không bị sở hữu bởi những công ty công nghệ lớn, nhưng chúng cũng sẽ không miễn phí và bị sở hữu bởi bất kỳ ai. Chúng sẽ được sở hữu bởi những người dùng.</p>
+<p>Đùa thôi: Chúng sẽ được sở hữu bởi những nhà đầu tư mạo hiểm đã mua sớm các token trong các dự án này và những người ủng hộ lớn nhất của web3. Nhưng chúng cũng được sở hữu bởi những người dùng nữa.</p>
+<h3 id="token-va-tokenomics">Token và tokenomics*</h3>
+<blockquote>
+<p>Tạm dịch: nền kinh tế token</p>
+</blockquote>
+<p>Thử nghĩ về thứ bạn nhận được khi khi mua một Bitcoin. Một thứ bạn nhận được là một đơn vị của “tiền kỹ thuật số”: Bạn có thể gửi chỗ Bitcoin đó cho người khác để mua sandwich hoặc gì gì đó. Nếu thứ tiền kỹ thuật số này phổ biến, thì rất nhiều người bán sandwich sẽ chấp nhận Bitcoin, và thứ tiền tệ mà bạn đã mua đó sẽ rất hữu dụng.</p>
+<p>Nhưng một thứ khác mà bạn nhận được là một phần trong dự án Bitcoin. Một phần này không phải kiểu cổ phiếu trong thực tế, nhưng nó vẫn có cơ hội để sinh lời từ thành công của Bitcoin. Nếu thứ tiền kỹ thuật số này phổ biến, thì rất nhiều người sẽ muốn có Bitcoin để dùng chúng mua sandwich, và sẽ có rất nhiều nhu cầu về Bitcoin. Nhưng sẽ luôn chỉ có tối đa 21 triệu Bitcoin. Vì vậy mỗi Bitcoin sẽ trở nên có giá trị hơn khi mọi người quyết định dùng Bitcoin như một cách để chuyển tiền kỹ thuật số.</p>
+<p>Logic đó không bao giờ hoàn toàn hợp lý. Một loại tiền tệ tiện lợi cho việc chuyển tiền kỹ thuật số cần có một giá trị ổn định, và giá trị tăng dần của Bitcoin khiến nó ít hữu ích hơn với vai trò là một loại tiền tệ: Nếu giá trị của số Bitcoin của bạn cứ tăng lên, bạn không nên dùng chúng để mua sandwich. Bitcoin ở khía cạnh là một loại tài sản tăng giá theo thời gian sẽ là một loại tiền tệ tệ. Thế nhưng, nó đã vẫn thực hiện vai trò đủ tốt. Bitcoin đã được dùng trong việc chuyển giao giá trị trên nền tảng kỹ thuật số đủ nhiều để trở thành có giá trị, và những người tham gia sớm đã trở nên giàu có.</p>
+<p>Đây là một sự đổi mới tài chính nòng cốt của crypto:</p>
+<figure>
+    <img alt="alt text" src="../img/image-59.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Rất nhiều các dự án crypto có loại cấu trúc cơ bản này. Filecoin là một hệ thống phi tập trung về lưu trữ các loại file, nơi bạn có thể trả tiền để lưu trữ file hoặc được trả tiền để lưu trữ file cho người khác. Bạn trả, hoặc được trả, bằng Filecoin. Helium là một hệ thống phi tập trung về các điểm truy cập không dây, nơi bạn có thể được trả tiền để phát một điểm truy cập hoặc trả tiền để truy cập. Bạn trả, hoặc được trả, bằng token của Helium. Và có các video game hình thức play-to-earn như Axie Infinity, trong đó bạn trả tiền mua token của game, và nhận phần thường bằng token của game. Việc tham gia – lưu trữ file, cung cấp Wi-Fi, chơi game – biến bạn trở thành một nhà đầu tư cũng như một người dùng.</p>
+<p>Điều này có tiềm năng cực lớn vì crypto là một lĩnh vực kinh doanh có tính hiệu ứng mạng (t/n: người dùng càng tăng thì giá trị của hàng hóa càng tăng). Rất nhiều dự án crypto chỉ hữu ích nếu có rất nhiều người sử dụng chúng. Bitcoin là một hệ thống thanh toán hữu ích chỉ khi rất nhiều người có Bitcoin và chấp nhận nó như các khoản thanh toán. Ethereum là một hệ thống máy tính hữu ích chỉ khi rất nhiều người xây dựng ứng dụng trên Ethereum. Nếu bạn xây dựng một sàn giao dịch tài chính phi tập trung hoặc một thị trường ngang hàng hoặc gì gì đó khác trên Ethereum, nó sẽ hữu ích chỉ khi rất nhiều người sử dụng nó.  </p>
+<p>Rất khó để tạo dựng một lĩnh vực kinh doanh hiệu ứng mạng từ con số không. Những người dùng sớm của lĩnh vực kinh doanh hiệu ứng mạng sẽ không thu được lợi ích gì nhiều từ nó, bởi mạng lưới chưa hình thành. Bạn cũng có thể cứ thế đợi đến khi có nhiều người dùng hơn. Tính kinh tế học của các token crypto đảo ngược điều đó. Những người dùng sớm của mạng lưới crypto nhận được token ở giá rẻ, và nếu về sau mạng lưới trở nên phổ biến, lúc đó số token của họ sẽ rất có giá trị. Như vậy việc có mặt sớm đã mang đến một lợi thế. Người ta thi thoảng gọi điều này là “Hiệu ứng token.”</p>
+<p>Nhiều tuyên bố về web3 mới chỉ đề cập đến bề mặt của ý tưởng cơ bản trên, giả định rằng nó tốt, và áp dụng nó theo những cách mơ hồ không rõ ràng. Một vấn đề của web3 là với đa số khách hàng, thậm chí quá trình đăng ký cũng sẽ gây khó hiểu – thường người ta không lôi thẻ tín dụng ra và bắt đầu chơi game. Thêm nữa khách hàng có thể cần phải mua Ether trên một sàn giao dịch, rồi dùng một cầu nối để kết nối với ví riêng của game, rồi trao đổi Ether lấy một token khác cần có để mua nhân vật hoặc để chiến đấu hoặc gì gì đó.</p>
+<p>Một vấn đề khác là sự thôi thúc token hóa các lĩnh vực kinh doanh mà không có biểu hiện tồn tại rõ ràng của hiệu ứng mạng. Vào tháng 7, Esquire đã xuất bản một bài viết về việc “Cuộc cách mạng crypto muốn tái tưởng tượng những cuốn sách” như thế nào:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<ul>
+<li>Sẽ thế nào nếu bạn có thể sở hữu một cổ phần của Harry Potter?</li>
+<li>Sẽ thế nào nếu các loạt sách hoạt động như một công ty đại chúng nơi các cá nhân có thể “mua cổ phần” của nó, và khi thương hiệu phát triển, những “cổ phẩn” đó trở nên có giá trị hơn? Nếu xét theo cách này, một người đã mua chỉ 3% cổ phần của Harry Potter hồi mới chỉ có một tập sẽ trở thành tỷ phú vào thời điểm hiện tại.</li>
+<li>Cứ tưởng tượng việc đó sẽ tác động đến trải nghiệm đọc như thế nào. Đột nhiên một chuyến đi ngắn đến hãng Barnes &amp; Nobles trở thành một cơ hội đầu tư. Những độc giả ban đầu có thể phát hiện “hiện tượng tiếp theo” và đóng góp một khoản <code>100$</code> mà sẽ trở thành <code>10.000$</code> hoặc thậm chí <code>100.000$</code> nếu độ phổ biến của cuốn sách tăng lên. Nếu đọc giả có thể sở hữu 1% của thương hiệu, họ sau đó có thể sẽ được khuyến khích để giúp cuốn sách trở nên thành công. Họ có thể lập một tài khoản TikTok để quảng bá cuốn sách thông qua BookTok, hoặc sử dụng tài năng của mình với tư cách là nhà làm phim để chuyển thể nó lên màn hình. Tất cả là để tăng giá trị của khoản đầu tư ban đầu của họ. </li>
+</ul>
+</div>
+<p>Hẳn khi đọc thơ các bạn bỗng thấy mình ngốc nghếch, cục mịch, nhỉ?</p>
+<figure>
+    <img alt="alt text" src="../img/image-61.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Nói lại điều này theo cách kém hay ho và dở tệ thì là tất cả các dự án web3 đều đồng thời là một mô hình Ponzi [33].</p>
+<div class="admonition note note">
+<p class="admonition-title">Note 33</p>
+<p>“Ponzi” mà tôi muốn nói đến ở đây là theo nghĩa phổ biến mà thường được dùng bởi những người tham gia thị trường: Các khoản đầu tư mà trong đó những nhà đầu tư sau cùng nhất đánh cược giá sẽ tăng do có thêm nhiều người mua mới (tức là vào sau họ). Các doanh nghiệp và dự án phía dưới mô hình có thể là hợp lệ và có thực, nhưng mô hình đầu tư thì vẫn là người mua sau trả tiền cho người mua trước.</p>
+</div>
+<p>Tại sao bạn lại muốn mua token để tham gia một dự án web3 làm đối thủ cạnh tranh với Facebook? Chà, nếu bạn thích sản phẩm của nó, cứ việc mua thôi. Nhưng có lẽ ít nhất cũng có một phần do bạn muốn giàu lên bằng cách bán các token của dự án đó cho người khác. Sao bạn lại nghĩ người khác sẽ mua các token đó? Có phải vì bạn nghĩ họ thích sản phẩm của dự án? Hay là vì bạn nghĩ họ đang có kế hoạch giàu lên bằng cách bán cho những con gà “gà” hơn? Cứ như vậy bao giờ mới kết thúc?</p>
+<p>Dror Poleg, một cây viết về kinh doanh và công nghệ, đã viết một bài blog về web3 mà tôi cứ nghĩ đến mãi không thôi. Với tiêu đề “Ngợi ca những Ponzi”, nó như sau:</p>
+<figure>
+    <img alt="alt text" src="../img/image-62.png" />
+    <figcaption></figcaption>
+</figure>
+<h3 id="dao">DAO</h3>
+<p>Tôi nên nhắc đến một số khái niệm kiểu kiểu web3 khác. Một trong số đó là DAO, thường được phát âm là “dow”, là viết tắt của “tổ chức tự trị phi tập trung (decentralized autonomous organization).” DAO không phải là tổ chức tự trị phi tập trung. Nhưng vào lúc ban đầu, mọi người đôi khi nghĩ chúng là như vậy. Họ nói, “Có cái công ty này chạy một cách tự động qua các hợp đồng thông minh mà không có sự can thiệp của con người. Chưa từng có thứ gì như vậy trong lịch sử.” Nhưng mà, không phải đâu. Cái thứ mà chạy một cách tự động qua các hợp đồng thông minh mà không có sự can thiệp của con người là một hợp đồng thông minh. DAO là một cách để mọi người tập trung lại để bỏ phiếu để điều khiển một quỹ tiền hoặc một giao thức trên chuỗi khối.</p>
+<p>Nói cách khác, DAO là một…công ty? Kiểu như, một công ty bình thường ấy? Nó có các cổ đông, những người bỏ tiền vào và kiểm soát số tiền đó. (Thực ra, họ bỏ tiền vào và nhận lại token, thứ mà cho họ quyền để quản lý DAO.) Và các cổ đông có thể bỏ phiếu. DAO không giống như các công ty bình thường, trong DAO các cổ đông (những người giữ token) có xu hướng bỏ phiếu về nhiều thứ hơn: Thường sẽ có một phòng chat trên một ứng dụng gọi là Discord, và mọi người có thể đề xuất các ý tưởng cho DAO mà họ đang tham gia, và sẽ có các thủ tục để tổ chức bỏ phiếu. Trong khi các công ty đại chúng Mỹ chỉ cho phép các cổ đông bỏ phiếu theo những cách rất hạn chế và mang tính tượng trưng, DAO có xu hướng để những người giữ token bỏ phiếu về tất cả các thứ và thường cho họ một lượng tương đối quyền kiểm soát thực sự với công ty. Như vậy, DAO giống với một quan hệ đối tác hơn là một công ty đại chúng [34].</p>
+<div class="admonition note note">
+<p class="admonition-title">Note 34</p>
+<p>Nhưng mà như thế là tệ. Theo luật Hoa Kỳ, các đối tác của một công ty hợp danh có trách nhiệt vô hạn với các khoản nợ của công ty, và nếu bạn thành lập một doanh nghiệp mà không nộp bất kỳ giấy tờ thành lập công ty nào, thì – quá đen, nó được coi là một công ty hợp danh. Vào tháng 5 một vụ kiện đã được đệ trình chống lại các thành viên của một DAO điều hành một hệ thống giao dịch và cho vay crypto. Hệ thống đó đã bị hack, và đơn khởi kiện lập luận rằng các thành viên của DAO với tư cách là thành viên hợp danh phải chịu trách nhiệm bồi thường thiệt hại. Có những nỗ lực để thiết lập DAO bằng cách sử dụng các kỹ thuật pháp lý thông thường và nhận hình thức trách nhiệm hữu hạn, nhưng vẫn còn sớm. Crypto đang học những bài học một cách đau đớn – thành lập doanh nghiệp để tránh những rắc rối pháp lý lớn cho cá nhân – điều mà lĩnh vực tài chính truyền thống đã học được từ nhiều thế kỷ trước.</p>
+</div>
+<figure>
+    <img alt="alt text" src="../img/image-63.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Một vài DAO là các cơ chế quản lý cho tài chính phi tập trung lớn (DeFi), các ứng dụng như các sàn giao dịch crypto, và các DAO này chịu trách nhiệm thiết đặt các chính sách và tham số để chúng hoạt động. Các DAO khác chỉ là những thứ kỳ cục để chơi chơi. ConstitutionDAO đã gây sự chú ý vào năm 2021 cho việc huy động được một đống tiền từ các nhà đầu tư crypto để mua một bản sao của Hiếp pháp Hoa Kỳ. Họ đã không mua được, thực hiện một số bỏ phiếu kiểu DAO về việc nên làm gì kế tiếp, và cuối cùng đã trả lại phần lớn số tiền (đã trừ phí gas), và đóng cửa. Nó là một cách nhanh để mọi người chung vốn trực tuyến để cùng nhau làm gì đó vui vui. Nó là một nhóm mua chung trên Discord.</p>
+<h3 id="danh-tinh-danh-tieng-bao-mat">Danh tính, danh tiếng, bảo mật</h3>
+<p>Trong sách trắng của Bitcoin, Satoshi đưa ra một khuyến nghị về quyền riêng tư: “Một cặp khóa mới nên được dùng cho mỗi giao dịch để giữ chúng khỏi việc bị liên kết với một chủ sở hữu chung.” Tạo lập một địa chỉ Bitcoin thì miễn phí và rất dễ, vì vậy mỗi lần bạn chấp nhận một thanh toán bằng Bitcoin, bạn nên làm vậy với một tài khoản khác nhau. Đúng là chuỗi khối Bitcoin công khai nên ai ai cũng có thể thấy được mọi giao dịch. Nhưng mục tiêu là để tất cả các giao dịch Bitcoin của bạn được tách biệt, không thể liên kết, vì vậy không ai có thể có được bức tranh đầy đủ về những gì bạn đang làm trên chuỗi khối.</p>
+<p>Trong khi đó, trong Ethereum có Ethereum Name Service (Dịch vụ Tên Ethereum), hay ENS, thứ mà chúng ta đã nói ở trên. Dịch vụ này cho phép bạn đăng ký một tên miền như “matthewlevine.eth” và dùng nó trên nhiều chức năng trên Ethereum. Trang chủ của dịch vụ này ghi, “Dùng tên ENS của bạn để lưu trữ tất cả những địa chỉ và nhận bất kỳ loại tiền mã hóa, token, hay NFT nào.” Các nhà đầu tư mạo hiểm đôi khi dùng tên miền ENS như là tên hiển thị của họ trên Twitter.</p>
+<p>Đây là những khía cạnh triết học rất khác nhau về cái bạn đang làm trong thế giới crypto. Bitcoin, về mặt triết học, là tiền mặt kỹ thuật số, vô danh và có thể giao dịch. Ethereum, về mặt triết học, là thứ gì đó như một cộng đồng lập trình mã nguồn mở, nơi mà danh tiếng và uy tín là cái được đánh giá cao. Và để tích lũy danh tiếng và uy tín, bạn cần một danh tính nhất quán. Bạn làm tất cả những liên quan đến Ethereum với tên thật, hoặc chí ít là tên tự chọn.</p>
+<figure>
+    <img alt="alt text" src="../img/image-64.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Nhiều tuyên bố lớn mà mọi người đưa ra về web3 là về danh tiếng và danh tính. Ý tưởng là bạn có thể giữ danh tính của mình trên chuỗi khối ở một dạng bất biến, phi tập trung, minh bạch, có thể chứng minh được, và sau đó làm vài thứ hay ho với nó. Bạn có một số ví crypto chứa không chỉ các token mà bạn đã mua, mà còn các token mà bạn đã nhận được từ việc làm thứ gì đó. Khi bạn tốt nghiệp đại học, trường sẽ gửi cho bạn một Token Bằng Cử nhân, hoặc một chuỗi các token ghi rõ các khóa học bạn đã hoàn thành và điểm số của bạn và có thể là cái bạn đã học. Khi bạn đỗ kì thi sát hạch lái xe, cơ quan đăng ký xe cơ giới và cấp phép lái xe sẽ gửi cho bạn Token Giấy phép Lái xe. Khi bạn tới dự một buổi hội thảo nghề nghiệp, đơn vị tổ chức hội thảo sẽ gửi cho bạn một Token Đã tham dự một Hội thảo. Khi bạn được thăng chức, sếp của bạn sẽ gửi bạn một Token Nhà phát triển Chuỗi khối Cấp cao. Khi bạn giúp đỡ một dự án mã nguồn mở, những người đứng đầu dự án sẽ gửi cho bạn một Token Cảm ơn Đã Giúp đỡ Dự án Mã nguồn mở Của Chúng tôi. Khi bạn đăng bài rất nhiều trên Reddit, những người dùng Reddit khác sẽ gửi bạn các Token Bài đăng Chất lượng Trên Reddit (những thứ này thực sự tồn tại, và chúng được gọi là Điểm Cộng đồng). Khi bạn giúp đỡ bạn bè chuyển nhà, bạn của bạn sẽ gửi bạn một Token Cảm ơn Đã Giúp Mình Chuyển nhà. Tất cả những token này được ký (và có thể xác minh được) bởi các bên phát hành (trường đại học của bạn, cơ quan đăng ký xe cơ giới và cấp phép lái xe, Reddit, bạn của bạn), và các bên phát hành này có các mức độ tin cậy và tầm quan trọng khác nhau. (Những token này cũng sẽ, nhìn chung, không thể chuyển nhượng: Bạn không thể bán bằng đại học của mình cho người khác.)</p>
+<p>Và, sau đó, nếu bạn tìm việc, bạn sẽ cho các nhà tuyển dụng tiềm năng xem các token bằng cấp, token hội thảo, token Reddit và token gì gì đó khác của bạn miễn là có liên quan [35]. Và nếu bạn tham gia một ứng dụng hẹn hò phi tập trung, có lẽ bạn sẽ cho đối tác hẹn hò tiềm năng xem các token bằng cấp và các token sở-thích-hay-ho-nè và các Token Tôi Là Một Đối Tác Lãng Mạn Tốt Theo Nhiều Cách mà những người yêu cũ đã gửi cho bạn khi các bạn còn bên nhau. Tôi không biết nữa. Mấy thứ này thường được miêu tả như một phác thảo về thiên đường đầy lỏng lẻo hơn là các chương trình cụ thể. Khi tôi viết chúng ra thì tôi thấy chúng có nghe cực kỳ đáng sợ, nhưng có lẽ bạn sẽ nghĩ khác.</p>
+<div class="admonition note note">
+<p class="admonition-title">Note 35</p>
+<p>Và có lẽ sẽ có cả những token tệ – Token Tôi Đã Bị Đuổi Việc, Token Tôi Đã Thực Hiện Một Trò Lừa Đảo Crypto, v.v.  - mà mọi người có thể gửi cho bạn để làm giảm danh tiếng của bạn, và các nhà tuyển dụng tiềm năng sẽ phải cân nhắc độ tín nhiệm của những token đó, v.v. </p>
+</div>
+<p>Thi thoảng những thứ này được giải thích chi tiết hơn thêm một chút. Vào tháng 5, Vitalik Buterin, cùng với E. Glen Weyl và Puja Ohlhaver, đã xuất bản một bài luận tên là Decentrialized Society: Finding Web3’s Soul*. Nó kêu gọi việc cần có một bộ “các token ‘ràng buộc’ không thể chuyển nhượng (non-tranferable ‘soundbound’ tokens – SBTs) thể hiện sự cam kết, sự xác nhận khả năng và sự liên kết chuyên môn của ‘các Soul’”. Một soul, theo nghĩa thuật ngữ trong bối cảnh này, không hoàn là là một người, dù nó giống một con người hơn là một địa chỉ Bitcoin. Một soul có thể là một người, hoặc một tổ chức (một trường đại học, v.v. ), nhưng một người cũng có thể có nhiều soul ở nhiều bối cảnh. </p>
+<blockquote>
+<p>Soul ngoài có nghĩa thường dùng là linh hồn ra còn dùng để chỉ người, ví dụ “I won’t tell a soul” nghĩa là “Anh sẽ không kể với ai đâu”</p>
+</blockquote>
+<p>“Khi phát hành một NFT có thể trao đổi, một nghệ sĩ có thể phát hành NFT đó từ Soul của họ,” bài luận ghi. Nghe thật đẹp đẽ. Sẽ thật tuyệt nếu thần học có thể được thay thế, hoặc có lẽ là được giải quyết, bằng mã hóa. Linh hồn (soul) của một người không là gì khác hơn ngoài những thứ và những người mà cô ta yêu, những người yêu cô ta, và sự ảnh hưởng mà cô ta có lên thế giới, và đây, chúng ta đã mã hóa nó lên chuỗi khối. Sẽ thật phiền nếu làm mất khóa riêng tư cho soul của bạn, nhỉ.</p>
+<figure>
+    <img alt="alt text" src="../img/image-65.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-66.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<h2 id="nhung-cuon-so-cai-khong-the-bi-kiem-duyet">Những cuốn sổ cái không thể bị kiểm duyệt</h2>
+<h3 id="chong-kiem-duyet">Chống kiểm duyệt</h3>
+<p>Thông thường, nếu có một cơ sở dữ liệu nào đó trên một máy tính ở đâu đó, và nó thay đổi một số trường dữ liệu, nó có thể thay đổi trường dữ liệu đó trở lại như lúc trước khi thay đổi; đây là thứ dễ dàng, có tính tương đương hai chiều đối với máy tính. Nhưng chuỗi khối khiến rất khó để thay đổi các thứ lại như cũ. Nếu một Bitcoin chuyển từ một địa chỉ này tới một địa chỉ khác, và giao dịch đó được gộp trong một khối, và sau đó một vài khối nữa được thêm vào tiếp đó “xác nhận” giao dịch đó, thì sẽ cần một lượng gần như là vô tận các công việc máy tính – chạy các hàm băm hàng nghìn tỷ và hàng nghìn tỷ lần – để tua lại chuỗi khối để loại bỏ giao dịch đó. Chuỗi khối mang tính một chiều; sổ cái của nó mang tính vĩnh viễn.</p>
+<p>Điều đó tốt nếu bạn muốn sổ cái thực sự bảo đảm, khó để hack, được sao lưu ở nhiều chỗ, dù thực lòng thì thế có lẽ là quá mức cần thiết cho những mục đích này. Nhưng thực sự rất tốt nếu bạn muốn sổ cái miễn nhiễm với sự can thiệp của chính phủ. Hay, thực sự, sự can thiệp của bất kỳ ai. Giới crypto gọi bất kỳ sự can thiệp nào vào các giao dịch là “sự kiểm duyệt.” Bitcoin mang tính “chống kiểm duyệt.” Bạn có thể không tin chính phủ, vì, ví dụ, bạn sống dưới một chế độ độc tài áp bức kiểm soát hệ thống ngân hàng và sẽ lấy tiền của bạn một cách bất công.</p>
+<figure>
+    <img alt="alt text" src="../img/image-67.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Hoặc bạn có thể có các phản đối khác. Các ngân hàng Mỹ, thường mặc dù không phải lúc nào nào cũng kết hợp với các cơ quan chính phủ Mỹ, luôn rất sẵn sàng mọi lúc trong việc chặn các khoản thanh toán. Họ sẽ ngăn chặn các khoản thanh toán cho các tổ chức bị chính phủ chỉ định là khủng bố, hoặc cho các quốc gia bị chính phủ trừng phạt. Nhưng họ cũng sẽ chặn các khoản thanh toán cho các trang web khiêu dâm để đáp lại các chiến dịch gây áp lực của công chúng. Nếu bạn muốn tài trợ cho khủng bố, hoặc kinh doanh ở Iran, hoặc tiêu thụ nội dung khiêu dâm trên internet, những thứ đó có thể là động lực khiến bạn muốn đến với crypto. Nhưng ngay cả khi bạn không thích khủng bố hay Iran hay phim khiêu dâm, những thứ như thế có thể khiến bạn lo lắng. Những hình thức thương mại nào khác có thể bị đóng cửa bởi chính phủ, hoặc bởi các ngân hàng hoạt động độc lập với chính phủ?</p>
+<h3 id="hoac-khong">Hoặc không</h3>
+<p>Vấn đề thực tế với chống kiểm duyệt là thế giới crypto tiếp xúc với thế giới thực ở nhiều điểm khác nhau, và những điểm tiếp xúc đó khiến nó khó có thể hoàn toàn thoát khỏi những áp lực của ảnh hưởng bên ngoài. Có một meme trong giới crypto là “cuộc tấn công cờ lê <code>5$</code>,” được đặt tên theo một tranh hoạt hình trên xkcd nói rằng cách đánh cắp tiền mã hóa của ai đó không phải là dùng những phương thức tinh vi để hack laptop của họ mà là “cầm cái cờ lê giá <code>5$</code> gõ vào đầu nó cho đến khi nó khai ra mật khẩu.”</p>
+<p>Một vấn đề khác là, dù crypto nhìn chung tạo ra các giao dịch phi tập trung và không thể đảo ngược, nó cũng tạo ra một bản ghi vĩnh viễn có thể xem công khai của những giao dịch này. Chính phủ có thể xem bản ghi! Họ không thể đảo ngược các giao dịch, nhưng họ có thể nỗ lực hết mình để khiến cuộc sống của những người nhận trở nên khó chịu.</p>
+<p>Bạn có thể gửi Bitcoin cho bất kỳ ai mà không cần sự cho phép của bất kỳ ai. Nhưng đến một lúc nào đó bạn sẽ muốn làm gì đó với số Bitcoin mình có. Bạn sẽ muốn tiêu chúng; nếu bạn có rất nhiều Bitcoin, bạn sẽ muốn tiêu chúng vào bất động sản, du thuyền, đá quý, hay tác phẩm nghệ thuật. Một hệ thống tài chính không thể hoàn toàn khép kín; bạn cần phải có thể biến tiền của mình thành thứ gì đó thực tế.</p>
+<p>Và đó là lúc mà chính phủ tóm được bạn. Cách thường thường để chuyển Bitcoin thành đô la là qua một sàn giao dịch crypto phi tập trung, như các ứng dụng dành cho việc mua-bán crypto mà bạn hay thấy được quảng cáo trong các trận đấu ở giải Super Bowl. Chúng là những “fiat off-ramp” chính, đây là nơi cho phép bạn bán Bitcoin (thứ mà khó dùng để chi tiêu) lấy đô la (thứ mà dễ dùng để chi tiêu) (t/n: phía dưới bài viết sẽ có mục về cái này). Các sàn giao dịch crypto tập trung mang tính có thể bị kiểm duyệt cực kỳ mạnh, và vì chúng thường được điều hành bởi các CEO giàu có muốn giữ được sự giàu có và không muốn ngồi tù, các sàn này sẽ làm những thứ kiểu như yêu cầu bạn cung cấp giấy phép lái xe trước khi cho phép bạn mở tài khoản. Nếu bạn nằm trong danh sách “cấm mở tài khoản” của chính phủ, các sàn này sẽ không mở tài khoản cho bạn.</p>
+<p>Thêm nữa, nếu số Bitcoin của bạn nằm trong một danh sách đen, họ sẽ không chuyển chúng thành đô la cho bạn. Nếu bạn có được 100.000 Bitcoin theo cách không đứng đắn như nào đó – hack tài khoản Bitcoin của người khác, hay một cuộc tấn công mã độc, hay lấy từ một tài khoản đã bị chính phủ cho vào danh sách đen vì một lý do tốt xấu như nào đó – và chuyển chúng vào một sàn giao dịch, sao giao dịch đó sẽ hỏi bạn về nguồn gốc của số Bitcoin bạn chuyển. Ngoài ra, chính phủ, và sàn giao dịch, có thể truy nguồn gốc số Bitcoin của bạn và xem liệu có bất kỳ coin nào trong số đó nằm trong những giao dịch xấu (hack, mã độc, v.v. ) hay không. Và nếu có, sàn giao dịch có thể chặn không cho bạn lấy tiền và báo cảnh sát.</p>
+<figure>
+    <img alt="alt text" src="../img/image-68.png" />  <br />
+    <figcaption>Cộng tác viên của Forbes và rapper (trái)</figcaption>
+</figure>
+<p>Đầu năm nay một cặp đôi đã bị bắt giữ và bị cáo buộc tội cố gắng rửa tiền 119.754 Bitcoin đánh cắp từ sàn giao dịch Bitfinex trong một vụ hack năm 2016. (Người nữ là một rapper trên YouTube và là một cộng tác viên của Forbes - nhân vật độc đáo thú vị!) Số Bitcoin đó trị giá hàng tỷ đô la theo tỷ giá hiện tại. Nhưng cặp đôi này chẳng sống trong giàu sang phú quý gì, vì hóa ra số Bitcoin bị đánh cắp trị giá hàng tỷ đô la đó cực kỳ khó chi tiêu và cực kỳ dễ theo vết. Phần lớn số Bitcoin bị cáo buộc bị đánh cắp đó không bao giờ rời khỏi tài khoản đầu tiên mà chúng được chuyển đến sau vụ hack. Một số Bitcoin trong số đó đã được gửi đến các sàn giao dịch crypto và đã được chuyển thành đô la, nhưng các sàn đó lưu giữ các bản ghi tỉ mỉ về việc ai đã mở các tài khoản nào và  rút tiền như nào và đã nhanh chóng đóng băng việc rút tiền. Một số khác thì được giao dịch lấy vàng tại một tiệm kinh doanh kim loại quý, nhưng cặp đôi đã phải xuất trình giấy phép lái xe và cung cấp địa chỉ thật để hoàn tất giao dịch, vì vậy FBI thấy được ai là người đã nhận vàng. Một phần số tiền đã được chi cho thẻ quà tặng Walmart, và nếu bạn mua thẻ quà tặng Walmart bằng số tiền chống kiểm duyệt trị giá hàng tỷ đô mà bạn đã ăn cắp, thì việc rửa tiền của bạn đang không suôn sẻ thuận lợi cho lắm.</p>
+<h2 id="su-khan-hiem-ky-thuat-so">Sự khan hiếm kỹ thuật số</h2>
+<p>Chúng ta đã nói về việc sự đổi mới công nghệ cực kỳ quan trọng mà Satoshi đã làm được là anh ta đã tìm ra một cách để khiến những con số trên máy tính trở nên khan hiếm như thế nào. Và một sự khái quát hóa quan trọng theo cách kỳ dị về Bitcoin đó là nó là một cách để tạo ra sự khan hiếm điện tử.</p>
+<h3 id="tu-tu-a-cai-gi-co">Từ từ đã, cái gì cơ?</h3>
+<p>Việc đó có tốt không? Với tiền mặt kỹ thuật số thì chắc chắn là có rồi. Đồng đô la là các mục dữ liệu sổ cái điện tử và có tính khan hiếm do có một hệ thống quản lý ngân hàng phức tạp khiến chúng trở nên khan hiếm; các ngân hàng có thể tạo ra các đô la mới chỉ bằng cách thay đổi một con số trong cơ sở dữ liệu, nhưng có rất nhiều nghi thức liên quan để đảm bảo rằng họ làm việc đó theo cách đúng đắn. Nếu bạn muốn một hệ thống về tiền mang tính không cần sự cho phép và phi tập trung mà không cần đến lòng tin hoặc sự quản lý, bạn cần một cách nào đó để giới hạn số lượng tiền có trong đó, và Bitcoin đã giải quyết được vấn đề này.</p>
+<p>Tuy nhiên, ý tưởng rộng hơn về các tài sản kỹ thuật số khan hiếm còn kỳ dị hơn nữa. Điều kiện bình thường của sự tồn tại của con người là cái gì tốt thì khan hiếm, và các công ty kiếm tiền bằng cách bán những thứ ấy cho chúng ta vì ta không thể có một lượng vô hạn những thứ đó một cách miễn phí. Điều này không phải luôn đúng với mọi thứ, nhưng, nếu để ý, nó nhìn chung đúng với những thứ mà bạn đang phải trả tiền cho. (Nói chung, bạn có thể hít thở bao nhiêu không khí tùy thích vì nó miễn phí, dù khoa học viễn tưởng đôi khi giải trí bằng cách tưởng tượng ra những thế giới phản địa đàng nơi không khí khan hiếm, đắt đỏ, và bị kiểm soát bởi các tập đoàn. Dân crypto đôi khi cũng giải trí bằng cách tưởng tượng về những thế giới như vậy, chỉ có điều họ nghĩ rằng đó là các bối cảnh địa đàng.)</p>
+<p>Khai thác than thì khó</p>
+<figure>
+    <img alt="alt text" src="../img/image-69.png" />
+    <figcaption></figcaption>
+</figure>
+<p>hoặc làm ra một chiếc ghế</p>
+<figure>
+    <img alt="alt text" src="../img/image-70.png" />
+    <figcaption></figcaption>
+</figure>
+<p>hoặc đào tạo một kế toán thuế</p>
+<figure>
+    <img alt="alt text" src="../img/image-71.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Không có một nguồn cung vô hạn nào cho những thứ/việc ấy, nên chúng tốn tiền. Đôi khi, một thứ khan hiếm trở nên dồi dào – một mỏ dầu khổng lồ được phát hiện, một robot được phát minh và có thể làm ra 100 chiếc ghế mỗi giờ - và giá cả giảm, và những người kinh doanh trong lĩnh vực phá sản. </p>
+<p>Vì vậy, có một trực giác tự nhiên là sự khan hiếm tạo ra giá trị, còn sự dư dật phá hủy nó. Điều này, dĩ nhiên, là sai. Ai chả muốn có nhiều thứ hơn hơn là ít hơn. Từ góc độ một người tiêu dùng, có nhiều là tốt. Nhưng bạn không thể giàu lên bằng cách bán những thứ có nhiều vô cùng và miễn phí. Mà bạn thì muốn giàu lên.</p>
+<p>Thế giới hiện đại đã phát triển những cách thức để trở nên giàu có bằng cách bán những thứ mà, về mặt lý thuyết, có nhiều vô cùng bởi vì chúng là điện tử. Phần mềm Microsoft Word không hẳn thực sự hiếm có: Lượng tài nguyên vật lý (điện, năng lực tính toán, dung lượng ổ đĩa) được bao gồm trong việc tạo thêm một bản sao của chương trình máy tính đó và đưa nó vào máy tính của tôi là rất nhỏ so với tổng thể, và khi tôi trả tiền cho một bản sao của Word, thì trước hết là tôi đang trả cho công ty Mircrosoft cho những nỗ lực đã bỏ ra để phát triển phần mềm Word, chứ không chỉ là cho mỗi bản sao đó. Và Microsoft, một phần, kinh doanh theo cách làm cho những bản sao đó trở nên khan hiếm – làm cho việc sao chép các chương trình của họ trở nên không dễ dàng, với các chương chương trình chống sao chép và các gói hội phí – để họ có thể tính phí cho dịch vụ cung cấp các bản sao.</p>
+<p>Hoặc, nếu bạn thường đọc Bloomberg trên mạng, xin cảm ơn vì đã trả tiền để vượt qua paywall (tạm dịch: bức tường phí) của chúng tôi. Một phần trong số tiền đó sẽ dùng để chi cho các máy chủ để mang thêm một lần hiển thị bài viết cho trình duyệt của bạn. Nhưng không nhiều lắm. Phần lớn sẽ đến tay tôi, haha, xin cảm ơn!</p>
+<p>Một tương lai khả dĩ là thế giới sẽ ngày càng như vậy, ít nhất là với một số người. Các tiến bộ công nghệ sẽ khiến các thứ đáp ứng nhu cầu cơ bản ngày càng dư thừa và cũng kém thú vị hơn, thế giới thực sẽ trở nên ngày càng đồng nhất và nhàm chán hơn, và mọi người sẽ dành nhiều thời gian hơn trên mạng. Giao lưu bạn bè, quan hệ lãng mạn, và đời sống gia đình của họ sẽ diễn ra trên máy tính; họ thu nhặt những mẩu ý nghĩa cuộc đời từ những chuyện xảy ra trên chiếc màn hình điện tử.</p>
+<p>Cũng có khả năng là điều này sẽ tốt đẹp và bình đẳng: Mọi người có thể tìm cộng đồng của riêng họ và sống trong thế giới phong phú vô tận của internet. Khả năng khác là trong một thế giới sống trên internet những hàng hóa thiết yếu sẽ có tính vị trí. Ở trong một phòng chat hay ho sẽ được khao khát như việc sống trong một căn nhà sang chảnh ở một vùng dân cư tốt đang được khao khát trong hiện tại. Có một avatar hay ho sẽ được thèm muốn như việc đeo một chiếc đồng hồ xịn đang được thèm muốn trong hiện tại. Và nếu crypto là một cách để khiến những thứ đó trở nên khan hiếm, để làm cho những avatar được thèm muốn trở thành một kiểu phiên bản giới hạn chỉ dành cho những người tham gia sớm và những người giàu, thì bạn có thể kiếm tiền bằng cách bán những thứ đó.</p>
+<p>Những điều này nghe thật dở với tôi,</p>
+<h3 id="nhung-jpeg-hiem-ve-khi">Những JPEG hiếm về khỉ</h3>
+<blockquote>
+<p>JPEG = một định dạng ảnh điện tử.</p>
+</blockquote>
+<p>Tôi đoán là chúng ta lại phải nói về NFT (t/n: nonfungible token - token không thể thay thế) .</p>
+<p>Cùng nhớ lại, NFT chỉ là một token mang một số. Nếu bạn mua một Bitcoin, Bitcoin đó cũng giống hệt như Bitcoin của bất kỳ ai khác [41]. Nếu bạn mua một NFT, nó có một số riêng. Sẽ có một số sê-ri các NFT – các chuỗi token theo chuẩn ERC-721 có tên, hãy gọi chúng là Khỉ Tamarin buồn chán – và mỗi NFT trong sê-ri đó sẽ có một số riêng, và Khỉ Tamarin buồn chán Số 63 sẽ khác với Khỉ Tamarin buồn chán Số 64 vì có số khác nhau.</p>
+<div class="admonition note note">
+<p class="admonition-title">Note 41</p>
+<p>Bitcoin không có số, nhưng chúng có nguồn gốc: Bạn có thể truy vết nguồn gốc số Bitcoin của mình, quay lại thời điểm chúng được đào ban đầu. Ta có thể tưởng tượng một thế giới nơi những Bitcoin khác nhau có những giá trị khác nhau, trong đó đồng Bitcoin mà có thể truy ngược lại tới các địa chỉ cua Satoshi thì có giá hơn các Bitcoin thông thường, trong khi đồng Bitcoin mà có thể truy ngược tới bộ nhớ đệm của số Bitcoin bị đánh cắp từ một sàn giao dịch trong vụ hack thì có giá trị thấp hơn. Đấy không phải là thế giới mà ta đang sống, phần lớn là thế, dù điều Bitcoin bị đánh cắp thì ít giá trị hơn về cơ bản là đúng.</p>
+</div>
+<p>Tôi đang cố giản lược nhất có thể, nhưng dĩ nhiên mọi thứ trên interter khác với tất cả những thứ còn lại trên internet do có dãy số khác nhau. Cơ bản toàn bộ văn hóa trên internet là thế, các con số sẽ mã hóa các bức ảnh và âm thanh và văn bản và lý luận. Về nguyên tắc, chẳng có lý do gì để giải thích tại sao số 63 không nên mã hóa một con khỉ tamarin trông buồn chán nhưng thực sự rất ngầu, trong khi số 64 mã hóa một con khỉ tamarin trông buồn chán nhưng kiểu xuề xòa kém hấp dẫn. Và vì vậy bạn có thể trả nhiều tiền hơn cho Số 63 vì trông nó ngầu hơn.</p>
+<p>Điều này có ý nghĩa rất thú vị về mặt kỹ thuật. Mẫu hình NFT là một dạng nghệ thuật kỹ thuật số: Những chú khỉ Tamarin buồn chán là một sê-ri 1000 bức vẽ kỹ thuật số những con khỉ chỉ hơi khác nhau với biểu cảm buồn chán, và giá trị của chúng khác nhau tùy thuộc vào việc chúng trông hay ho thế nào. (Thông thường một sê-ri NFT sẽ có một số các thuộc tính khác nhau – có con đang hút thuốc, hoặc đội một chiếc mũ ngộ nghĩnh, hoặc ngắp, hoặc nhắm cả hai mắt, và từng con khỉ sẽ có có giá trị khác nhau tùy thuộc vào những thuộc tính mà chúng có và độ hiếm của những thuộc tính này. Bạn có thể hình dung giá trị của các NFT khác nhau trong cùng sê-ri được dựa trên những cân nhắc thuần túy về mặt thẩm mỹ, nhưng mà, hầu hết là không.)</p>
+<p>Nhưng nói NFT là một dạng nghệ thuật kỹ thuật số nghĩa là như nào? Nghệ thuật không tồn tại trên chuỗi khối. Như kỹ sư phần mềm và hacker nổi tiếng mang tên Moxie Marlinspike viết trong một bài blog:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Thay vì lưu trữ dữ liệu trên khối, NFT chứa một URL (t/n: hiểu thông thường thì nghĩa là địa chỉ web) trỏ đến dữ liệu đó. Điều khiến tôi ngạc nhiên về các tiêu chuẩn đó là không có hoạt động băm (hash) nào được thực hiện cho dữ liệu nằm ở URL. Nhiều NFT trên các thị trường phổ biến được bán với giá hàng chục, hàng trăm, hay hàng triệu đô, nhưng URL thường chỉ trỏ tới một máy chủ ảo chạy Apache nào đó ở đâu đó. Bất kỳ ai nếu có quyền truy cập vào máy chủ đó, hoặc mua tên miền đó trong tương lai, hoặc xâm phạm máy chủ đó có thể thay đổi hình ảnh, tiêu đề, mô tả, v.v. của NFT thành bất cứ thứ gì họ muốn vào bất cứ lúc nào (bất kể họ có “sở hữu” token đó hay không). Không có bất cứ điều gì trong thông số của NFT cho bạn biết hình ảnh “nên” trông như thế nào, hay thậm chí cho phép bạn xác nhận xem thứ gì đó có phải là hình ảnh “đúng” hay không.</p>
+</div>
+<p>Nếu bạn mua một NFT, thứ mà bạn sở hữu là một lời chú thích trên chuỗi khối nói rằng bạn sở hữu một đường trỏ đến một máy chủ web nào đó. Trên máy chủ web đó có lẽ sẽ có một bức ảnh một chú khỉ, nhưng đấy không phải việc của chuỗi khối.</p>
+<p>Trong khi đó, quyền sở hữu tài sản trí tuệ với bức ảnh khỉ đó chắc chắn không phải là việc của chuỗi khối. Không có gì lạ khi người bán hoặc công ty bán sê-ri NFT 1. sở hữu quyền sở hữu trí tuệ đối với các bức ảnh những chú khỉ và 2. hứa sẽ chuyển giao các quyền này, hoặc một vài trong số chúng, tới những người nắm giữ NFT cá nhân. Nhưng nếu điều đó xảy ra, nó xảy ra bên ngoài chuỗi khối; những lời hứa này có thể hoặc không thể được thực thi thông qua hệ thống pháp luật thông thường. Và không có gì lạ khi người bán sê-ri NFT không sở hữu quyền sở hữu trí tuệ. Vào thời kỳ đầu của cơn bùng nổ NFT, mọi người thường tạo các NFT “của” bức Mona Lisa hoặc Cầu Brooklyn. Chúng chỉ là một token có số; tại sao con số đó không thể thể hiện “Cầu Brooklyn” cơ chứ?</p>
+<figure>
+    <img alt="alt text" src="../img/image-73.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Theo một số cách nào đó, sự ngớ ngẩn về mặt công nghệ này đã làm cho NFT trở nên thú vị hơn về mặt văn hóa. Nếu bạn mua một NFT, tất cả những gì bạn nhận là một dòng ký hiệu be bé, một đường trỏ mong manh tới một tác phẩm nghệ thuật kỹ thuật số nào đó. Thế nhưng người ta vẫn trả rất nhiều tiền để mua NFT cho những hình ảnh chú khỉ nào đó. Những NFT này có thể không không đại diện cho quyền sở hữu theo bất kỳ ý nghĩa ràng buộc nào cụ thể, nhưng chúng đại diện cho cảm giác về quyền sở hữu. Và chúng cũng đại diện cho một dạng cộng đồng.</p>
+<figure>
+    <img alt="alt text" src="../img/image-74.png" />\
+    <figcaption>Đáng thử phát đấy, nhỉ?</figcaption>
+</figure>
+<p>Bộ sưu tập NFT nổi tiếng nhất dĩ nhiên là Bored Ape Yacht Club (tạm dịch: Câu lạc bộ Du thuyền Những chú khỉ Buồn chán), một sê-ri gồm 10.000 bức ảnh JPEG về những con khỉ trên Ethereum, một vài trong số chúng được bán với giá hàng triệu đô la. Không có câu lạc bộ du thuyền nào trong thực tế cả, nhưng có các nhóm (đời thực) dành cho những người sở hữu Bored Ape. Nhiều người nổi tiếng, những người buôn tác phẩm nghệ thuật, và các nhà đầu tư mạo hiểm sở hữu những chú khỉ này, và việc sở hữu một chú khỉ là một cách để để tham gia một câu lạc bộ độc quyền. Và câu lạc bộ đó có những chuẩn mực riêng, và những chuẩn mực này bao gồm “Dùng một bức ảnh khỉ bạn sở hữu để làm ảnh đại diện Twitter thì thật ngầu” và “Dùng một bức ảnh khỉ bạn không sở hữu để làm ảnh đại diện Twitter thì thật không ngầu”. Các kết nối công nghệ và pháp lý giữa chuỗi khối và JPEG và quyền sở hữu khá mỏng, nhưng những kết nối đó được thực thi về mặt văn hóa.</p>
+<h3 id="vu-tru-ao-metaverse">Vũ trụ ảo - metaverse</h3>
+<p>Tôi dự định sẽ xuống mồ mà không biết “metaverse” là cái gì, nên chắc chắn tôi sẽ không giải thích nó cho bạn. Nhưng có một thứ về nó là bạn có thể mua bất động sản trên internet. Kiểu như, sẽ có một bức ảnh một căn nhà trên internet, và bạn có thể có một avatar (hình đại diện) trên internet sống trong căn nhà đó, và avatar đó có thể đi bộ từ căn nhà internet của bạn đến cửa hàng internet, nơi nó có thể mua một vài nhu yếu phẩm internet. Nó sẽ giống kiểu một trò chơi máy tính, nhưng tốn nhiều công sức hơn và nhàm chán hơn nhiều.</p>
+<p>Ngồi nhà trên metaverse của bạn nên có giá bao nhiêu? Hai câu trả lời hợp lý co thể là “Nó nên có giá bằng một ngôi nhà, nó là một ngôi nhà mà,” hoặc “Về cơ bản nó nên miễn phí, nó chỉ là một file trên máy tính, xét bản chất thì sẽ có không gian vô hạn trên metaverse, và không ai phải thực sự cưa gỗ dựng cột đóng đinh dựng lên căn nhà cả.” Câu trả lời thứ hai là đúng theo góc nhìn của tôi, nhưng lại không vui với những người bán nhà trên internet.</p>
+<p>Nên là, sự khan hiếm. Các ngôi nhà trên internet là các NFT. Mục tiêu là làm cho một số trong đó trở nên khan hiếm và danh giá. Giả sử, có một ngôi nhà internet cạnh nhà internet của Elon Musk thì đáng thèm muốn, và chỉ có thể có một vài ngôi nhà internet ở cạnh nhà của Elon Musk. Tại sao lại thế? Đấy đều là trên máy tính; tôi có thể đặt cả triệu ngôi nhà internet cạnh nhà của Elon, nhưng tôi không làm thế. Tôi khiến những hàng hóa có tính vị trí trở nên khan hiếm.</p>
+<p>Nhưng mà, cái này nghe thật ngớ ngẩn, ý tôi là, nhìn Facebook (giờ là Meta) mà xem. Tỷ lệ mà 50 năm nữa trung tâm của nền kinh tế giới thế sẽ là các món hàng kỹ thuật số là bao nhiêu? Tỷ lệ mà chúng ta sẽ dành phần lớn thời gian và tiền bạc để tìm kiếm địa vị, sự lãng mạn, mối quan hệ, giải trí trên internet là bao nhiêu? Nếu hầu hết hàng hóa về sau đều là kỹ thuật số, nếu hầu hết mọi người đều kiếm tiền bằng cách bán hàng hóa kỹ thuật số, thì việc giám sát và đo lường việc phân phối các hàng hóa này sẽ là một chức năng kinh tế quan trọng. Sự khan hiếm kỹ thuật số.</p>
+<p>Xin lỗi vì phải trở thành gã trong câu “Kiểu Gì Cũng Có Người Nói Thế Cho Coi”, nhưng ở đoạn này thật khó mà không nghĩ đến phim Ma trận. Bạn biết tiền đề của phim rồi đấy: Toàn bộ con người là một túi thịt ngâm trong một bể dinh dưỡng với một dây cắm nối não của họ với một chương trình giả lập thực tế cực kỳ đáng kinh ngạc mô phỏng nước Mỹ cuối những năm 90. Tại sao lại là một chương trình giả lập thực tế cực kỳ đáng kinh ngạc mô phỏng nước Mỹ cuối những năm 90? Tại sao Neo, nhân vật chính, phải đi làm một công việc văn phòng tẻ ngắt nếu anh ta chỉ là một cái bị thịt ngâm trong một cái bồn tắm được được bón cho ăn bởi những cỗ máy? Đặc vụ Smith giải thích:</p>
+<figure>
+    <img alt="alt text" src="../img/image-75.png" />
+    <figcaption></figcaption>
+</figure>
+<p>Vì vậy các cỗ máy đã mô phỏng chủ nghĩa tư bản giai đoạn cuối thay vào đó. Thậm chí trong một thế giới nơi tất cả hàng hóa đều là kỹ thuật số và có sẵn với số lượng dồi dào vô hạn, bạn vẫn phải làm một công việc bàn giấy (giả lập) để chi trả cho chúng. Đấy, sự khan hiếm kỹ thuật số.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: II. Nó có nghĩa là gì">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                II. Nó có nghĩa là gì
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../4/" class="md-footer__link md-footer__link--next" aria-label="Next: IV. Sự tin tưởng - Tiền Bạc - Cộng đồng">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                IV. Sự tin tưởng - Tiền Bạc - Cộng đồng
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dothanhdathp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/tad.zeila?locale=vi_VN" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.footer", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.js"></script>
+      
+        <script src="../../../assets/scripts/katex.js"></script>
+      
+        <script src="../../../assets/scripts/keyevent.js"></script>
+      
+        <script src="../../../assets/scripts/katex.min.js"></script>
+      
+        <script src="../../../assets/scripts/auto-render.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

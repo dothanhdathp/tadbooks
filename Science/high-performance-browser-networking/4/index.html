@@ -1,0 +1,6155 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3/">
+      
+      
+        <link rel="next" href="../5/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Transport Layer Security (TLS) - Tad Zeila Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transport-layer-security-tls" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tad Zeila Book" class="md-header__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tad Zeila Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Transport Layer Security (TLS)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Literature/literature-list/" class="md-tabs__link">
+          
+  
+  
+  Văn Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../science-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../science-it-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học Máy Tính
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Group/KLNTTL/klnttl/" class="md-tabs__link">
+          
+  
+  
+  Bộ Sách
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Philosophy/philosophy/" class="md-tabs__link">
+          
+  
+  
+  Triết Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Paper/paper-list/" class="md-tabs__link">
+          
+  
+  
+  Bài Báo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Psychology/psychology-list/" class="md-tabs__link">
+          
+  
+  
+  Tâm Lý Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NonFig/nonfig-list/" class="md-tabs__link">
+          
+  
+  
+  NonFig
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-tabs__link">
+          
+  
+  
+  Tư Duy
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tad Zeila Book" class="md-nav__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    Tad Zeila Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About me
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Văn Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Văn Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Literature/literature-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vũ Trụ Trong Vỏ Hạt Dẻ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vũ Trụ Trong Vỏ Hạt Dẻ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 1 - LƯỢC SỬ VỀ THUYẾT TƯƠNG ĐỐI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 2 - HÌNH DÁNG CỦA THỜI GIAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 6 - TƯƠNG LAI CỦA CHÚNG TA? CÓ THỂ LÀ STARTREK HAY KHÔNG?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 7 - MÀNG VŨ TRỤ MỚI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vu-tru-trong-vo-hat-de/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    THUẬT NGỮ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học Máy Tính
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học Máy Tính
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-it-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    High Performance Browser Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Browser Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking 101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Networking 101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer on Latency and Bandwidth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of TCP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of UDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Transport Layer Security (TLS)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transport Layer Security (TLS)
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encryption-authentication-and-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption, Authentication, and Integrity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS Everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-handshake" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Handshake
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Handshake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rsa-diffie-hellman-and-forward-secrecy" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA - Diffie-Hellman and Forward Secrecy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-layer-protocol-negotiation-alpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Layer Protocol Negotiation - ALPN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-name-indication-sni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Name Indication - SNI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-session-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Session Resumption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Session Resumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-tickets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Tickets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chain-of-trust-and-certificate-authorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chain of Trust and Certificate Authorities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificate-revocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificate Revocation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Certificate Revocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate-revocation-list-crl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificate Revocation List - CRL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-certificate-status-protocol-ocsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Certificate Status Protocol - OCSP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocsp-stapling" class="md-nav__link">
+    <span class="md-ellipsis">
+      OCSP Stapling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-record-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Record Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizing-for-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizing for TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimizing for TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-computational-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce Computational Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-1-rtt-tls-handshakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable 1-RTT TLS Handshakes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-connection-reuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize Connection Reuse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leverage-early-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leverage Early Termination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-session-caching-and-stateless-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Session Caching and Stateless Resumption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls-false-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable TLS False Start
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-tls-record-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize TLS Record Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-the-certificate-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize the Certificate Chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-ocsp-stapling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OCSP Stapling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-http-strict-transport-security-hsts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable HTTP Strict Transport Security - HSTS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-http-public-key-pinning-hpkp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable HTTP Public Key Pinning - HPKP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-site-content-to-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Site Content to HTTPS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing and Verification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Wireless Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wifi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hiểu biết sâu sắc về Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hiểu biết sâu sắc về Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHương 1 - Chuẩn bị trước khi đọc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2 - Hiểu sâu sắc về JNI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Competitive Programmer's Handbook
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Competitive Programmer's Handbook
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Part I - Basic technique
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part I - Basic technique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2: Time complexity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Rust by Example
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rust by Example
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Begin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bộ Sách
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bộ Sách
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khái Lược Những Tư Tưởng Lớn
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Khái Lược Những Tư Tưởng Lớn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/klnttl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mô tả
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kinh Doanh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kinh Doanh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mở đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giới Thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Khởi Đầu Nhỏ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Triết Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời cảm ơn & Giới thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN MỘT: SỰ HÌNH THÀNH CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN HAI: CÁC KỸ THUẬT TÂM LÝ CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BA: LỜI KHUYÊN CỦA CÁC NHÀ KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BỐN: CHỦ NGHĨA KHẮC KỶ TRONG CUỘC SỐNG HIỆN ĐẠI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 1. TRIẾT HỌC HIỆN SINH LÀ GÌ?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2. NHỮNG ĐỀ TÀI CHÍNH CỦA TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 3. HAI NGÀNH CỦA PHONG TRÀO TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 4. KIERKEGAARD ÔNG TỔ HIỆN SINH TRUNG THỰC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 5. NIETZSCHE ÔNG TỔ HIỆN SINH VÔ THẦN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 6. HUSSERL ~ ÔNG TỔ VĂN CHƯƠNG TRIẾT LÝ HIỆN TƯỢNG HỌC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 7. JASPERS HIỆN SINH VÀ SIÊU VIỆT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 8. MARCEL HIỆN SINH VÀ HUYỀN NHIỆM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 9. SARTRE - HIỆN SINH PHI LÝ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 10. HEIDEGGER HIỆN SINH VÀ HIỆN HỮU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức (Tập 1)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức (Tập 1)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời tựa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 27
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 28
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 32
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 33
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 34
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 35
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 38
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 39
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 40
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 41
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 42
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 43
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bài Báo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bài Báo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/paper-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Câu chuyện về crypto duy nhất bạn cần
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Câu chuyện về crypto duy nhất bạn cần
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I. Sổ cái - Bitcoin và Blockchain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    II. Nó có nghĩa là gì
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    III. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IV. Sự tin tưởng - Tiền Bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    V. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VI. Sự tin tưởng - Tiền bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android Binder
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Android Binder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Multitasking, Processes and Threads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Implementation of the Binder Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Example IPC Message Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Discussion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/stoic-virtue-and-mental-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chủ nghĩa khắc kỷ, Đức hạnh và Sức khỏe tâm thần
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tâm Lý Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tâm Lý Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/psychology-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/stoic-virtue-and-mental-health.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    NonFig
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            NonFig
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nonfig-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Thiên Nga Đen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Thiên Nga Đen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LỜI BẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Mở Đầu - XOAY QUANH BỘ LÔNG CHIM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Một - PHẢN THƯ VIỆN CỦA UMBERTO ECO HAY CÁCH CHÚNG TA TÌM KIẾM SỰ PHÊ CHUẨN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nhung-quy-luat-cua-ban-chat-con-nguoi/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Những Quy Luật Của Bản Chất Con Người - Robert Greene
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tư Duy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tư Duy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nghệ Thuật Tư Duy Rành Mạch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            Nghệ Thuật Tư Duy Rành Mạch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lởi Mở Đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mục Lục
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nội Dung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời Kết
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#encryption-authentication-and-integrity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Encryption, Authentication, and Integrity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#https-everywhere" class="md-nav__link">
+    <span class="md-ellipsis">
+      HTTPS Everywhere
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-handshake" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Handshake
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Handshake">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rsa-diffie-hellman-and-forward-secrecy" class="md-nav__link">
+    <span class="md-ellipsis">
+      RSA - Diffie-Hellman and Forward Secrecy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-layer-protocol-negotiation-alpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Layer Protocol Negotiation - ALPN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-name-indication-sni" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Name Indication - SNI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-session-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Session Resumption
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TLS Session Resumption">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#session-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Identifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-tickets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Tickets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chain-of-trust-and-certificate-authorities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chain of Trust and Certificate Authorities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certificate-revocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificate Revocation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Certificate Revocation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#certificate-revocation-list-crl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Certificate Revocation List - CRL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-certificate-status-protocol-ocsp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Certificate Status Protocol - OCSP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ocsp-stapling" class="md-nav__link">
+    <span class="md-ellipsis">
+      OCSP Stapling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tls-record-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      TLS Record Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimizing-for-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizing for TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimizing for TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-computational-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reduce Computational Costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-1-rtt-tls-handshakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable 1-RTT TLS Handshakes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-connection-reuse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize Connection Reuse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leverage-early-termination" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leverage Early Termination
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-session-caching-and-stateless-resumption" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure Session Caching and Stateless Resumption
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-tls-false-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable TLS False Start
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-tls-record-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize TLS Record Size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimize-the-certificate-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimize the Certificate Chain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-ocsp-stapling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure OCSP Stapling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-http-strict-transport-security-hsts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable HTTP Strict Transport Security - HSTS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enable-http-public-key-pinning-hpkp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable HTTP Public Key Pinning - HPKP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-site-content-to-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update Site Content to HTTPS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-and-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing and Verification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="transport-layer-security-tls">Transport Layer Security (TLS)</h1>
+<blockquote>
+<p><a href="https://hpbn.co/transport-layer-security-tls/">Bảo mật lớp truyền tải (TLS)</a></p>
+</blockquote>
+<p>Giao thức SSL ban đầu được phát triển tại Netscape để cho phép bảo mật giao dịch thương mại điện tử trên Web, yêu cầu mã hóa để bảo vệ dữ liệu cá nhân của khách hàng cũng như đảm bảo tính xác thực và tính toàn vẹn để đảm bảo giao dịch an toàn. Để đạt được điều này, giao thức SSL đã được triển khai ở lớp ứng dụng, ngay trên TCP ( Hình 4-1 ), cho phép các giao thức phía trên nó (HTTP, email, nhắn tin tức thời và nhiều giao thức khác) hoạt động không thay đổi trong khi vẫn cung cấp bảo mật liên lạc khi giao tiếp qua mạng.</p>
+<p>Khi SSL được sử dụng đúng cách, bên quan sát thứ ba chỉ có thể suy ra điểm cuối của kết nối, loại mã hóa, cũng như tần suất và lượng dữ liệu gần đúng được gửi, nhưng không thể đọc hoặc sửa đổi bất kỳ dữ liệu thực tế nào.</p>
+<figure>
+    <img alt="alt text" src="../img/4-1.png" />
+    <figcaption>Hình 4-1. Bảo mật lớp vận chuyển (TLS)</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Khi giao thức SSL được IETF chuẩn hóa, nó được đổi tên thành Transport Layer Security (TLS). Nhiều người sử dụng tên TLS và SSL thay thế cho nhau, nhưng về mặt kỹ thuật, chúng khác nhau, vì mỗi tên mô tả một phiên bản khác nhau của giao thức.</p>
+</div>
+<p>SSL 2.0 là phiên bản đầu tiên được phát hành công khai của giao thức này, nhưng nó đã nhanh chóng được thay thế bằng SSL 3.0 do một số lỗ hổng bảo mật được phát hiện. Vì giao thức SSL là độc quyền của Netscape, IETF đã hình thành một nỗ lực để chuẩn hóa giao thức, dẫn đến RFC 2246, được công bố vào tháng 1 năm 1999 và được gọi là TLS 1.0. Kể từ đó, IETF đã tiếp tục lặp lại giao thức để giải quyết các lỗ hổng bảo mật, cũng như để mở rộng khả năng của nó: TLS 1.1 (RFC 4346) được công bố vào tháng 4 năm 2006, TLS 1.2 (RFC 5246) vào tháng 8 năm 2008 và công việc hiện đang được tiến hành để xác định TLS 1.3.</p>
+<p>Nói như vậy, đừng để sự phong phú của các số phiên bản đánh lừa bạn: máy chủ của bạn phải luôn ưu tiên và đàm phán phiên bản ổn định mới nhất của giao thức TLS để đảm bảo bảo mật, khả năng và hiệu suất tốt nhất. Trên thực tế, một số tính năng quan trọng về hiệu suất, chẳng hạn như HTTP/2, yêu cầu rõ ràng phải sử dụng TLS 1.2 trở lên và nếu không sẽ hủy kết nối. Bảo mật và hiệu suất tốt song hành với nhau.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TLS được thiết kế để hoạt động dựa trên giao thức truyền tải đáng tin cậy như TCP. Tuy nhiên, nó cũng đã được điều chỉnh để chạy trên các giao thức datagram như UDP. Giao thức Bảo mật lớp truyền tải gói dữ liệu (DTLS), được xác định trong RFC 6347, dựa trên giao thức TLS và có thể cung cấp các đảm bảo bảo mật tương tự trong khi vẫn duy trì mô hình phân phối gói dữ liệu.</p>
+</div>
+<h2 id="encryption-authentication-and-integrity">Encryption, Authentication, and Integrity</h2>
+<blockquote>
+<p>Mã hóa, Xác thực và Tính toàn vẹn</p>
+</blockquote>
+<p>Giao thức TLS được thiết kế để cung cấp ba dịch vụ thiết yếu cho tất cả các ứng dụng chạy trên nó: mã hóa, xác thực và toàn vẹn dữ liệu. Về mặt kỹ thuật, bạn không bắt buộc phải sử dụng cả ba trong mọi tình huống. Bạn có thể quyết định chấp nhận một chứng chỉ mà không xác thực tính xác thực của nó, nhưng bạn nên biết rõ về các rủi ro bảo mật và ý nghĩa của việc làm như vậy. Trong thực tế, một ứng dụng web an toàn sẽ tận dụng cả ba dịch vụ.</p>
+<ul>
+<li>Mã hóa<ul>
+<li>Một cơ chế làm xáo trộn nội dung được gửi từ máy chủ này sang máy chủ khác.</li>
+</ul>
+</li>
+<li>Xác thực<ul>
+<li>Một cơ chế để xác minh tính hợp lệ của tài liệu nhận dạng được cung cấp.</li>
+</ul>
+</li>
+<li>Chính trực<ul>
+<li>Một cơ chế phát hiện việc giả mạo và giả mạo tin nhắn.</li>
+</ul>
+</li>
+</ul>
+<p>Để thiết lập kênh dữ liệu được bảo mật bằng mật mã, các kết nối ngang hàng phải đồng ý về bộ mật mã nào sẽ được sử dụng và các khóa được sử dụng để mã hóa dữ liệu. Giao thức TLS chỉ định trình tự bắt tay được xác định rõ ràng để thực hiện trao đổi này, chúng tôi sẽ xem xét chi tiết trong Bắt tay TLS . Phần khéo léo của cái bắt tay này và lý do TLS hoạt động trong thực tế là do nó sử dụng mật mã khóa công khai (còn được gọi là mật mã khóa bất đối xứng), cho phép các đồng nghiệp đàm phán khóa bí mật chung mà không cần phải thiết lập bất kỳ kiến ​​thức nào trước đó. của nhau và thực hiện điều đó trên một kênh không được mã hóa.</p>
+<p>Là một phần của bắt tay TLS, giao thức cũng cho phép cả hai đồng nghiệp xác thực danh tính của họ. Khi được sử dụng trong trình duyệt, cơ chế xác thực này cho phép khách hàng xác minh rằng máy chủ chính là người mà họ tuyên bố (ví dụ: ngân hàng của bạn) chứ không phải ai đó chỉ đơn giản giả vờ là đích đến bằng cách giả mạo tên hoặc địa chỉ IP của họ. Việc xác minh này dựa trên chuỗi tin cậy đã được thiết lập — xem Chuỗi tin cậy và Cơ quan cấp chứng chỉ . Ngoài ra, máy chủ cũng có thể tùy chọn xác minh danh tính của khách hàng - ví dụ: máy chủ proxy của công ty có thể xác thực tất cả nhân viên, mỗi người trong số họ có thể có chứng chỉ duy nhất của riêng mình do công ty ký.</p>
+<p>Cuối cùng, với mã hóa và xác thực tại chỗ, giao thức TLS cũng cung cấp cơ chế đóng khung tin nhắn riêng và ký mỗi tin nhắn bằng mã xác thực tin nhắn (MAC). Thuật toán MAC là hàm băm mật mã một chiều (thực tế là tổng kiểm tra), các khóa được cả hai đối tác kết nối thương lượng. Bất cứ khi nào một bản ghi TLS được gửi, một giá trị MAC được tạo và thêm vào cho tin nhắn đó, và sau đó người nhận có thể tính toán và xác minh giá trị MAC đã gửi để đảm bảo tính toàn vẹn và tính xác thực của tin nhắn.</p>
+<p>Kết hợp lại, cả ba cơ chế đều đóng vai trò là nền tảng cho giao tiếp an toàn trên Web. Tất cả các trình duyệt web hiện đại đều hỗ trợ nhiều bộ mã hóa, có thể xác thực cả máy khách và máy chủ, và thực hiện kiểm tra tính toàn vẹn của tin nhắn một cách minh bạch cho mọi bản ghi.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Proxy, trung gian, TLS và các giao thức mới trên Web</strong></p>
+<p>Khả năng mở rộng và thành công của HTTP đã tạo ra một hệ sinh thái sôi động của nhiều proxy và trung gian khác nhau trên Web: máy chủ bộ nhớ đệm, cổng bảo mật, trình tăng tốc web, bộ lọc nội dung và nhiều thứ khác. Trong một số trường hợp, chúng ta biết về sự hiện diện của chúng (proxy rõ ràng), và trong những trường hợp khác, chúng hoàn toàn trong suốt đối với người dùng cuối.</p>
+<p>Thật không may, chính sự thành công và sự hiện diện của các máy chủ này đã tạo ra một vấn đề cho bất kỳ ai cố gắng đi chệch khỏi giao thức HTTP/1.x theo bất kỳ cách nào: một số máy chủ proxy có thể chỉ chuyển tiếp các phần mở rộng HTTP mới hoặc các định dạng dây thay thế mà chúng không thể hiểu được, một số khác có thể tiếp tục áp dụng logic của chúng một cách mù quáng ngay cả khi chúng không nên làm như vậy và một số, chẳng hạn như các thiết bị bảo mật, có thể suy ra ý định xấu mặc dù thực tế không phải vậy.</p>
+<p>Nói cách khác, trong thực tế, việc đi chệch khỏi ngữ nghĩa được xác định rõ ràng của HTTP/1.x trên cổng 80 thường dẫn đến việc triển khai không đáng tin cậy: một số máy khách không gặp vấn đề gì, trong khi những máy khách khác lại gặp lỗi với các hành vi không thể đoán trước và khó tái tạo — ví dụ: cùng một khách hàng có thể thấy các hành vi khác nhau khi di chuyển giữa các mạng khác nhau.</p>
+<p>Do những hành vi này, các giao thức và tiện ích mở rộng mới cho HTTP, chẳng hạn như WebSocket, HTTP/2 và các giao thức khác, phải dựa vào việc thiết lập đường hầm HTTPS để bỏ qua các proxy trung gian và cung cấp mô hình triển khai đáng tin cậy: đường hầm được mã hóa làm xáo trộn dữ liệu từ tất cả các trung gian. Nếu bạn đã từng thắc mắc tại sao hầu hết các hướng dẫn của WebSocket sẽ yêu cầu bạn sử dụng HTTPS để phân phối dữ liệu đến các máy khách di động thì đây là lý do.</p>
+</div>
+<h2 id="https-everywhere">HTTPS Everywhere</h2>
+<blockquote>
+<p>HTTPS ở khắp mọi nơi</p>
+</blockquote>
+<p>Giao tiếp không được mã hóa—thông qua HTTP và các giao thức khác—tạo ra một số lượng lớn lỗ hổng về quyền riêng tư, bảo mật và tính toàn vẹn. Những trao đổi như vậy dễ bị chặn, thao túng và mạo danh, đồng thời có thể tiết lộ thông tin xác thực, lịch sử, danh tính và các thông tin nhạy cảm khác của người dùng. Các ứng dụng của chúng tôi cần tự bảo vệ mình và người dùng trước những mối đe dọa này bằng cách cung cấp dữ liệu qua HTTPS.</p>
+<ul>
+<li>
+<p>HTTPS bảo vệ tính toàn vẹn của trang web</p>
+<ul>
+<li>Mã hóa ngăn chặn kẻ xâm nhập giả mạo dữ liệu được trao đổi—ví dụ: viết lại nội dung, chèn nội dung độc hại và không mong muốn, v.v.</li>
+</ul>
+</li>
+<li>
+<p>HTTPS bảo vệ quyền riêng tư và bảo mật của người dùng</p>
+<ul>
+<li>Mã hóa ngăn chặn những kẻ xâm nhập nghe lén dữ liệu được trao đổi. Mỗi yêu cầu không được bảo vệ có thể tiết lộ thông tin nhạy cảm về người dùng và khi dữ liệu đó được tổng hợp qua nhiều phiên, có thể được sử dụng để hủy ẩn danh danh tính của họ và tiết lộ thông tin nhạy cảm khác. Mọi hoạt động duyệt web, theo quan điểm của người dùng, đều phải được coi là riêng tư và nhạy cảm.</li>
+</ul>
+</li>
+<li>
+<p>HTTPS kích hoạt các tính năng mạnh mẽ trên web</p>
+<ul>
+<li>Ngày càng có nhiều tính năng nền tảng web mới, chẳng hạn như truy cập vị trí địa lý của người dùng, chụp ảnh, quay video, cho phép trải nghiệm ứng dụng ngoại tuyến, v.v., yêu cầu người dùng chọn tham gia rõ ràng, do đó, yêu cầu HTTPS. Các đảm bảo về tính bảo mật và tính toàn vẹn do HTTPS cung cấp là các thành phần quan trọng để cung cấp quy trình cấp phép người dùng an toàn và bảo vệ các tùy chọn của họ.</li>
+</ul>
+</li>
+</ul>
+<p>Để nhấn mạnh hơn nữa, cả Lực lượng Đặc nhiệm Kỹ thuật Internet (IETF) và Ban Kiến trúc Internet (IAB) đã ban hành hướng dẫn cho các nhà phát triển và nhà thiết kế giao thức khuyến khích mạnh mẽ việc áp dụng HTTPS:</p>
+<ul>
+<li>IETF: <a href="https://hpbn.co/rfc7258">Giám sát toàn diện là một cuộc tấn công</a></li>
+<li>IAB: <a href="https://hpbn.co/iab-https">Tuyên bố về Bảo mật Internet</a></li>
+</ul>
+<p>Khi sự phụ thuộc của chúng ta vào Internet ngày càng tăng, thì rủi ro và nguy cơ đối với mọi người dựa vào nó cũng tăng theo. Do đó, chúng ta có trách nhiệm, với tư cách là nhà phát triển ứng dụng và người dùng, đảm bảo rằng chúng ta tự bảo vệ mình bằng cách bật HTTPS ở mọi nơi.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a href="https://https.cio.gov/">Tiêu chuẩn chỉ dành cho HTTPS</a> do Văn phòng Quản lý và Ngân sách của Nhà Trắng xuất bản là một nguồn tài nguyên tuyệt vời để cung cấp thông tin bổ sung về nhu cầu của HTTPS và lời khuyên thực hành để triển khai nó.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Hãy mã hóa</strong></p>
+<p>Một sự phản đối và rào cản phổ biến đối với việc áp dụng rộng rãi HTTPS là yêu cầu phải mua chứng chỉ từ một trong những cơ quan đáng tin cậy—xem Chain of Trust và Certificate Authorities . Dự án Let's Encrypt ra mắt năm 2015 giải quyết vấn đề cụ thể này:</p>
+<blockquote>
+<p>"Let's Encrypt là một cơ quan cấp chứng chỉ miễn phí, tự động và mở do Internet Security Research Group (ISRG) mang đến cho bạn. Mục tiêu của Let's Encrypt và giao thức ACME là giúp thiết lập máy chủ HTTPS và tự động lấy chứng chỉ được trình duyệt tin cậy mà không cần bất kỳ sự can thiệp nào của con người."</p>
+</blockquote>
+<p>Truy cập trang web của dự án để tìm hiểu cách thiết lập nó trên trang web của riêng bạn. Không có hạn chế, giờ đây bất kỳ ai cũng có thể nhận được chứng chỉ đáng tin cậy cho trang web của họ miễn phí.</p>
+</div>
+<h2 id="tls-handshake">TLS Handshake</h2>
+<blockquote>
+<p>Bắt tay TLS</p>
+</blockquote>
+<p>Trước khi máy khách và máy chủ có thể bắt đầu trao đổi dữ liệu ứng dụng qua TLS, đường hầm được mã hóa phải được đàm phán: máy khách và máy chủ phải đồng ý về phiên bản của giao thức TLS, chọn bộ mật mã và xác minh chứng chỉ nếu cần. Thật không may, mỗi bước trong số này yêu cầu các chuyến đi khứ hồi gói mới ( Hình 4-2 ) giữa máy khách và máy chủ, điều này làm tăng thêm độ trễ khởi động cho tất cả các kết nối TLS.</p>
+<figure>
+    <img alt="" src="../img/4-2.png" />
+    <figcaption>Hình 4-2. Giao thức bắt tay TLS</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hình 4-2 giả định độ trễ "ánh sáng trong sợi quang" một chiều là 28 mili giây (lạc quan) giống như độ trễ được sử dụng trong các ví dụ thiết lập kết nối TCP trước đây; xem Bảng 1-1 .</p>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Độ trễ</th>
+<th style="text-align: left;">Chu trinh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0 ms</td>
+<td style="text-align: left;">TLS chạy trên một phương tiện truyền tải đáng tin cậy (TCP), có nghĩa là trước tiên chúng ta phải hoàn thành quá trình bắt tay ba chiều TCP, quá trình này mất một vòng đầy đủ.</td>
+</tr>
+<tr>
+<td style="text-align: center;">56 ms</td>
+<td style="text-align: left;">Khi kết nối TCP được thiết lập, máy khách sẽ gửi một số thông số kỹ thuật ở dạng văn bản thuần túy, chẳng hạn như phiên bản giao thức TLS đang chạy, danh sách các bộ mã hóa được hỗ trợ và các tùy chọn TLS khác mà máy khách có thể muốn sử dụng.</td>
+</tr>
+<tr>
+<td style="text-align: center;">84 ms</td>
+<td style="text-align: left;">Máy chủ chọn phiên bản giao thức TLS để liên lạc thêm, quyết định bộ mật mã từ danh sách do khách hàng cung cấp, đính kèm chứng chỉ của nó và gửi phản hồi lại cho khách hàng. Theo tùy chọn, máy chủ cũng có thể gửi yêu cầu về chứng chỉ và tham số của khách hàng cho các tiện ích mở rộng TLS khác.</td>
+</tr>
+<tr>
+<td style="text-align: center;">112 ms</td>
+<td style="text-align: left;">Giả sử cả hai bên có thể thương lượng một phiên bản và mã hóa chung, và máy khách hài lòng với chứng chỉ do máy chủ cung cấp, máy khách sẽ khởi tạo trao đổi khóa RSA hoặc Diffie-Hellman, được sử dụng để thiết lập khóa đối xứng cho phiên tiếp theo.</td>
+</tr>
+<tr>
+<td style="text-align: center;">140 ms</td>
+<td style="text-align: left;">Máy chủ xử lý các tham số trao đổi khóa do máy khách gửi, kiểm tra tính toàn vẹn của tin nhắn bằng cách xác minh MAC và trả lại Finishedtin nhắn được mã hóa cho máy khách.</td>
+</tr>
+<tr>
+<td style="text-align: center;">168 ms</td>
+<td style="text-align: left;">Máy khách giải mã tin nhắn bằng khóa đối xứng đã thương lượng, xác minh MAC và nếu mọi việc đều ổn thì đường hầm sẽ được thiết lập và dữ liệu ứng dụng hiện có thể được gửi.</td>
+</tr>
+</tbody>
+</table>
+<p>Như trao đổi ở trên minh họa, các kết nối TLS mới yêu cầu hai vòng khứ hồi cho một "bắt tay đầy đủ"—đó là tin xấu. Tuy nhiên, trên thực tế, các triển khai được tối ưu hóa có thể làm tốt hơn nhiều và cung cấp bắt tay TLS 1-RTT nhất quán:</p>
+<ul>
+<li>Bắt đầu sai là một phần mở rộng giao thức TLS cho phép máy khách và máy chủ bắt đầu truyền dữ liệu ứng dụng được mã hóa khi quá trình bắt tay chỉ hoàn tất một phần—tức là một lần ChangeCipherSpecvà Finishedcác tin nhắn được gửi đi mà không cần đợi phía bên kia thực hiện tương tự. Sự tối ưu hóa này giúp giảm chi phí bắt tay cho các kết nối TLS mới xuống còn một chiều; xem Bật khởi động sai TLS .</li>
+<li>Nếu máy khách đã từng giao tiếp với máy chủ trước đó, có thể sử dụng "bắt tay rút gọn", yêu cầu một lần trao đổi và cũng cho phép máy khách và máy chủ giảm chi phí CPU bằng cách sử dụng lại các tham số đã thương lượng trước đó cho phiên bảo mật; xem Tiếp tục phiên TLS .</li>
+</ul>
+<p>Sự kết hợp của cả hai cách tối ưu hóa ở trên cho phép chúng tôi cung cấp khả năng bắt tay 1-RTT TLS nhất quán cho khách truy cập mới và khách truy cập quay lại, đồng thời tiết kiệm điện toán cho các phiên có thể được tiếp tục dựa trên các tham số phiên đã thương lượng trước đó. Hãy đảm bảo tận dụng những tối ưu hóa này trong quá trình triển khai của bạn.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Một trong những mục tiêu thiết kế của TLS 1.3 là giảm chi phí độ trễ khi thiết lập kết nối an toàn: 1-RTT cho các phiên mới và 0-RTT cho các phiên được tiếp tục!</p>
+</div>
+<h3 id="rsa-diffie-hellman-and-forward-secrecy">RSA - Diffie-Hellman and Forward Secrecy</h3>
+<blockquote>
+<p>RSA, Diffie-Hellman và bí mật chuyển tiếp</p>
+</blockquote>
+<p>Do nhiều lý do lịch sử và thương mại, bắt tay RSA đã trở thành cơ chế trao đổi khóa thống trị trong hầu hết các triển khai TLS: máy khách tạo khóa đối xứng, mã hóa khóa đó bằng khóa công khai của máy chủ và gửi đến máy chủ để sử dụng làm khóa đối xứng cho phiên đã thiết lập. Đổi lại, máy chủ sử dụng khóa riêng của mình để giải mã khóa đối xứng đã gửi và quá trình trao đổi khóa hoàn tất. Từ thời điểm này trở đi, máy khách và máy chủ sử dụng khóa đối xứng đã đàm phán để mã hóa phiên của họ.</p>
+<p>Quá trình bắt tay RSA hoạt động nhưng có một điểm yếu nghiêm trọng: cùng một cặp khóa công khai được sử dụng để xác thực máy chủ và mã hóa khóa phiên đối xứng được gửi đến máy chủ. Kết quả là, nếu kẻ tấn công giành được quyền truy cập vào khóa riêng của máy chủ và lắng nghe trao đổi thì chúng có thể giải mã toàn bộ phiên. Tệ hơn nữa, ngay cả khi kẻ tấn công hiện không có quyền truy cập vào khóa riêng, chúng vẫn có thể ghi lại phiên được mã hóa và giải mã nó sau khi lấy được khóa riêng.</p>
+<p>Ngược lại, trao đổi khóa Diffie-Hellman cho phép máy khách và máy chủ đàm phán một bí mật chung mà không cần truyền đạt rõ ràng nó trong quá trình bắt tay: khóa riêng của máy chủ được sử dụng để ký và xác minh quá trình bắt tay, nhưng khóa đối xứng đã thiết lập không bao giờ rời khỏi máy khách hoặc máy chủ và kẻ tấn công thụ động không thể chặn ngay cả khi họ có quyền truy cập vào khóa riêng.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Đối với những người tò mò, bài viết trên Wikipedia về <a href="https://hpbn.co/dhe-exchange">trao đổi khóa Diffie-Hellman</a> là nơi tuyệt vời để tìm hiểu về thuật toán và các thuộc tính của nó.</p>
+</div>
+<p>Tuyệt vời nhất là trao đổi khóa Diffie-Hellman có thể được sử dụng để giảm nguy cơ xâm phạm các phiên giao tiếp trong quá khứ: chúng ta có thể tạo một khóa đối xứng "tạm thời" mới như một phần của mỗi và mọi trao đổi khóa và loại bỏ các khóa trước đó. Do đó, vì các khóa tạm thời không bao giờ được truyền đạt và được đàm phán lại tích cực cho mỗi phiên mới, nên trường hợp xấu nhất là kẻ tấn công có thể xâm phạm máy khách hoặc máy chủ và truy cập các khóa phiên của các phiên hiện tại và tương lai. Tuy nhiên, việc biết khóa riêng tư hoặc khóa tạm thời hiện tại không giúp kẻ tấn công giải mã bất kỳ phiên nào trước đó!</p>
+<p>Kết hợp lại, việc sử dụng trao đổi khóa Diffie-Hellman và các khóa phiên tạm thời cho phép "bí mật hoàn hảo về phía trước" (PFS): việc xâm phạm các khóa dài hạn (ví dụ: khóa riêng của máy chủ) không xâm phạm các khóa phiên trước đó và không cho phép kẻ tấn công giải mã các phiên đã ghi trước đó. Ít nhất có thể nói là một tài sản rất được mong muốn!</p>
+<p>Kết quả là, và điều này không có gì đáng ngạc nhiên, việc bắt tay RSA hiện đang được tích cực loại bỏ: tất cả các trình duyệt phổ biến đều thích các mật mã cho phép bảo mật chuyển tiếp (tức là dựa vào trao đổi khóa Diffie-Hellman) và như một sự khuyến khích bổ sung , chỉ có thể bật một số tối ưu hóa giao thức nhất định khi có sẵn tính năng bảo mật chuyển tiếp—ví dụ: bắt tay 1-RTT thông qua Khởi động sai TLS.</p>
+<p>Nói cách khác, hãy tham khảo tài liệu máy chủ của bạn về cách bật và triển khai bảo mật chuyển tiếp! Một lần nữa, bảo mật tốt và hiệu suất song hành với nhau.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hiệu suất của mã hóa khóa công khai so với mã hóa khóa đối xứng</p>
+<p>Mã hóa khóa công khai chỉ được sử dụng trong quá trình thiết lập ban đầu của đường hầm TLS: chứng chỉ được xác thực và thuật toán trao đổi khóa được thực thi.</p>
+<p>Mật mã khóa đối xứng, sử dụng khóa đối xứng đã thiết lập, sau đó sẽ được sử dụng cho tất cả các giao tiếp tiếp theo giữa máy khách và máy chủ trong phiên. Điều này phần lớn được thực hiện để cải thiện hiệu suất—mật mã khóa công khai tốn kém hơn nhiều về mặt tính toán. Để minh họa sự khác biệt, nếu bạn đã cài đặt OpenSSL trên máy tính của mình, bạn có thể chạy các thử nghiệm sau:</p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>speed<span class="w"> </span>ecdh
+openssl<span class="w"> </span>speed<span class="w"> </span>aes
+</code></pre></div>
+<p>Lưu ý rằng các đơn vị giữa hai bài kiểm tra không thể so sánh trực tiếp: bài kiểm tra Elliptic Curve Diffie-Hellman (ECDH) cung cấp bảng tóm tắt các phép toán mỗi giây cho các kích thước khóa khác nhau, trong khi hiệu suất AES được đo bằng byte mỗi giây. Tuy nhiên, có thể dễ dàng thấy rằng các phép toán ECDH tốn kém hơn nhiều về mặt tính toán.</p>
+<p>Con số hiệu suất chính xác thay đổi đáng kể dựa trên phần cứng được sử dụng, số lõi, phiên bản TLS, cấu hình máy chủ và các yếu tố khác. Đừng rơi vào một tiêu chuẩn lỗi thời! Luôn chạy kiểm tra hiệu suất trên phần cứng của riêng bạn và tham khảo Giảm chi phí tính toán để biết thêm ngữ cảnh.</p>
+</div>
+<h3 id="application-layer-protocol-negotiation-alpn">Application Layer Protocol Negotiation - ALPN</h3>
+<blockquote>
+<p>Đàm phán giao thức lớp ứng dụng (ALPN)</p>
+</blockquote>
+<p>Hai mạng ngang hàng có thể muốn sử dụng giao thức ứng dụng tùy chỉnh để liên lạc với nhau. Một cách để giải quyết vấn đề này là xác định trước giao thức, gán một cổng phổ biến cho nó (ví dụ: cổng 80 cho HTTP, cổng 443 cho TLS) và định cấu hình tất cả máy khách và máy chủ để sử dụng nó. Tuy nhiên, trên thực tế, đây là một quá trình chậm và không thực tế: mỗi lần gán cổng phải được phê duyệt và tệ hơn là tường lửa và các trung gian khác thường chỉ cho phép lưu lượng truy cập trên cổng 80 và 443.</p>
+<p>Do đó, để có thể dễ dàng triển khai các giao thức tùy chỉnh, chúng tôi phải sử dụng lại các cổng 80 hoặc 443 và sử dụng cơ chế bổ sung để đàm phán giao thức ứng dụng. Cổng 80 được dành riêng cho HTTP và đặc tả HTTP cung cấp một Upgradeluồng đặc biệt cho mục đích này. Tuy nhiên, việc sử dụng Upgradecó thể làm tăng thêm độ trễ cho mạng và trong thực tế thường không đáng tin cậy khi có nhiều bên trung gian; xem <a href="https://hpbn.co/transport-layer-security-tls/#proxies-intermediaries-tls-and-new-protocols-on-the-web">Proxy, Trung gian, TLS và Giao thức mới trên Web</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Để có ví dụ thực tế về quy trình Nâng cấp HTTP, hãy chuyển sang <a href="https://hpbn.co/http2/#upgrading-to-http2">Nâng cấp lên HTTP/2</a>.</p>
+</div>
+<p>Giải pháp là, bạn đoán đúng rồi đấy, sử dụng cổng 443, cổng này được dành riêng cho các phiên HTTPS an toàn chạy qua TLS. Việc sử dụng đường hầm được mã hóa đầu cuối sẽ làm tối nghĩa dữ liệu từ các proxy trung gian và cho phép triển khai các giao thức ứng dụng mới một cách nhanh chóng và đáng tin cậy. Tuy nhiên, chúng ta vẫn cần một cơ chế khác để thương lượng giao thức sẽ được sử dụng trong phiên TLS.</p>
+<p>Đàm phán giao thức lớp ứng dụng (ALPN), như tên của nó, là một tiện ích mở rộng TLS giải quyết nhu cầu này. Nó mở rộng bắt tay TLS ( Hình 4-2 ) và cho phép các đồng nghiệp đàm phán các giao thức mà không cần thực hiện các chuyến đi khứ hồi bổ sung. Cụ thể quy trình như sau:</p>
+<ul>
+<li>Máy khách sẽ thêm một ProtocolNameListtrường mới chứa danh sách các giao thức ứng dụng được hỗ trợ vào ClientHellotin nhắn.</li>
+<li>Máy chủ kiểm tra ProtocolNameListtrường này và trả về một ProtocolNametrường cho biết giao thức đã chọn như một phần của ServerHellothông báo.</li>
+</ul>
+<p>Máy chủ có thể phản hồi chỉ với một tên giao thức duy nhất và nếu không hỗ trợ bất kỳ tên nào mà máy khách yêu cầu, thì máy chủ có thể chọn hủy kết nối. Do đó, sau khi bắt tay TLS hoàn tất, cả đường hầm an toàn đều được thiết lập và máy khách và máy chủ đều đồng ý về giao thức ứng dụng nào sẽ được sử dụng; máy khách và máy chủ có thể ngay lập tức bắt đầu trao đổi tin nhắn thông qua giao thức đã thương lượng.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Lịch sử và mối quan hệ của NPN và ALPN</strong></p>
+<p>Đàm phán giao thức tiếp theo (NPN) là một tiện ích mở rộng TLS, được phát triển như một phần trong nỗ lực SPDY tại Google nhằm cho phép đàm phán giao thức ứng dụng hiệu quả trong quá trình bắt tay TLS. Nghe có vẻ quen? Kết quả cuối cùng có chức năng tương đương với ALPN.</p>
+<p>ALPN là phiên bản đã được sửa đổi và được IETF chấp thuận của phần mở rộng NPN. Trong NPN, máy chủ quảng cáo giao thức nào mà nó hỗ trợ, sau đó máy khách chọn và xác nhận giao thức. Trong ALPN, quá trình trao đổi này đã bị đảo ngược: giờ đây máy khách chỉ định giao thức nào mà nó hỗ trợ, sau đó máy chủ chọn và xác nhận giao thức. Lý do cho sự thay đổi này là điều này đưa ALPN vào sự liên kết chặt chẽ hơn với các tiêu chuẩn đàm phán giao thức khác.</p>
+<p>Nói tóm lại, ALPN là sự kế thừa của NPN.</p>
+</div>
+<h3 id="server-name-indication-sni">Server Name Indication - SNI</h3>
+<blockquote>
+<p>Chỉ định tên máy chủ (SNI)</p>
+</blockquote>
+<p>Một đường hầm TLS được mã hóa có thể được thiết lập giữa hai máy ngang hàng TCP bất kỳ: máy khách chỉ cần biết địa chỉ IP của máy ngang hàng kia để tạo kết nối và thực hiện bắt tay TLS. Tuy nhiên, điều gì sẽ xảy ra nếu máy chủ muốn lưu trữ nhiều trang web độc lập, mỗi trang có chứng chỉ TLS riêng, trên cùng một địa chỉ IP — điều đó hoạt động như thế nào? Câu hỏi mẹo; nó không.</p>
+<p>Để giải quyết vấn đề trước đó, tiện ích mở rộng Server Name Indication (SNI) đã được đưa vào giao thức TLS, cho phép máy khách chỉ ra tên máy chủ mà máy khách đang cố gắng kết nối như một phần của bắt tay TLS. Đổi lại, máy chủ có thể kiểm tra tên máy chủ SNI được gửi trong tin ClientHellonhắn, chọn chứng chỉ phù hợp và hoàn tất bắt tay TLS cho máy chủ mong muốn.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>TLS, HTTP và IP chuyên dụng</strong></p>
+<p>Quy trình làm việc TLS+SNI giống hệt với Hostquảng cáo tiêu đề trong HTTP, trong đó máy khách chỉ định tên máy chủ của trang web mà nó yêu cầu: cùng một địa chỉ IP có thể lưu trữ nhiều tên miền khác nhau và cả SNI và SNI đều Hostcần phải phân biệt rõ ràng giữa chúng.</p>
+<p>Thật không may, một số máy khách cũ hơn (ví dụ, hầu hết các phiên bản IE chạy trên Windows XP, Android 2.2 và các phiên bản khác) không hỗ trợ SNI. Do đó, nếu bạn cần cung cấp TLS cho các máy khách như vậy, thì bạn có thể cần một địa chỉ IP chuyên dụng cho từng máy chủ.</p>
+</div>
+<h2 id="tls-session-resumption">TLS Session Resumption</h2>
+<blockquote>
+<p>Tiếp tục phiên TLS</p>
+</blockquote>
+<p>Độ trễ tăng thêm và chi phí tính toán của quá trình bắt tay TLS đầy đủ sẽ gây ra thiệt hại nghiêm trọng về hiệu suất đối với tất cả các ứng dụng yêu cầu liên lạc an toàn. Để giúp giảm thiểu một số chi phí, TLS cung cấp cơ chế tiếp tục hoặc chia sẻ cùng một dữ liệu khóa bí mật đã thương lượng giữa nhiều kết nối.</p>
+<h3 id="session-identifiers">Session Identifiers</h3>
+<blockquote>
+<p>Mã định danh phiên</p>
+</blockquote>
+<p>Cơ chế khôi phục Session Identifiers đầu tiên (RFC 5246) được giới thiệu trong SSL 2.0, cho phép máy chủ tạo và gửi một session identifier 32 byte như một phần của ServerHello thông báo trong quá trình đàm phán TLS đầy đủ mà chúng ta đã thấy trước đó. Với session ID tại chỗ, cả máy khách và máy chủ đều có thể lưu trữ các tham số phiên đã đàm phán trước đó—được khóa bằng session ID—và sử dụng lại chúng cho phiên tiếp theo.</p>
+<p>Cụ thể, máy khách có thể đưa ID phiên vào tin ClientHellonhắn để cho máy chủ biết rằng nó vẫn nhớ bộ mật mã đã thương lượng và các khóa từ lần bắt tay trước đó và có thể sử dụng lại chúng. Đổi lại, nếu máy chủ có thể tìm thấy các tham số phiên liên kết với ID được quảng cáo trong bộ đệm của nó thì quá trình bắt tay viết tắt ( Hình 4-3 ) có thể diễn ra. Nếu không, cần phải đàm phán phiên hoàn toàn mới để tạo ID phiên mới.</p>
+<figure>
+    <img alt="" src="../img/4-3.png" />
+    <figcaption>Hình 4-3. Giao thức bắt tay TLS rút gọn</figcaption>
+</figure>
+<p>Tận dụng các định danh phiên cho phép chúng tôi loại bỏ toàn bộ vòng lặp, cũng như chi phí chung của mật mã khóa công khai, được sử dụng để thương lượng khóa bí mật được chia sẻ. Điều này cho phép thiết lập kết nối an toàn nhanh chóng và không mất bảo mật, vì chúng tôi đang sử dụng lại dữ liệu phiên đã thương lượng trước đó.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Việc nối lại phiên là một sự tối ưu hóa quan trọng cho cả việc triển khai HTTP/1.x và HTTP/2. Quá trình bắt tay viết tắt giúp loại bỏ toàn bộ độ trễ và giảm đáng kể chi phí tính toán cho cả hai bên.</p>
+<p>Trên thực tế, nếu trình duyệt yêu cầu nhiều kết nối đến cùng một máy chủ (ví dụ khi HTTP/1.x đang được sử dụng), trình duyệt thường sẽ cố ý chờ quá trình đàm phán TLS đầu tiên hoàn tất trước khi mở các kết nối bổ sung đến cùng một máy chủ, để chúng có thể được "tiếp tục" và sử dụng lại cùng các tham số phiên. Nếu bạn đã từng xem một dấu vết mạng và tự hỏi tại sao bạn hiếm khi thấy nhiều cuộc đàm phán TLS cùng máy chủ đang diễn ra, thì đó chính là lý do!</p>
+</div>
+<p>Tuy nhiên, một trong những hạn chế thực tế của cơ chế Session Identifiers là yêu cầu máy chủ phải tạo và duy trì bộ đệm phiên cho mọi máy khách. Điều này dẫn đến một số vấn đề trên máy chủ, có thể thấy hàng chục nghìn hoặc thậm chí hàng triệu kết nối duy nhất mỗi ngày: bộ nhớ được sử dụng cho mọi kết nối TLS mở, yêu cầu bộ đệm ID phiên và chính sách loại bỏ, và những thách thức triển khai không tầm thường đối với các trang web phổ biến có nhiều máy chủ, lý tưởng nhất là nên sử dụng bộ đệm phiên TLS được chia sẻ để có hiệu suất tốt nhất.</p>
+<p>Không có vấn đề nào ở trên là không thể giải quyết và nhiều trang web có lưu lượng truy cập cao hiện đang sử dụng định danh phiên thành công. Nhưng đối với bất kỳ triển khai nhiều máy chủ nào, định danh phiên sẽ yêu cầu một số suy nghĩ cẩn thận và kiến ​​trúc hệ thống để đảm bảo bộ đệm phiên hoạt động tốt.</p>
+<h3 id="session-tickets">Session Tickets</h3>
+<blockquote>
+<p>Vé phiên họp</p>
+</blockquote>
+<p>Để giải quyết mối lo ngại này đối với việc triển khai bộ đệm phiên TLS trên máy chủ, cơ chế thay thế "Session Ticket" (RFC 5077) đã được giới thiệu, cơ chế này loại bỏ yêu cầu máy chủ phải giữ trạng thái phiên cho từng máy khách. Thay vào đó, nếu máy khách chỉ ra rằng nó hỗ trợ session ticket, máy chủ có thể bao gồm một New Session Ticketbản ghi, bao gồm tất cả dữ liệu phiên đã thương lượng được mã hóa bằng khóa bí mật mà chỉ máy chủ biết.</p>
+<p>Sau đó, vé phiên này sẽ được khách hàng lưu trữ và có thể được đưa vào phần SessionTicketmở rộng trong ClientHellothông báo của phiên tiếp theo. Do đó, tất cả dữ liệu phiên chỉ được lưu trữ trên máy khách, nhưng vé vẫn an toàn vì nó được mã hóa bằng khóa chỉ máy chủ mới biết.</p>
+<p>Các mã định danh phiên và cơ chế vé phiên tương ứng thường được gọi là cơ chế lưu vào bộ nhớ đệm phiên và cơ chế tiếp tục không trạng thái . Cải tiến chính của việc khôi phục không trạng thái là loại bỏ bộ nhớ đệm phiên phía máy chủ, giúp đơn giản hóa việc triển khai bằng cách yêu cầu máy khách cung cấp phiếu phiên trên mỗi kết nối mới tới máy chủ—nghĩa là cho đến khi vé hết hạn.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Trên thực tế, việc triển khai vé phiên trên một tập hợp các máy chủ cân bằng tải cũng đòi hỏi phải suy nghĩ cẩn thận và kiến ​​trúc hệ thống: tất cả các máy chủ phải được khởi tạo bằng cùng một khóa phiên và cần có cơ chế bổ sung để luân phiên khóa chia sẻ định kỳ và an toàn trên tất cả các máy chủ.</p>
+</div>
+<h2 id="chain-of-trust-and-certificate-authorities">Chain of Trust and Certificate Authorities</h2>
+<blockquote>
+<p>Chuỗi tin cậy và Cơ quan cấp chứng chỉ</p>
+</blockquote>
+<p>Xác thực là một phần không thể thiếu trong việc thiết lập mọi kết nối TLS. Sau cùng, có thể thực hiện cuộc trò chuyện qua đường hầm được mã hóa với bất kỳ đối tác nào, bao gồm cả kẻ tấn công, và trừ khi chúng ta có thể chắc chắn rằng máy chủ mà chúng ta đang nói chuyện là máy chủ mà chúng ta tin tưởng, thì mọi công việc mã hóa có thể trở nên vô ích. Để hiểu cách chúng ta có thể xác minh danh tính của đối tác, hãy cùng xem xét quy trình xác thực đơn giản giữa Alice và Bob:</p>
+<ul>
+<li>Cả Alice và Bob đều tạo khóa công khai và khóa riêng của mình.</li>
+<li>Cả Alice và Bob đều ẩn khóa riêng tương ứng của họ.</li>
+<li>Alice chia sẻ khóa công khai của mình với Bob và Bob cũng chia sẻ khóa công khai của mình với Alice.</li>
+<li>Alice tạo một tin nhắn mới cho Bob và ký nó bằng khóa riêng của cô ấy.</li>
+<li>Bob sử dụng khóa chung của Alice để xác minh chữ ký tin nhắn được cung cấp.</li>
+</ul>
+<p>Niềm tin là một thành phần quan trọng của trao đổi trước đó. Cụ thể, mã hóa khóa chung cho phép chúng ta sử dụng khóa chung của người gửi để xác minh tin nhắn đã được ký bằng đúng khóa riêng nhưng quyết định phê duyệt người gửi vẫn là quyết định dựa trên sự tin cậy. Trong trao đổi vừa trình bày, Alice và Bob có thể đã trao đổi khóa công khai của họ khi họ gặp mặt trực tiếp và vì họ biết rõ về nhau nên họ chắc chắn rằng trao đổi của họ không bị kẻ mạo danh xâm phạm—có lẽ họ thậm chí còn xác minh danh tính của mình thông qua một người khác. , cái bắt tay bí mật (vật lý) mà họ đã thiết lập trước đó!</p>
+<p>Tiếp theo, Alice nhận được một tin nhắn từ Charlie, người mà cô chưa từng gặp, nhưng tự nhận là bạn của Bob. Trên thực tế, để chứng minh rằng mình là bạn của Bob, Charlie đã yêu cầu Bob ký khóa công khai của riêng mình bằng khóa riêng của Bob và đính kèm chữ ký này vào tin nhắn của mình ( Hình 4-4 ). Trong trường hợp này, trước tiên, Alice kiểm tra chữ ký của Bob đối với khóa của Charlie. Cô biết khóa công khai của Bob và do đó có thể xác minh rằng Bob thực sự đã ký khóa của Charlie. Vì cô tin tưởng quyết định xác minh Charlie của Bob, cô chấp nhận tin nhắn và thực hiện kiểm tra tính toàn vẹn tương tự đối với tin nhắn của Charlie để đảm bảo rằng nó thực sự đến từ Charlie.</p>
+<figure>
+    <img alt="alt text" src="../img/4-4.png" />
+    <figcaption>Hình 4-4. Chuỗi tin cậy của Alice, Bob và Charlie</figcaption>
+</figure>
+<p>Những gì chúng ta vừa làm là thiết lập một chuỗi tin cậy: Alice tin tưởng Bob, Bob tin tưởng Charlie, và bằng sự tin tưởng tạm thời, Alice quyết định tin tưởng Charlie. Miễn là không ai trong chuỗi bị xâm phạm, điều này cho phép chúng tôi xây dựng và phát triển danh sách các bên đáng tin cậy.</p>
+<p>Xác thực trên Web và trong trình duyệt của bạn tuân theo quy trình tương tự như được hiển thị. Điều đó có nghĩa là tại thời điểm này bạn nên hỏi: trình duyệt của bạn tin tưởng ai và bạn tin tưởng ai khi sử dụng trình duyệt? Có ít nhất ba câu trả lời cho câu hỏi này:</p>
+<ul>
+<li>Chứng chỉ được chỉ định thủ công<ul>
+<li>Mọi trình duyệt và hệ điều hành đều cung cấp cơ chế để bạn nhập thủ công bất kỳ chứng chỉ nào mà bạn tin cậy. Cách bạn nhận được chứng chỉ và xác minh tính toàn vẹn của nó hoàn toàn tùy thuộc vào bạn.</li>
+</ul>
+</li>
+<li>Cơ quan cấp chứng chỉ<ul>
+<li>Cơ quan cấp chứng chỉ (CA) là bên thứ ba đáng tin cậy được cả chủ thể (chủ sở hữu) của chứng chỉ và bên dựa vào chứng chỉ tin cậy.</li>
+</ul>
+</li>
+<li>Trình duyệt và hệ điều hành<ul>
+<li>Mọi hệ điều hành và hầu hết các trình duyệt đều có danh sách các cơ quan cấp chứng chỉ nổi tiếng. Vì vậy, bạn cũng tin tưởng các nhà cung cấp phần mềm này sẽ cung cấp và duy trì danh sách các bên đáng tin cậy.</li>
+</ul>
+</li>
+</ul>
+<p>Trên thực tế, sẽ không thực tế khi lưu trữ và xác minh thủ công từng khóa cho mọi trang web (mặc dù bạn có thể, nếu bạn muốn). Do đó, giải pháp phổ biến nhất là sử dụng các cơ quan cấp chứng chỉ (CA) để thực hiện công việc này cho chúng ta ( Hình 4-5 ): trình duyệt chỉ định CA nào đáng tin cậy (CA gốc) và gánh nặng sau đó thuộc về các CA để xác minh từng trang web mà họ ký, cũng như kiểm tra và xác minh rằng các chứng chỉ này không bị sử dụng sai mục đích hoặc bị xâm phạm. Nếu tính bảo mật của bất kỳ trang web nào có chứng chỉ của CA bị vi phạm, thì CA đó cũng có trách nhiệm thu hồi chứng chỉ bị xâm phạm.</p>
+<figure>
+    <img alt="alt text" src="../img/4-5.png" />
+    <figcaption>Hình 4-5. CA ký chứng chỉ số</figcaption>
+</figure>
+<p>Mọi trình duyệt đều cho phép bạn kiểm tra chuỗi tin cậy của kết nối an toàn của bạn ( Hình 4-6 ), thường có thể truy cập bằng cách nhấp vào biểu tượng ổ khóa bên cạnh URL.</p>
+<figure>
+    <img alt="alt text" src="../img/4-6.png" />
+    <figcaption>Hình 4-6. Chuỗi chứng chỉ tin cậy cho igvita.com (Google Chrome, v25)</figcaption>
+</figure>
+<ul>
+<li>Chứng chỉ igvita.com được ký bởi Máy chủ trung gian chính StartCom Class 1.</li>
+<li>Chứng chỉ Máy chủ trung gian chính StartCom Class 1 được ký bởi Cơ quan chứng nhận StartCom.</li>
+<li>Cơ quan chứng nhận StartCom là cơ quan cấp chứng chỉ gốc được công nhận.</li>
+</ul>
+<p>"Mỏ neo tin cậy" cho toàn bộ chuỗi là cơ quan cấp chứng chỉ gốc, trong trường hợp vừa trình bày, là Cơ quan cấp chứng chỉ StartCom. Mỗi trình duyệt đều đi kèm với danh sách các cơ quan cấp chứng chỉ đáng tin cậy được khởi tạo trước ("gốc") và trong trường hợp này, trình duyệt tin cậy và có thể xác minh chứng chỉ gốc StartCom. Do đó, thông qua chuỗi tin cậy chuyển tiếp trong trình duyệt, nhà cung cấp trình duyệt và cơ quan cấp chứng chỉ StartCom, chúng tôi mở rộng sự tin cậy đến trang đích của mình.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Minh bạch chứng chỉ</strong></p>
+<p>Theo mặc định, mọi nhà cung cấp hệ điều hành và mọi trình duyệt đều cung cấp danh sách công khai tất cả các cơ quan cấp chứng chỉ mà họ tin cậy. Sử dụng công cụ tìm kiếm yêu thích của bạn để tìm và điều tra các danh sách này. Trong thực tế, bạn sẽ thấy rằng hầu hết các hệ thống đều dựa vào hàng trăm cơ quan cấp chứng chỉ đáng tin cậy, đây cũng là lời phàn nàn phổ biến đối với hệ thống: số lượng lớn CA đáng tin cậy tạo ra diện tích bề mặt tấn công lớn chống lại chuỗi tin cậy trong trình duyệt của bạn.</p>
+<p>Tin vui là dự án Tính minh bạch của chứng chỉ đang nỗ lực giải quyết những sai sót này bằng cách cung cấp một khuôn khổ—nhật ký công khai—để giám sát và kiểm tra việc cấp tất cả các chứng chỉ mới. Truy cập trang web của dự án để tìm hiểu thêm.</p>
+</div>
+<h2 id="certificate-revocation">Certificate Revocation</h2>
+<blockquote>
+<p>Thu hồi chứng chỉ</p>
+</blockquote>
+<p>Đôi khi, người phát hành chứng chỉ sẽ cần thu hồi hoặc vô hiệu hóa chứng chỉ vì một số lý do có thể xảy ra: khóa riêng của chứng chỉ đã bị xâm phạm, bản thân cơ quan cấp chứng chỉ đã bị xâm phạm hoặc do nhiều lý do lành tính hơn như như một chứng chỉ thay thế, thay đổi liên kết, v.v. Để giải quyết vấn đề này, bản thân các chứng chỉ đều chứa hướng dẫn ( Hình 4-7 ) về cách kiểm tra xem chúng có bị thu hồi hay không. Do đó, để đảm bảo chuỗi tin cậy không bị xâm phạm, mỗi thiết bị ngang hàng có thể kiểm tra trạng thái của từng chứng chỉ bằng cách làm theo hướng dẫn được nhúng cùng với chữ ký khi xác minh chuỗi chứng chỉ.</p>
+<figure>
+    <img alt="alt text" src="../img/4-7.png" />
+    <figcaption>Hình 4-7. Hướng dẫn CRL và OCSP cho igvita.com (Google Chrome, v25)</figcaption>
+</figure>
+<h3 id="certificate-revocation-list-crl">Certificate Revocation List - CRL</h3>
+<blockquote>
+<p>Danh sách thu hồi chứng chỉ (CRL)</p>
+</blockquote>
+<p>Danh sách thu hồi chứng chỉ (CRL) được xác định bởi RFC 5280 và chỉ định một cơ chế đơn giản để kiểm tra trạng thái của mọi chứng chỉ: mỗi cơ quan cấp chứng chỉ duy trì và xuất bản định kỳ danh sách các số sê-ri chứng chỉ bị thu hồi. Khi đó, bất kỳ ai cố gắng xác minh chứng chỉ đều có thể tải xuống danh sách thu hồi, lưu vào bộ đệm và kiểm tra sự hiện diện của một số sê-ri cụ thể trong đó—nếu có thì chứng chỉ đó đã bị thu hồi.</p>
+<p>Quá trình này đơn giản và dễ thực hiện, nhưng có một số hạn chế:</p>
+<ul>
+<li>Số lượng yêu cầu thu hồi ngày càng tăng có nghĩa là danh sách CRL sẽ ngày càng dài hơn và mỗi khách hàng phải lấy toàn bộ danh sách số sê-ri.</li>
+<li>Không có cơ chế thông báo ngay lập tức về việc thu hồi chứng chỉ—nếu CRL được máy khách lưu vào bộ đệm trước khi chứng chỉ bị thu hồi thì CRL sẽ coi chứng chỉ bị thu hồi là hợp lệ cho đến khi bộ đệm hết hạn.</li>
+<li>Nhu cầu lấy danh sách CRL mới nhất từ ​​CA có thể chặn xác minh chứng chỉ, điều này có thể làm tăng đáng kể độ trễ cho quá trình bắt tay TLS.</li>
+<li>Việc tìm nạp CRL có thể không thành công do nhiều lý do và trong những trường hợp như vậy, hoạt động của trình duyệt không được xác định. Hầu hết các trình duyệt coi những trường hợp như vậy là "lỗi mềm", cho phép tiến hành xác minh—đúng vậy, đúng vậy.</li>
+</ul>
+<h3 id="online-certificate-status-protocol-ocsp">Online Certificate Status Protocol - OCSP</h3>
+<blockquote>
+<p>Giao thức trạng thái chứng chỉ trực tuyến (OCSP)</p>
+</blockquote>
+<p>Để giải quyết một số hạn chế của cơ chế CRL, RFC 2560 đã giới thiệu Giao thức trạng thái chứng chỉ trực tuyến (OCSP), cung cấp cơ chế thực hiện kiểm tra thời gian thực về trạng thái của chứng chỉ. Không giống như tệp CRL chứa tất cả các số sê-ri bị thu hồi, OCSP cho phép khách hàng truy vấn trực tiếp cơ sở dữ liệu chứng chỉ của CA để tìm số sê-ri được đề cập trong khi xác thực chuỗi chứng chỉ.</p>
+<p>Do đó, cơ chế OCSP tiêu tốn ít băng thông hơn và có thể cung cấp xác thực thời gian thực. Tuy nhiên, yêu cầu thực hiện truy vấn OCSP thời gian thực tạo ra một loạt vấn đề riêng:</p>
+<ul>
+<li>CA phải có khả năng xử lý khối lượng truy vấn thời gian thực.</li>
+<li>CA phải đảm bảo dịch vụ luôn hoạt động và có sẵn trên toàn cầu.</li>
+<li>Các yêu cầu OCSP thời gian thực có thể làm giảm quyền riêng tư của khách hàng vì CA biết khách hàng đang truy cập trang web nào.</li>
+<li>Máy khách phải chặn các yêu cầu OCSP trong khi xác thực chuỗi chứng chỉ.</li>
+<li>Một lần nữa, hành vi của trình duyệt không được xác định và thường dẫn đến "lỗi mềm" nếu quá trình tìm nạp OCSP không thành công do hết thời gian chờ mạng hoặc các lỗi khác.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Là một điểm dữ liệu thực tế, dữ liệu từ xa của Firefox cho thấy OCSP yêu cầu thời gian chờ lên đến 15% thời gian và thêm khoảng 350 ms vào quá trình bắt tay TLS khi thành công. Xem <a href="https://hpbn.co/ocsp-performance">hpbn.co/ocsp-performance</a>.</p>
+</div>
+<h3 id="ocsp-stapling">OCSP Stapling</h3>
+<p>Vì những lý do được liệt kê ở trên, cả cơ chế thu hồi CRL và OSCP đều không cung cấp bảo đảm về bảo mật và hiệu suất mà chúng ta mong muốn cho các ứng dụng của mình. Tuy nhiên, đừng tuyệt vọng, vì OCSP stapling (RFC 6066, phần mở rộng "Yêu cầu trạng thái chứng chỉ") giải quyết hầu hết các vấn đề mà chúng ta đã thấy trước đó bằng cách cho phép xác thực được thực hiện bởi máy chủ và được gửi ("stapled") như một phần của bắt tay TLS với máy khách:</p>
+<ul>
+<li>Thay vì máy khách thực hiện yêu cầu OCSP, máy chủ sẽ truy xuất định kỳ phản hồi OCSP đã được ký và đánh dấu thời gian từ CA.</li>
+<li>Sau đó, máy chủ sẽ thêm (tức là "mặt ghim") phản hồi OCSP đã ký như một phần của quá trình bắt tay TLS, cho phép máy khách xác thực cả chứng chỉ và bản ghi thu hồi OCSP đính kèm có chữ ký của CA.</li>
+</ul>
+<p>Việc đảo ngược vai trò này là an toàn vì bản ghi được ghim được CA ký và có thể được khách hàng xác minh, đồng thời mang lại một số lợi ích quan trọng:</p>
+<ul>
+<li>Máy khách không bị rò rỉ lịch sử điều hướng.</li>
+<li>Máy khách không phải chặn và truy vấn máy chủ OCSP.</li>
+<li>Máy khách có thể "hỏng hoàn toàn" việc xử lý thu hồi nếu máy chủ chọn tham gia (bằng cách quảng cáo cờ "Phải ghim" của OSCP) và quá trình xác minh không thành công.</li>
+</ul>
+<p>Tóm lại, để có được cả sự đảm bảo về bảo mật và hiệu suất tốt nhất, hãy đảm bảo cấu hình và kiểm tra OCSP trên máy chủ của bạn.</p>
+<h2 id="tls-record-protocol">TLS Record Protocol</h2>
+<blockquote>
+<p>Giao thức ghi TLS</p>
+</blockquote>
+<p>Không giống như các lớp IP hoặc TCP bên dưới nó, tất cả dữ liệu được trao đổi trong phiên TLS cũng được đóng khung bằng giao thức được xác định rõ ràng ( Hình 4-8 ). Giao thức Bản ghi TLS chịu trách nhiệm xác định các loại tin nhắn khác nhau (bắt tay, cảnh báo hoặc dữ liệu thông qua trường "Loại nội dung"), cũng như bảo mật và xác minh tính toàn vẹn của từng tin nhắn.</p>
+<figure>
+    <img alt="alt text" src="../img/4-8.png" />
+    <figcaption>Hình 4-8. Cấu trúc bản ghi TLS</figcaption>
+</figure>
+<p>Quy trình làm việc điển hình để cung cấp dữ liệu ứng dụng như sau:</p>
+<ul>
+<li>Giao thức ghi nhận dữ liệu ứng dụng.</li>
+<li>Dữ liệu nhận được được chia thành các khối: tối đa 2 14 byte hoặc 16 KB cho mỗi bản ghi.</li>
+<li>Mã xác thực tin nhắn (MAC) hoặc HMAC được thêm vào mỗi bản ghi.</li>
+<li>Dữ liệu trong mỗi bản ghi được mã hóa bằng mật mã đã thỏa thuận.</li>
+</ul>
+<p>Khi các bước này hoàn tất, dữ liệu được mã hóa sẽ được chuyển xuống lớp TCP để truyền tải. Ở đầu nhận, quy trình làm việc tương tự, nhưng ngược lại, được áp dụng bởi thiết bị ngang hàng: giải mã bản ghi bằng mật mã đã thỏa thuận, xác minh MAC, trích xuất và gửi dữ liệu đến ứng dụng phía trên nó.</p>
+<p>Tin vui là tất cả công việc vừa hiển thị đều do chính lớp TLS xử lý và hoàn toàn trong suốt đối với hầu hết các ứng dụng. Tuy nhiên, giao thức ghi lại có một số ý nghĩa quan trọng mà chúng ta cần lưu ý:</p>
+<ul>
+<li>Kích thước bản ghi TLS tối đa là 16 KB</li>
+<li>Mỗi bản ghi chứa một tiêu đề 5 byte, một MAC (tối đa 20 byte cho SSLv3, TLS 1.0, TLS 1.1 và tối đa 32 byte cho TLS 1.2) và phần đệm nếu sử dụng mã hóa khối.</li>
+<li>Để giải mã và xác minh bản ghi, toàn bộ bản ghi phải có sẵn.</li>
+</ul>
+<p>Chọn kích thước bản ghi phù hợp cho ứng dụng của bạn, nếu bạn có khả năng làm như vậy, có thể là một sự tối ưu hóa quan trọng. Các bản ghi nhỏ phải chịu chi phí CPU và byte lớn hơn do việc xác minh MAC và định khung bản ghi, trong khi các bản ghi lớn sẽ phải được phân phối và tập hợp lại bởi lớp TCP trước khi chúng có thể được lớp TLS xử lý và phân phối đến ứng dụng của bạn—bỏ qua phần <a href="https://hpbn.co/transport-layer-security-tls/#optimize-tls-record-size">Tối ưu hóa Kích thước bản ghi TLS</a> để biết chi tiết đầy đủ.</p>
+<h2 id="optimizing-for-tls">Optimizing for TLS</h2>
+<blockquote>
+<p>Tối ưu hóa cho TLS</p>
+</blockquote>
+<p>Việc triển khai ứng dụng của bạn qua TLS sẽ đòi hỏi một số công việc bổ sung, cả trong ứng dụng của bạn (ví dụ: di chuyển tài nguyên sang HTTPS để tránh nội dung hỗn hợp) và trên cấu hình cơ sở hạ tầng chịu trách nhiệm phân phối dữ liệu ứng dụng qua TLS. Một triển khai được điều chỉnh tốt có thể tạo ra sự khác biệt tích cực to lớn về hiệu suất quan sát được, trải nghiệm của người dùng và tổng chi phí hoạt động. Hãy cùng tìm hiểu sâu hơn.</p>
+<h3 id="reduce-computational-costs">Reduce Computational Costs</h3>
+<blockquote>
+<p>Giảm chi phí tính toán</p>
+</blockquote>
+<p>Việc thiết lập và duy trì kênh được mã hóa sẽ gây thêm chi phí tính toán cho cả hai thiết bị ngang hàng. Cụ thể, đầu tiên là mã hóa bất đối xứng (khóa chung) được sử dụng trong quá trình bắt tay TLS (Giải thích Bắt tay TLS ). Sau đó, khi bí mật chung được thiết lập, nó sẽ được sử dụng làm khóa đối xứng để mã hóa tất cả các bản ghi TLS.</p>
+<p>Như chúng tôi đã lưu ý trước đó, mật mã khóa công khai đắt hơn về mặt tính toán khi so sánh với mật mã khóa đối xứng và trong những ngày đầu của Web thường yêu cầu phần cứng bổ sung để thực hiện "giảm tải SSL". Tin tốt là điều này không còn cần thiết nữa và những gì phần cứng chuyên dụng từng yêu cầu giờ đây có thể được thực hiện trực tiếp trên CPU. Các tổ chức lớn như Facebook, Twitter và Google, cung cấp TLS cho hàng tỷ người dùng, thực hiện tất cả việc đàm phán và tính toán TLS cần thiết trong phần mềm và trên phần cứng thông thường.</p>
+<blockquote>
+<p>Vào tháng 1 năm nay (2010), Gmail đã chuyển sang sử dụng HTTPS cho mọi thứ theo mặc định. Trước đây, tính năng này được giới thiệu dưới dạng tùy chọn nhưng giờ đây tất cả người dùng của chúng tôi đều sử dụng HTTPS để bảo mật email giữa trình duyệt của họ và Google mọi lúc. Để làm được điều này, chúng tôi không phải triển khai thêm máy móc hay phần cứng đặc biệt nào. Trên các máy có giao diện người dùng sản xuất của chúng tôi, SSL/TLS chiếm dưới 1% tải CPU, dưới 10 KB bộ nhớ cho mỗi kết nối và dưới 2% tổng chi phí mạng. Nhiều người cho rằng SSL/TLS tiêu tốn rất nhiều thời gian của CPU và chúng tôi hy vọng những con số trước đó (lần đầu tiên được công khai) sẽ giúp xua tan điều đó.</p>
+<p>Nếu bạn ngừng đọc ngay bây giờ, bạn chỉ cần nhớ một điều: SSL/TLS không còn tốn kém về mặt tính toán nữa.\
+-- Adam Langley (Google) --</p>
+<p>Chúng tôi đã triển khai TLS ở quy mô lớn bằng cách sử dụng cả bộ cân bằng tải phần cứng và phần mềm. Chúng tôi nhận thấy rằng việc triển khai TLS dựa trên phần mềm hiện đại chạy trên CPU thông thường đủ nhanh để xử lý tải lưu lượng HTTPS nặng mà không cần phải dùng đến phần cứng mật mã chuyên dụng. Chúng tôi phục vụ tất cả lưu lượng HTTPS của mình bằng phần mềm chạy trên phần cứng thông thường.\
+-- Doug Beaver (Facebook) --</p>
+<p>Elliptic Curve Diffie-Hellman (ECDHE) chỉ đắt hơn RSA một chút ở mức bảo mật tương đương… Trong quá trình triển khai thực tế, chúng tôi nhận thấy rằng việc bật và ưu tiên các bộ mật mã ECDHE thực sự đã khiến mức sử dụng CPU tăng không đáng kể. Việc duy trì HTTP và tiếp tục phiên có nghĩa là hầu hết các yêu cầu không yêu cầu bắt tay hoàn toàn, do đó các thao tác bắt tay không chi phối việc sử dụng CPU của chúng tôi. Chúng tôi nhận thấy 75% yêu cầu từ khách hàng của Twitter được gửi qua các kết nối được thiết lập bằng ECDHE. 25% còn lại chủ yếu bao gồm các khách hàng cũ chưa hỗ trợ bộ mật mã ECDHE.\
+-- Jacob Hoffman-Andrews (Twitter) --</p>
+</blockquote>
+<p>Để có được kết quả tốt nhất trong quá trình triển khai của riêng bạn, hãy tận dụng tối đa <a href="#tls-session-resumption">TLS Session Resumption</a> — triển khai, đo lường và tối ưu hóa tỷ lệ thành công của nó. Việc loại bỏ nhu cầu thực hiện các hoạt động mã hóa khóa công khai tốn kém trên mỗi lần bắt tay sẽ làm giảm đáng kể cả chi phí tính toán và độ trễ của TLS; không có lý do gì để dành chu kỳ CPU cho công việc mà bạn không cần phải làm.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nói về việc tối ưu hóa chu kỳ CPU, hãy đảm bảo máy chủ của bạn được cập nhật phiên bản mới nhất của thư viện TLS! Ngoài những cải tiến về bảo mật, bạn cũng thường thấy lợi ích về hiệu suất. Bảo mật và hiệu suất song hành với nhau.</p>
+</div>
+<h3 id="enable-1-rtt-tls-handshakes">Enable 1-RTT TLS Handshakes</h3>
+<blockquote>
+<p>Bật bắt tay TLS 1-RTT</p>
+</blockquote>
+<p>Việc triển khai TLS không được tối ưu hóa có thể dễ dàng thêm nhiều vòng lặp bổ sung và gây ra độ trễ đáng kể cho người dùng—ví dụ: bắt tay nhiều RTT, kiểm tra thu hồi chứng chỉ chậm và không hiệu quả, bản ghi TLS lớn yêu cầu nhiều vòng lặp, v.v. Đừng như vậy, bạn có thể làm tốt hơn nhiều.</p>
+<p>Việc triển khai TLS được điều chỉnh tốt sẽ chỉ thêm tối đa một lượt khứ hồi để đàm phán kết nối TLS, bất kể kết nối đó là mới hay đã được tiếp tục, và tránh mọi cạm bẫy độ trễ khác: cấu hình tiếp tục phiên và bật tính năng bảo mật chuyển tiếp để bật Khởi động sai TLS.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Để có được hiệu suất toàn diện tốt nhất, hãy đảm bảo kiểm tra cả dịch vụ và máy chủ của bên thứ ba và của riêng bạn được ứng dụng của bạn sử dụng, bao gồm cả nhà cung cấp CDN của bạn. Để biết tổng quan về thẻ báo cáo nhanh về các máy chủ và CDN phổ biến, hãy xem <a href="https://istlsfastyet.com/">istlsfastyet.com</a>.</p>
+</div>
+<h3 id="optimize-connection-reuse">Optimize Connection Reuse</h3>
+<blockquote>
+<p>Tối ưu hóa việc tái sử dụng kết nối</p>
+</blockquote>
+<p>Cách tốt nhất để giảm thiểu cả độ trễ và chi phí tính toán khi thiết lập kết nối TCP+TLS mới là tối ưu hóa việc tái sử dụng kết nối. Làm như vậy sẽ giảm dần chi phí thiết lập cho các yêu cầu và mang lại trải nghiệm nhanh hơn nhiều cho người dùng.</p>
+<p>Xác minh rằng cấu hình máy chủ và proxy của bạn được thiết lập để cho phép kết nối keepalive và kiểm tra cài đặt thời gian chờ kết nối của bạn. Nhiều máy chủ phổ biến đặt thời gian chờ kết nối tích cực (ví dụ: một số phiên bản Apache mặc định là thời gian chờ 5 giây) buộc phải đàm phán lại nhiều lần không cần thiết. Để có kết quả tốt nhất, hãy sử dụng nhật ký và phân tích của bạn để xác định giá trị thời gian chờ tối ưu.</p>
+<h3 id="leverage-early-termination">Leverage Early Termination</h3>
+<blockquote>
+<p>Tận dụng chấm dứt sớm</p>
+</blockquote>
+<p>Như chúng ta đã thảo luận trong Primer về Độ trễ và Băng thông , chúng ta có thể không làm cho các gói tin của mình di chuyển nhanh hơn nhưng chúng ta có thể làm cho chúng di chuyển một khoảng cách ngắn hơn. Bằng cách đặt các máy chủ "cạnh" của chúng tôi gần hơn với người dùng ( Hình 4-9 ), chúng tôi có thể giảm đáng kể thời gian khứ hồi và tổng chi phí của quá trình bắt tay TCP và TLS.</p>
+<figure>
+    <img alt="alt text" src="../img/4-9.png" />
+    <figcaption>Hình 4-9. Kết thúc sớm các kết nối của khách hàng</figcaption>
+</figure>
+<p>Một cách đơn giản để thực hiện điều này là tận dụng các dịch vụ của mạng phân phối nội dung (CDN) duy trì nhóm máy chủ biên trên toàn cầu hoặc triển khai mạng của riêng bạn. Bằng cách cho phép người dùng chấm dứt kết nối của họ với một máy chủ gần đó, thay vì phải băng qua các đại dương và lục địa để đến điểm xuất phát của bạn, khách hàng sẽ nhận được lợi ích là "chấm dứt sớm" với các chuyến đi khứ hồi ngắn hơn. Kỹ thuật này hữu ích và quan trọng không kém đối với nội dung tĩnh và động: nội dung tĩnh cũng có thể được lưu trữ và phục vụ bởi các máy chủ biên, trong khi các yêu cầu động có thể được định tuyến qua các kết nối đã thiết lập từ biên đến điểm gốc.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Tìm nạp nguồn gốc không được lưu trữ</strong></p>
+<p>Kỹ thuật sử dụng CDN hoặc máy chủ proxy để tìm nạp tài nguyên, tài nguyên này có thể cần được tùy chỉnh cho mỗi người dùng hoặc chứa dữ liệu riêng tư khác và do đó không phải là tài nguyên có thể lưu vào bộ nhớ đệm toàn cầu ở biên, thường được gọi là "tìm nạp nguồn gốc không được lưu trong bộ nhớ đệm". ."</p>
+<p>Mặc dù CDN hoạt động tốt nhất khi dữ liệu được lưu vào bộ nhớ đệm trong các máy chủ được phân phối theo địa lý trên khắp thế giới, nhưng việc tìm nạp nguồn gốc không được lưu vào bộ nhớ đệm vẫn cung cấp một sự tối ưu hóa rất quan trọng: kết nối máy khách bị chấm dứt với máy chủ gần đó, điều này có thể giảm đáng kể chi phí độ trễ bắt tay. Đổi lại, CDN hoặc máy chủ proxy của riêng bạn có thể duy trì "nhóm kết nối ấm" để chuyển tiếp dữ liệu đến máy chủ gốc, cho phép bạn trả lại phản hồi nhanh cho máy khách.</p>
+<p>Trên thực tế, như một lớp tối ưu hóa bổ sung, một số nhà cung cấp CDN sẽ sử dụng các máy chủ gần đó ở cả hai phía của kết nối! Kết nối của máy khách được chấm dứt tại một nút CDN gần đó, sau đó chuyển tiếp yêu cầu đến nút CDN gần với nguồn gốc và sau đó yêu cầu được định tuyến đến nguồn gốc. Hop trong mạng CDN cho phép lưu lượng được định tuyến qua xương sống CDN được tối ưu hóa, có thể giúp giảm thêm độ trễ giữa máy khách và máy chủ gốc.</p>
+</div>
+<h3 id="configure-session-caching-and-stateless-resumption">Configure Session Caching and Stateless Resumption</h3>
+<blockquote>
+<p>Cấu hình bộ nhớ đệm phiên và tiếp tục không trạng thái</p>
+</blockquote>
+<p>Việc chấm dứt kết nối gần người dùng hơn là một biện pháp tối ưu hóa sẽ giúp giảm độ trễ cho người dùng của bạn trong mọi trường hợp, nhưng một lần nữa, không có bit nào nhanh hơn một bit không được gửi—gửi ít bit hơn. Việc bật bộ nhớ đệm phiên TLS và tiếp tục không trạng thái cho phép chúng tôi loại bỏ toàn bộ độ trễ và giảm chi phí tính toán cho khách truy cập lặp lại.</p>
+<p>Mã nhận dạng phiên, mà bộ nhớ đệm phiên TLS dựa vào, đã được giới thiệu trong SSL 2.0 và được hầu hết máy khách và máy chủ hỗ trợ rộng rãi. Tuy nhiên, nếu bạn đang định cấu hình TLS trên máy chủ của mình, đừng cho rằng hỗ trợ phiên sẽ được bật theo mặc định. Trên thực tế, việc tắt tính năng này trên hầu hết các máy chủ theo mặc định là điều phổ biến hơn—nhưng bạn biết rõ hơn! Kiểm tra kỹ và xác minh cấu hình máy chủ, proxy và CDN của bạn:</p>
+<ul>
+<li>Máy chủ có nhiều quy trình hoặc công nhân nên sử dụng bộ đệm phiên dùng chung.</li>
+<li>Kích thước của bộ nhớ đệm phiên chia sẻ phải được điều chỉnh theo mức lưu lượng truy cập của bạn.</li>
+<li>Một khoảng thời gian chờ phiên nên được cung cấp.</li>
+<li>Trong thiết lập nhiều máy chủ, việc định tuyến cùng một IP máy khách hoặc cùng một ID phiên TLS đến cùng một máy chủ là một cách để tận dụng bộ đệm phiên hiệu quả.</li>
+<li>Trong trường hợp cân bằng tải "dính" không phải là một tùy chọn, thì nên sử dụng bộ đệm chung giữa các máy chủ khác nhau để mang lại khả năng sử dụng bộ đệm phiên tốt và cần thiết lập cơ chế bảo mật để chia sẻ và cập nhật các khóa bí mật nhằm giải mã các phiếu phiên được cung cấp.</li>
+<li>Kiểm tra và theo dõi số liệu thống kê bộ đệm phiên TLS để có hiệu suất tốt nhất.</li>
+</ul>
+<p>Trên thực tế, và để có kết quả tốt nhất, bạn nên cấu hình cả cơ chế lưu trữ phiên và cơ chế phiếu phiên. Các cơ chế này hoạt động cùng nhau để cung cấp phạm vi phủ sóng tốt nhất cho cả máy khách mới và cũ.</p>
+<h3 id="enable-tls-false-start">Enable TLS False Start</h3>
+<blockquote>
+<p>Kích hoạt tính năng khởi động sai TLS</p>
+</blockquote>
+<p>Việc nối lại phiên mang lại hai lợi ích quan trọng: nó loại bỏ một vòng bắt tay bổ sung cho khách truy cập quay lại và giảm chi phí tính toán của quá trình bắt tay bằng cách cho phép sử dụng lại các tham số phiên đã thương lượng trước đó. Tuy nhiên, nó không giúp ích gì trong trường hợp khách truy cập liên lạc với máy chủ lần đầu tiên hoặc nếu phiên trước đó đã hết hạn.</p>
+<p>Để tận dụng tối đa cả hai thế giới—một cái bắt tay một chiều cho khách truy cập mới và khách truy cập lặp lại cũng như tiết kiệm điện toán cho khách truy cập lặp lại—chúng ta có thể sử dụng TLS False Start, đây là một phần mở rộng giao thức tùy chọn cho phép người gửi gửi dữ liệu ứng dụng ( Hình 4- 10 ) khi quá trình bắt tay chỉ hoàn thành một phần.</p>
+<figure>
+    <img alt="alt text" src="../img/4-10.png" />
+    <figcaption>Hình 4-10. Bắt tay TLS với Bắt đầu sai</figcaption>
+</figure>
+<p>Bắt đầu sai không sửa đổi giao thức bắt tay TLS, thay vào đó nó chỉ ảnh hưởng đến thời gian giao thức khi dữ liệu ứng dụng có thể được gửi. Theo trực giác, khi khách hàng đã gửi ClientKeyExchangebản ghi, nó đã biết khóa mã hóa và có thể bắt đầu truyền dữ liệu ứng dụng—phần còn lại của quá trình bắt tay được dùng để xác nhận rằng không ai giả mạo bản ghi bắt tay và có thể được thực hiện song song. Kết quả là, Bắt đầu sai cho phép chúng tôi giữ bắt tay TLS trong một lần khứ hồi bất kể chúng tôi đang thực hiện bắt tay đầy đủ hay viết tắt.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Triển khai TLS Sai Bắt đầu</strong></p>
+<p>Vì Khởi động Sai chỉ sửa đổi thời gian của giao thức bắt tay nên nó không yêu cầu bất kỳ cập nhật nào đối với chính giao thức TLS và có thể được triển khai đơn phương—tức là, khách hàng có thể chỉ cần bắt đầu truyền dữ liệu ứng dụng được mã hóa sớm hơn. Vâng, đó là lý thuyết.</p>
+<p>Trong thực tế, mặc dù Khởi động sai TLS phải tương thích ngược với tất cả máy khách và máy chủ TLS hiện có, việc bật tính năng này theo mặc định cho tất cả các kết nối TLS đã được chứng minh là có vấn đề do một số máy chủ được triển khai kém. Do đó, tất cả các trình duyệt hiện đại đều có khả năng sử dụng TLS False Start, nhưng sẽ chỉ làm như vậy khi máy chủ đáp ứng một số điều kiện nhất định:</p>
+<p>Chrome và Firefox yêu cầu phải có quảng cáo giao thức ALPN trong quá trình bắt tay máy chủ và bộ mã hóa do máy chủ chọn phải cho phép bảo mật chuyển tiếp.</p>
+<p>Safari yêu cầu bộ mật mã do máy chủ chọn phải bật tính năng bảo mật chuyển tiếp.</p>
+<p>Internet Explorer sử dụng kết hợp danh sách đen các trang web đã biết bị hỏng khi TLS False Start được bật và thời gian chờ để lặp lại quá trình bắt tay nếu quá trình bắt tay TLS False Start không thành công.</p>
+<p>Để bật Khởi động sai TLS trên tất cả các trình duyệt, máy chủ phải quảng cáo danh sách các giao thức được hỗ trợ thông qua tiện ích mở rộng ALPN—ví dụ: "h2, http/1.1"—và được định cấu hình để hỗ trợ cũng như ưu tiên các bộ mật mã cho phép bảo mật chuyển tiếp.</p>
+</div>
+<h3 id="optimize-tls-record-size">Optimize TLS Record Size</h3>
+<blockquote>
+<p>Tối ưu hóa kích thước bản ghi TLS</p>
+</blockquote>
+<p>Tất cả dữ liệu ứng dụng được phân phối qua TLS được vận chuyển trong một giao thức bản ghi ( Hình 4-8 ). Kích thước tối đa của mỗi bản ghi là 16 KB và tùy thuộc vào mật mã đã chọn, mỗi bản ghi sẽ thêm khoảng 20 đến 40 byte chi phí cho tiêu đề, MAC và phần đệm tùy chọn. Nếu bản ghi vừa với một gói TCP thì chúng tôi cũng phải thêm chi phí IP và TCP: tiêu đề 20 byte cho IP và tiêu đề 20 byte cho TCP không có tùy chọn. Kết quả là có khả năng có từ 60 đến 100 byte chi phí cho mỗi bản ghi. Đối với kích thước đơn vị truyền tải tối đa (MTU) điển hình là 1.500 byte trên dây, cấu trúc gói này chuyển thành tối thiểu 6% chi phí khung.</p>
+<p>Bản ghi càng nhỏ thì chi phí đóng khung càng cao. Tuy nhiên, việc chỉ tăng kích thước bản ghi lên kích thước tối đa (16 KB) không hẳn là một ý tưởng hay. Nếu bản ghi trải dài trên nhiều gói TCP, thì lớp TLS phải đợi tất cả các gói TCP đến trước khi có thể giải mã dữ liệu ( Hình 4-11 ). Nếu bất kỳ gói TCP nào trong số đó bị mất, sắp xếp lại hoặc bị điều tiết do kiểm soát tắc nghẽn, thì các phân đoạn riêng lẻ của bản ghi TLS sẽ phải được đệm trước khi có thể giải mã, dẫn đến độ trễ bổ sung. Trên thực tế, những sự chậm trễ này có thể tạo ra tình trạng tắc nghẽn đáng kể cho trình duyệt, vốn thích sử dụng dữ liệu theo kiểu phát trực tuyến.</p>
+<figure>
+    <img alt="alt text" src="../img/4-11.png" />
+    <figcaption>Hình 4-11. WireShark thu thập bản ghi TLS 11.211 byte được chia thành 8 phân đoạn TCP</figcaption>
+</figure>
+<p>Bản ghi nhỏ phát sinh chi phí chung, bản ghi lớn phát sinh độ trễ và không có giá trị nào cho kích thước bản ghi "tối ưu". Thay vào đó, đối với các ứng dụng web được trình duyệt sử dụng, chiến lược tốt nhất là điều chỉnh động kích thước bản ghi dựa trên trạng thái của kết nối TCP:</p>
+<ul>
+<li>Khi kết nối mới và cửa sổ tắc nghẽn TCP ở mức thấp hoặc khi kết nối không hoạt động trong một thời gian (xem <a href="https://hpbn.co/building-blocks-of-tcp/#slow-start-restart">Khởi động lại khởi động chậm</a>), mỗi gói TCP phải mang chính xác một bản ghi TLS và bản ghi TLS sẽ chiếm toàn bộ phân đoạn tối đa kích thước (MSS) được phân bổ bởi TCP.</li>
+<li>Khi cửa sổ tắc nghẽn kết nối lớn và nếu chúng ta đang truyền một luồng lớn (ví dụ: phát trực tuyến video), kích thước của bản ghi TLS có thể được tăng lên để trải rộng trên nhiều gói TCP (tối đa 16KB) nhằm giảm quá trình đóng khung và chi phí CPU trên máy khách và máy chủ.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nếu kết nối TCP không hoạt động và ngay cả khi Khởi động lại khởi động chậm bị tắt trên máy chủ thì chiến lược tốt nhất là giảm kích thước bản ghi khi gửi một loạt dữ liệu mới: các điều kiện có thể đã thay đổi kể từ lần truyền cuối cùng và mục tiêu của chúng tôi là để giảm thiểu khả năng lưu vào bộ đệm ở lớp ứng dụng do mất gói, sắp xếp lại và truyền lại.</p>
+</div>
+<p>Việc sử dụng chiến lược động mang lại hiệu suất tốt nhất cho lưu lượng truy cập tương tác: kích thước bản ghi nhỏ giúp loại bỏ độ trễ lưu vào bộ đệm không cần thiết và cải thiện thời gian đầu tiên-{byte HTML, …, khung hình video} và kích thước bản ghi lớn hơn sẽ tối ưu hóa thông lượng bằng cách giảm thiểu chi phí hoạt động TLS cho các luồng tồn tại lâu dài.</p>
+<p>Để xác định kích thước bản ghi tối ưu cho từng trạng thái, hãy bắt đầu với trường hợp ban đầu là kết nối TCP mới hoặc không hoạt động, trong đó chúng tôi muốn tránh các bản ghi TLS trải rộng trên nhiều gói TCP:</p>
+<ul>
+<li>Phân bổ 20 byte cho chi phí đóng khung IPv4 và 40 byte cho IPv6.</li>
+<li>Phân bổ 20 byte cho chi phí đóng khung TCP.</li>
+<li>Phân bổ 40 byte cho chi phí tùy chọn TCP (dấu thời gian, SACK).</li>
+</ul>
+<p>Giả sử MTU khởi đầu phổ biến là 1.500 byte, điều này để lại 1.420 byte cho bản ghi TLS được phân phối qua IPv4 và 1.400 byte cho IPv6. Để phù hợp với tương lai, hãy sử dụng kích thước IPv6, để lại cho chúng tôi 1.400 byte cho mỗi bản ghi TLS và điều chỉnh nếu cần nếu MTU của bạn thấp hơn.</p>
+<p>Tiếp theo, có thể đặt quyết định về thời điểm tăng kích thước bản ghi và đặt lại nếu kết nối không hoạt động dựa trên các ngưỡng được định cấu hình trước: tăng kích thước bản ghi lên tới 16 KB sau khi XKB dữ liệu được truyền và đặt lại kích thước bản ghi sau Ymili giây thời gian nhàn rỗi.</p>
+<p>Thông thường, cấu hình kích thước bản ghi TLS không phải là thứ chúng ta có thể kiểm soát ở lớp ứng dụng. Thay vào đó, thường thì đây là một thiết lập và đôi khi là hằng số thời gian biên dịch cho máy chủ TLS của bạn. Kiểm tra tài liệu của máy chủ để biết chi tiết về cách cấu hình các giá trị này.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>Tối ưu hóa TLS tại Google</strong></p>
+<p>Tính đến đầu năm 2014, máy chủ của Google sử dụng các bản ghi TLS nhỏ phù hợp với một phân đoạn TCP duy nhất cho 1 MB dữ liệu đầu tiên, sau đó tăng kích thước bản ghi lên 16 KB để tối ưu hóa thông lượng, rồi đặt lại kích thước bản ghi trở lại thành một phân đoạn duy nhất sau một giây không hoạt động—làm sạch, xả sạch, lặp lại.</p>
+<p>Tương tự, nếu máy chủ của bạn đang xử lý một số lượng lớn kết nối TLS thì việc giảm thiểu mức sử dụng bộ nhớ trên mỗi kết nối có thể là một biện pháp tối ưu hóa quan trọng. Theo mặc định, các thư viện phổ biến như OpenSSL sẽ phân bổ tối đa 50 KB bộ nhớ cho mỗi kết nối, nhưng cũng như kích thước bản ghi, bạn nên kiểm tra tài liệu hoặc mã nguồn để biết cách điều chỉnh giá trị này. Máy chủ của Google giảm bộ đệm OpenSSL xuống còn khoảng 5 KB.</p>
+</div>
+<h3 id="optimize-the-certificate-chain">Optimize the Certificate Chain</h3>
+<blockquote>
+<p>Tối ưu hóa chuỗi chứng chỉ</p>
+</blockquote>
+<p>Xác minh chuỗi tin cậy yêu cầu trình duyệt duyệt qua chuỗi, bắt đầu từ chứng chỉ trang web và xác minh đệ quy chứng chỉ của cha mẹ cho đến khi đạt đến gốc đáng tin cậy. Do đó, điều quan trọng là chuỗi được cung cấp phải bao gồm tất cả các chứng chỉ trung gian. Nếu bất kỳ chứng chỉ nào bị bỏ sót, trình duyệt sẽ buộc phải tạm dừng quy trình xác minh và lấy các chứng chỉ bị thiếu, thêm các tra cứu DNS, bắt tay TCP và yêu cầu HTTP vào quy trình.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Làm cách nào để trình duyệt biết tìm nạp các chứng chỉ bị thiếu từ đâu? Mỗi chứng chỉ con thường chứa một URL cho chứng chỉ gốc. Nếu URL bị bỏ qua và chứng chỉ được yêu cầu không được bao gồm thì quá trình xác minh sẽ không thành công.</p>
+</div>
+<p>Ngược lại, không bao gồm các chứng chỉ không cần thiết, chẳng hạn như các gốc đáng tin cậy trong chuỗi chứng chỉ của bạn—chúng sẽ thêm các byte không cần thiết. Hãy nhớ rằng chuỗi chứng chỉ máy chủ được gửi như một phần của bắt tay TLS, có khả năng xảy ra qua kết nối TCP mới đang trong giai đoạn đầu của thuật toán khởi động chậm. Nếu kích thước chuỗi chứng chỉ vượt quá cửa sổ tắc nghẽn ban đầu của TCP, thì chúng ta sẽ vô tình thêm các vòng lặp bổ sung vào bắt tay TLS: độ dài chứng chỉ sẽ vượt quá cửa sổ tắc nghẽn và khiến máy chủ dừng lại và chờ ACK của máy khách trước khi tiếp tục.</p>
+<p>Trên thực tế, kích thước và độ sâu của chuỗi chứng chỉ là mối quan tâm và vấn đề lớn hơn nhiều trên các ngăn xếp TCP cũ hơn khởi tạo cửa sổ tắc nghẽn ban đầu của chúng thành 4 phân đoạn TCP—xem Slow-Start . Đối với các triển khai mới hơn, cửa sổ tắc nghẽn ban đầu đã được nâng lên 10 phân đoạn TCP và sẽ đủ cho hầu hết các chuỗi chứng chỉ.</p>
+<p>Nói như vậy, hãy xác minh rằng máy chủ của bạn đang sử dụng ngăn xếp và cài đặt TCP mới nhất, đồng thời tối ưu hóa và giảm kích thước chuỗi chứng chỉ của bạn. Gửi ít byte hơn luôn là một tối ưu hóa tốt và đáng giá.</p>
+<h3 id="configure-ocsp-stapling">Configure OCSP Stapling</h3>
+<blockquote>
+<p>Cấu hình OCSP Stapling</p>
+</blockquote>
+<p>Mỗi kết nối TLS mới yêu cầu trình duyệt phải xác minh chữ ký của chuỗi chứng chỉ đã gửi. Tuy nhiên, có một bước quan trọng nữa mà chúng ta không thể quên: trình duyệt cũng cần xác minh rằng các chứng chỉ chưa bị thu hồi.</p>
+<p>Để xác minh trạng thái của chứng chỉ, trình duyệt có thể sử dụng một trong một số phương pháp sau: Certificate Revocation List (CRL) , Online Certificate Status Protocol (OCSP) hoặc OCSP Stapling . Mỗi phương pháp đều có những hạn chế riêng, nhưng OCSP Stapling cung cấp bảo đảm hiệu suất và bảo mật tốt nhất - hãy tham khảo các phần trước để biết chi tiết. Đảm bảo cấu hình máy chủ của bạn để bao gồm (staple) phản hồi OCSP từ CA vào chuỗi chứng chỉ được cung cấp. Làm như vậy cho phép trình duyệt thực hiện kiểm tra thu hồi mà không cần bất kỳ vòng lặp mạng nào và với bảo đảm bảo mật được cải thiện.</p>
+<ul>
+<li>Phản hồi OCSP có thể có kích thước khác nhau từ 400 đến 4.000 byte. Việc ghim phản hồi này vào chuỗi chứng chỉ của bạn sẽ tăng kích thước của nó—chú ý đến tổng kích thước của chuỗi chứng chỉ, sao cho nó không tràn cửa sổ tắc nghẽn ban đầu đối với các kết nối TCP mới.</li>
+<li>Việc triển khai Ghim ghim OCSP hiện tại chỉ cho phép đưa vào một phản hồi OCSP duy nhất, điều đó có nghĩa là trình duyệt có thể phải chuyển sang cơ chế thu hồi khác nếu nó cần xác thực các chứng chỉ khác trong chuỗi—giảm độ dài của chuỗi chứng chỉ của bạn. Trong tương lai, OCSP Multi-Stapling sẽ giải quyết vấn đề cụ thể này.</li>
+</ul>
+<p>Hầu hết các máy chủ phổ biến đều hỗ trợ OCSP stapling. Kiểm tra tài liệu liên quan để biết hướng dẫn hỗ trợ và cấu hình. Tương tự, nếu sử dụng hoặc quyết định sử dụng CDN, hãy kiểm tra xem ngăn xếp TLS của chúng có hỗ trợ và được cấu hình để sử dụng OCSP stapling không.</p>
+<h3 id="enable-http-strict-transport-security-hsts">Enable HTTP Strict Transport Security - HSTS</h3>
+<p>Bật Bảo mật truyền tải nghiêm ngặt HTTP (HSTS)
+HTTP Strict Transport Security là một cơ chế chính sách bảo mật quan trọng cho phép một nguồn gốc khai báo các quy tắc truy cập tới trình duyệt tuân thủ thông qua một tiêu đề HTTP đơn giản—ví dụ: " Strict-Transport-Security: max-age=31536000 ". Cụ thể, nó hướng dẫn tác nhân người dùng thực thi các quy tắc sau:</p>
+<ul>
+<li>Tất cả các yêu cầu đến nguồn gốc phải được gửi qua HTTPS. Điều này bao gồm cả điều hướng và tất cả các yêu cầu tài nguyên phụ cùng nguồn gốc khác—ví dụ: nếu người dùng nhập URL không có tiền tố https, tác nhân người dùng sẽ tự động chuyển đổi URL đó thành yêu cầu https; nếu một trang chứa tham chiếu đến tài nguyên không phải https, tác nhân người dùng sẽ tự động chuyển đổi để yêu cầu phiên bản https.</li>
+<li>Nếu không thể thiết lập kết nối an toàn, người dùng không được phép né tránh cảnh báo và yêu cầu phiên bản HTTP—tức là phiên bản gốc chỉ có HTTPS.</li>
+<li><code>max-age</code> chỉ định thời gian tồn tại của bộ quy tắc HSTS được chỉ định tính bằng giây (ví dụ: max-age=31536000bằng thời gian tồn tại 365 ngày đối với chính sách được quảng cáo).</li>
+<li><code>includeSubdomains</code> cho biết chính sách này sẽ áp dụng cho tất cả các miền phụ của nguồn gốc hiện tại.</li>
+</ul>
+<p>HSTS chuyển đổi nguồn gốc thành đích chỉ có HTTPS và giúp bảo vệ ứng dụng khỏi nhiều cuộc tấn công mạng thụ động và chủ động. Như một phần thưởng bổ sung, nó cũng cung cấp khả năng tối ưu hóa hiệu suất tuyệt vời bằng cách loại bỏ nhu cầu chuyển hướng HTTP sang HTTPS: máy khách tự động viết lại tất cả các yêu cầu đến nguồn gốc an toàn trước khi chúng được gửi đi!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Hãy đảm bảo kiểm tra kỹ lưỡng việc triển khai TLS của bạn trước khi bật HSTS. Sau khi chính sách được lưu trong bộ nhớ đệm của máy khách, việc không thương lượng được kết nối TLS sẽ dẫn đến lỗi cứng—tức là người dùng sẽ thấy trang lỗi của trình duyệt và sẽ không được phép tiếp tục. Hành vi này là một lựa chọn thiết kế rõ ràng và cần thiết để ngăn chặn kẻ tấn công mạng lừa máy khách truy cập trang web của bạn mà không có HTTPS.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Danh sách tải trước HSTS</p>
+<p>Cơ chế HSTS để lại yêu cầu đầu tiên đến một nguồn không được bảo vệ khỏi các cuộc tấn công chủ động—ví dụ: một bên độc hại có thể hạ cấp yêu cầu của máy khách và ngăn không cho máy khách đăng ký chính sách HSTS. Để giải quyết vấn đề này, hầu hết các trình duyệt đều cung cấp một cơ chế "danh sách tải trước HSTS" riêng biệt cho phép một nguồn yêu cầu được đưa vào danh sách các trang web hỗ trợ HSTS đi kèm với trình duyệt.</p>
+<p>Khi bạn đã tự tin vào việc triển khai HTTPS của mình, hãy cân nhắc gửi trang web của bạn tới danh sách tải trước HSTS thông qua <a href="https://hstspreload.appspot.com/">hstspreload.appspot.com</a>.</p>
+</div>
+<h3 id="enable-http-public-key-pinning-hpkp">Enable HTTP Public Key Pinning - HPKP</h3>
+<blockquote>
+<p>Bật Ghim khóa công khai HTTP (HPKP)</p>
+</blockquote>
+<p>Một trong những thiếu sót của hệ thống hiện tại—như đã thảo luận trong <a href="https://hpbn.co/transport-layer-security-tls/#chain-of-trust-and-certificate-authorities">Chain of Trust and Certificate Authorities</a> —là sự phụ thuộc của chúng ta vào một số lượng lớn các Certificate Authorities (CA) đáng tin cậy. Một mặt, điều này rất tiện lợi, vì nó có nghĩa là chúng ta có thể có được một chứng chỉ hợp lệ từ một nhóm lớn các thực thể. Tuy nhiên, nó cũng có nghĩa là bất kỳ thực thể nào trong số những thực thể này cũng có thể cấp một chứng chỉ hợp lệ cho nguồn gốc của chúng ta và bất kỳ nguồn gốc nào khác mà không cần sự đồng ý rõ ràng của họ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Vụ xâm phạm cơ quan cấp chứng chỉ DigiNotar là một trong số nhiều ví dụ điển hình về việc kẻ tấn công có thể cấp và sử dụng chứng chỉ giả nhưng hợp lệ đối với hàng trăm trang web có uy tín.</p>
+</div>
+<p>Ghim khóa công khai cho phép trang web gửi tiêu đề HTTP hướng dẫn trình duyệt ghi nhớ ("ghim") một hoặc nhiều chứng chỉ trong chuỗi chứng chỉ của nó. Bằng cách đó, nó có thể xác định phạm vi chứng chỉ hoặc tổ chức phát hành nào sẽ được trình duyệt chấp nhận trong các lần truy cập tiếp theo:</p>
+<p>Nguồn gốc có thể ghim chứng chỉ lá của nó. Đây là chiến lược an toàn nhất vì về cơ bản, bạn đang mã hóa cứng một tập hợp nhỏ các chữ ký chứng chỉ cụ thể mà trình duyệt sẽ chấp nhận.</p>
+<p>Nguồn gốc có thể ghim một trong các chứng chỉ gốc vào chuỗi chứng chỉ. Ví dụ: nguồn gốc có thể ghim chứng chỉ trung gian của CA của nó, điều này cho trình duyệt biết rằng, đối với nguồn gốc cụ thể này, nó chỉ nên tin cậy các chứng chỉ được ký bởi tổ chức phát hành chứng chỉ cụ thể đó.</p>
+<p>Việc chọn chiến lược phù hợp để ghim chứng chỉ nào, cung cấp bao nhiêu bản sao lưu, thời lượng và các tiêu chí khác để triển khai HPKP là quan trọng, mang nhiều sắc thái và nằm ngoài phạm vi thảo luận của chúng tôi. Hãy tham khảo công cụ tìm kiếm yêu thích của bạn hoặc chuyên gia bảo mật địa phương của bạn để biết thêm thông tin.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>HPKP cũng hiển thị chế độ "chỉ báo cáo" không thực thi mã pin được cung cấp nhưng có thể báo cáo các lỗi được phát hiện. Đây có thể là bước đầu tiên tuyệt vời để xác thực việc triển khai của bạn và đóng vai trò là cơ chế phát hiện các vi phạm.</p>
+</div>
+<h3 id="update-site-content-to-https">Update Site Content to HTTPS</h3>
+<blockquote>
+<p>Cập nhật nội dung trang web thành HTTPS</p>
+</blockquote>
+<p>Để có được sự đảm bảo về hiệu suất và bảo mật tốt nhất, điều quan trọng là trang web phải thực sự sử dụng HTTPS để tìm nạp tất cả tài nguyên của nó. Nếu không, chúng ta sẽ gặp phải một số vấn đề có thể ảnh hưởng đến cả hai hoặc tệ hơn là phá vỡ trang web:</p>
+<p>Nội dung "hoạt động" hỗn hợp (ví dụ như tập lệnh và bảng định kiểu được phân phối qua HTTP) sẽ bị trình duyệt chặn và có thể làm hỏng chức năng của trang web.</p>
+<p>Nội dung "thụ động" hỗn hợp (ví dụ: hình ảnh, video, âm thanh, v.v., được gửi qua HTTP) sẽ được tìm nạp nhưng sẽ cho phép kẻ tấn công quan sát và suy ra hoạt động của người dùng, đồng thời làm giảm hiệu suất bằng cách yêu cầu thêm kết nối và bắt tay.</p>
+<p>Kiểm tra nội dung của bạn và cập nhật tài nguyên và liên kết của bạn, bao gồm nội dung của bên thứ ba, để sử dụng HTTPS. Cơ chế <a href="https://hpbn.co/csp">Chính sách bảo mật nội dung</a> (CSP) có thể giúp ích rất nhiều ở đây, cả để xác định vi phạm HTTPS và thực thi các chính sách mong muốn.</p>
+<p><div class="highlight"><pre><span></span><code>Content-Security-Policy:<span class="w"> </span>upgrade-insecure-requests<span class="w"> </span>
+Content-Security-Policy-Report-Only:<span class="w"> </span>default-src<span class="w"> </span>https:<span class="p">;</span>
+<span class="w">  </span>report-uri<span class="w"> </span>https://example.com/reporting/endpoint<span class="w"> </span>
+</code></pre></div>
+1. Yêu cầu trình duyệt nâng cấp tất cả các yêu cầu (của riêng và bên thứ ba) lên HTTPS.
+1. Yêu cầu trình duyệt báo cáo mọi hành vi vi phạm không phải HTTPS tới điểm cuối được chỉ định.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CSP cung cấp một cơ chế có thể cấu hình cao để kiểm soát tài sản nào được phép sử dụng, cách thức và nơi chúng có thể được lấy. Hãy sử dụng các khả năng này để bảo vệ trang web và người dùng của bạn.</p>
+</div>
+<h3 id="performance-checklist">Performance Checklist</h3>
+<p>Danh sách kiểm tra hiệu suất</p>
+<p>Với tư cách là nhà phát triển ứng dụng, chúng tôi được bảo vệ khỏi hầu hết sự phức tạp của giao thức TLS—máy khách và máy chủ thay mặt chúng tôi thực hiện hầu hết các công việc khó khăn. Tuy nhiên, như chúng ta đã thấy trong chương này, điều này không có nghĩa là chúng ta có thể bỏ qua các khía cạnh hiệu suất của việc phân phối ứng dụng qua TLS. Việc điều chỉnh máy chủ của chúng tôi để kích hoạt các tối ưu hóa TLS quan trọng và định cấu hình ứng dụng của chúng tôi để cho phép khách hàng tận dụng các tính năng đó sẽ mang lại lợi ích cao: bắt tay nhanh hơn, giảm độ trễ, đảm bảo bảo mật tốt hơn, v.v.</p>
+<p>Với suy nghĩ đó, đây là danh sách kiểm tra ngắn để đưa vào chương trình nghị sự:</p>
+<ul>
+<li>Nhận hiệu suất tốt nhất từ ​​TCP; xem Tối ưu hóa cho TCP .</li>
+<li>Nâng cấp thư viện TLS lên bản phát hành mới nhất và (xây dựng lại) máy chủ dựa trên chúng.</li>
+<li>Kích hoạt và định cấu hình bộ nhớ đệm phiên và tiếp tục không trạng thái.</li>
+<li>Theo dõi tỷ lệ truy cập bộ nhớ đệm phiên của bạn và điều chỉnh cấu hình cho phù hợp.</li>
+<li>Cấu hình mã hóa bảo mật chuyển tiếp để bật TLS False Start.</li>
+<li>Kết thúc phiên TLS gần người dùng hơn để giảm thiểu độ trễ khứ hồi.</li>
+<li>Sử dụng kích thước bản ghi TLS động để tối ưu hóa độ trễ và thông lượng.</li>
+<li>Kiểm tra và tối ưu hóa quy mô chuỗi chứng chỉ của bạn.</li>
+<li>Cấu hình ghim OCSP.</li>
+<li>Cấu hình HSTS và HPKP.</li>
+<li>Định cấu hình chính sách CSP.</li>
+<li>Kích hoạt HTTP/2; xem HTTP/2 .</li>
+</ul>
+<h2 id="testing-and-verification">Testing and Verification</h2>
+<blockquote>
+<p>Kiểm tra và xác minh</p>
+</blockquote>
+<p>Cuối cùng, để xác minh và kiểm tra cấu hình của mình, bạn có thể sử dụng một dịch vụ trực tuyến, chẳng hạn như Kiểm tra máy chủ SSL Qualys để quét máy chủ công cộng của bạn để tìm các lỗi bảo mật và cấu hình phổ biến. Ngoài ra, bạn nên tự làm quen với opensslgiao diện dòng lệnh, giao diện này sẽ giúp bạn kiểm tra cục bộ toàn bộ quá trình bắt tay và cấu hình máy chủ của mình.</p>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>s_client<span class="w"> </span>-state<span class="w"> </span>-CAfile<span class="w"> </span>root.ca.crt<span class="w"> </span>-connect<span class="w"> </span>igvita.com:443
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>CONNECTED<span class="o">(</span><span class="m">00000003</span><span class="o">)</span>
+<span class="w">  </span>SSL_connect:before/connect<span class="w"> </span>initialization
+<span class="w">  </span>SSL_connect:SSLv2/v3<span class="w"> </span>write<span class="w"> </span>client<span class="w"> </span>hello<span class="w"> </span>A
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span><span class="nb">read</span><span class="w"> </span>server<span class="w"> </span>hello<span class="w"> </span>A
+<span class="w">  </span><span class="nv">depth</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>/C<span class="o">=</span>IL/O<span class="o">=</span>StartCom<span class="w"> </span>Ltd./OU<span class="o">=</span>Secure<span class="w"> </span>Digital<span class="w"> </span>Certificate<span class="w"> </span>Signing
+<span class="w">          </span>/CN<span class="o">=</span>StartCom<span class="w"> </span>Certification<span class="w"> </span>Authority
+<span class="w">  </span>verify<span class="w"> </span><span class="k">return</span>:1
+<span class="w">  </span><span class="nv">depth</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>/C<span class="o">=</span>IL/O<span class="o">=</span>StartCom<span class="w"> </span>Ltd./OU<span class="o">=</span>Secure<span class="w"> </span>Digital<span class="w"> </span>Certificate<span class="w"> </span>Signing
+<span class="w">          </span>/CN<span class="o">=</span>StartCom<span class="w"> </span>Class<span class="w"> </span><span class="m">1</span><span class="w"> </span>Primary<span class="w"> </span>Intermediate<span class="w"> </span>Server<span class="w"> </span>CA
+<span class="w">  </span>verify<span class="w"> </span><span class="k">return</span>:1
+<span class="w">  </span><span class="nv">depth</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>/description<span class="o">=</span>ABjQuqt3nPv7ebEG/C<span class="o">=</span>US
+<span class="w">          </span>/CN<span class="o">=</span>www.igvita.com/emailAddress<span class="o">=</span>ilya@igvita.com
+<span class="w">  </span>verify<span class="w"> </span><span class="k">return</span>:1
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span><span class="nb">read</span><span class="w"> </span>server<span class="w"> </span>certificate<span class="w"> </span>A
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span><span class="nb">read</span><span class="w"> </span>server<span class="w"> </span><span class="k">done</span><span class="w"> </span>A<span class="w"> </span>
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span>write<span class="w"> </span>client<span class="w"> </span>key<span class="w"> </span>exchange<span class="w"> </span>A
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span>write<span class="w"> </span>change<span class="w"> </span>cipher<span class="w"> </span>spec<span class="w"> </span>A
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span>write<span class="w"> </span>finished<span class="w"> </span>A
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span>flush<span class="w"> </span>data
+<span class="w">  </span>SSL_connect:SSLv3<span class="w"> </span><span class="nb">read</span><span class="w"> </span>finished<span class="w"> </span>A
+<span class="w">  </span>---
+<span class="w">  </span>Certificate<span class="w"> </span>chain<span class="w"> </span>
+<span class="w">   </span><span class="m">0</span><span class="w"> </span>s:/description<span class="o">=</span>ABjQuqt3nPv7ebEG/C<span class="o">=</span>US
+<span class="w">       </span>/CN<span class="o">=</span>www.igvita.com/emailAddress<span class="o">=</span>ilya@igvita.com
+<span class="w">     </span>i:/C<span class="o">=</span>IL/O<span class="o">=</span>StartCom<span class="w"> </span>Ltd./OU<span class="o">=</span>Secure<span class="w"> </span>Digital<span class="w"> </span>Certificate<span class="w"> </span>Signing
+<span class="w">       </span>/CN<span class="o">=</span>StartCom<span class="w"> </span>Class<span class="w"> </span><span class="m">1</span><span class="w"> </span>Primary<span class="w"> </span>Intermediate<span class="w"> </span>Server<span class="w"> </span>CA
+<span class="w">   </span><span class="m">1</span><span class="w"> </span>s:/C<span class="o">=</span>IL/O<span class="o">=</span>StartCom<span class="w"> </span>Ltd./OU<span class="o">=</span>Secure<span class="w"> </span>Digital<span class="w"> </span>Certificate<span class="w"> </span>Signing
+<span class="w">       </span>/CN<span class="o">=</span>StartCom<span class="w"> </span>Class<span class="w"> </span><span class="m">1</span><span class="w"> </span>Primary<span class="w"> </span>Intermediate<span class="w"> </span>Server<span class="w"> </span>CA
+<span class="w">     </span>i:/C<span class="o">=</span>IL/O<span class="o">=</span>StartCom<span class="w"> </span>Ltd./OU<span class="o">=</span>Secure<span class="w"> </span>Digital<span class="w"> </span>Certificate<span class="w"> </span>Signing
+<span class="w">       </span>/CN<span class="o">=</span>StartCom<span class="w"> </span>Certification<span class="w"> </span>Authority
+<span class="w">  </span>---
+<span class="w">  </span>Server<span class="w"> </span>certificate
+<span class="w">  </span>-----BEGIN<span class="w"> </span>CERTIFICATE-----
+<span class="w">  </span>...<span class="w"> </span>snip<span class="w"> </span>...
+<span class="w">  </span>---
+<span class="w">  </span>No<span class="w"> </span>client<span class="w"> </span>certificate<span class="w"> </span>CA<span class="w"> </span>names<span class="w"> </span>sent
+<span class="w">  </span>---
+<span class="w">  </span>SSL<span class="w"> </span>handshake<span class="w"> </span>has<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="m">3571</span><span class="w"> </span>bytes<span class="w"> </span>and<span class="w"> </span>written<span class="w"> </span><span class="m">444</span><span class="w"> </span>bytes<span class="w"> </span>
+<span class="w">  </span>---
+<span class="w">  </span>New,<span class="w"> </span>TLSv1/SSLv3,<span class="w"> </span>Cipher<span class="w"> </span>is<span class="w"> </span>RC4-SHA
+<span class="w">  </span>Server<span class="w"> </span>public<span class="w"> </span>key<span class="w"> </span>is<span class="w"> </span><span class="m">2048</span><span class="w"> </span>bit
+<span class="w">  </span>Secure<span class="w"> </span>Renegotiation<span class="w"> </span>IS<span class="w"> </span>supported
+<span class="w">  </span>Compression:<span class="w"> </span>NONE
+<span class="w">  </span>Expansion:<span class="w"> </span>NONE
+<span class="w">  </span>SSL-Session:
+<span class="w">      </span>Protocol<span class="w">  </span>:<span class="w"> </span>TLSv1
+<span class="w">      </span>Cipher<span class="w">    </span>:<span class="w"> </span>RC4-SHA
+<span class="w">      </span>Session-ID:<span class="w"> </span>269349C84A4702EFA7<span class="w"> </span>...<span class="w"> </span>
+<span class="w">      </span>Session-ID-ctx:
+<span class="w">      </span>Master-Key:<span class="w"> </span>1F5F5F33D50BE6228A<span class="w"> </span>...
+<span class="w">      </span>Key-Arg<span class="w">   </span>:<span class="w"> </span>None
+<span class="w">      </span>Start<span class="w"> </span>Time:<span class="w"> </span><span class="m">1354037095</span>
+<span class="w">      </span>Timeout<span class="w">   </span>:<span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="o">(</span>sec<span class="o">)</span>
+<span class="w">      </span>Verify<span class="w"> </span><span class="k">return</span><span class="w"> </span>code:<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>ok<span class="o">)</span>
+<span class="w">  </span>---
+</code></pre></div>
+<ol>
+<li>Khách hàng đã hoàn tất việc xác minh chuỗi chứng chỉ đã nhận.</li>
+<li>Đã nhận chuỗi chứng chỉ (hai chứng chỉ).</li>
+<li>Kích thước của chuỗi chứng chỉ đã nhận.</li>
+<li>Mã định danh phiên đã phát hành cho sơ yếu lý lịch TLS có trạng thái.</li>
+</ol>
+<p>Trong ví dụ trước, chúng tôi kết nối với igvita.com trên cổng TLS mặc định (443) và thực hiện bắt tay TLS. Do s_clientkhông đưa ra giả định nào về chứng chỉ gốc đã biết nên chúng tôi chỉ định thủ công đường dẫn đến chứng chỉ gốc, tại thời điểm viết bài, là Cơ quan cấp chứng chỉ StartSSL cho miền ví dụ. Trình duyệt của bạn đã có chứng chỉ gốc chung và do đó có thể xác minh chuỗi nhưng s_clientkhông đưa ra giả định nào như vậy. Hãy thử bỏ qua chứng chỉ gốc và bạn sẽ thấy lỗi xác minh trong nhật ký.</p>
+<p>Kiểm tra chuỗi chứng chỉ cho thấy máy chủ đã gửi hai chứng chỉ, tổng cộng lên tới <code>3.571 byte</code>. Ngoài ra, chúng ta có thể thấy các biến phiên TLS đã thương lượng—giao thức đã chọn, mật mã, khóa—và chúng ta cũng có thể thấy máy chủ đã cấp một mã định danh phiên cho phiên hiện tại, có thể được tiếp tục trong tương lai.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Building Blocks of UDP">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Building Blocks of UDP
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction to Wireless Networks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction to Wireless Networks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dothanhdathp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/tad.zeila?locale=vi_VN" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.footer", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.js"></script>
+      
+        <script src="../../../assets/scripts/katex.js"></script>
+      
+        <script src="../../../assets/scripts/keyevent.js"></script>
+      
+        <script src="../../../assets/scripts/katex.min.js"></script>
+      
+        <script src="../../../assets/scripts/auto-render.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

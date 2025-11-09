@@ -1,0 +1,5055 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../3/">
+      
+      
+        <link rel="next" href="../5/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI - Tad Zeila Book</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/theme.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chuong-4-tien-oan-tuong-lai" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Tad Zeila Book" class="md-header__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tad Zeila Book
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="pink"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Literature/literature-list/" class="md-tabs__link">
+          
+  
+  
+  Văn Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../science-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../science-it-list/" class="md-tabs__link">
+          
+  
+  
+  Khoa Học Máy Tính
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Group/KLNTTL/klnttl/" class="md-tabs__link">
+          
+  
+  
+  Bộ Sách
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Philosophy/philosophy/" class="md-tabs__link">
+          
+  
+  
+  Triết Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Paper/paper-list/" class="md-tabs__link">
+          
+  
+  
+  Bài Báo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Psychology/psychology-list/" class="md-tabs__link">
+          
+  
+  
+  Tâm Lý Học
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../NonFig/nonfig-list/" class="md-tabs__link">
+          
+  
+  
+  NonFig
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-tabs__link">
+          
+  
+  
+  Tư Duy
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Tad Zeila Book" class="md-nav__button md-logo" aria-label="Tad Zeila Book" data-md-component="logo">
+      
+  <img src="../../../assets/logo/cat_white.png" alt="logo">
+
+    </a>
+    Tad Zeila Book
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Home
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About me
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Văn Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Văn Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Literature/literature-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Vũ Trụ Trong Vỏ Hạt Dẻ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vũ Trụ Trong Vỏ Hạt Dẻ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 1 - LƯỢC SỬ VỀ THUYẾT TƯƠNG ĐỐI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 2 - HÌNH DÁNG CỦA THỜI GIAN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 6 - TƯƠNG LAI CỦA CHÚNG TA? CÓ THỂ LÀ STARTREK HAY KHÔNG?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHƯƠNG 7 - MÀNG VŨ TRỤ MỚI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    THUẬT NGỮ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khoa Học Máy Tính
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Khoa Học Máy Tính
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../science-it-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    High Performance Browser Networking
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            High Performance Browser Networking
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Networking 101
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Networking 101
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Primer on Latency and Bandwidth
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of TCP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Building Blocks of UDP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Transport Layer Security (TLS)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction to Wireless Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../high-performance-browser-networking/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wifi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Hiểu biết sâu sắc về Android
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Hiểu biết sâu sắc về Android
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CHương 1 - Chuẩn bị trước khi đọc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hieu-biet-sau-sac-ve-android/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2 - Hiểu sâu sắc về JNI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Competitive Programmer's Handbook
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Competitive Programmer's Handbook
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4_2" id="__nav_4_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Part I - Basic technique
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Part I - Basic technique
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1: Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../competitive-programmers-handbook/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2: Time complexity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Rust by Example
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Rust by Example
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Begin
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rust-by-example/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hello World
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bộ Sách
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Bộ Sách
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Khái Lược Những Tư Tưởng Lớn
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Khái Lược Những Tư Tưởng Lớn
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/klnttl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mô tả
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kinh Doanh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Kinh Doanh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mở đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Giới Thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Group/KLNTTL/Kinh-Doanh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Khởi Đầu Nhỏ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Triết Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2_1" id="__nav_6_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời cảm ơn & Giới thiệu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN MỘT: SỰ HÌNH THÀNH CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN HAI: CÁC KỸ THUẬT TÂM LÝ CỦA CHỦ NGHĨA KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BA: LỜI KHUYÊN CỦA CÁC NHÀ KHẮC KỶ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    PHẦN BỐN: CHỦ NGHĨA KHẮC KỶ TRONG CUỘC SỐNG HIỆN ĐẠI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Triết học hiện sinh
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Triết học hiện sinh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Preface
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 1. TRIẾT HỌC HIỆN SINH LÀ GÌ?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 2. NHỮNG ĐỀ TÀI CHÍNH CỦA TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 3. HAI NGÀNH CỦA PHONG TRÀO TRIẾT HIỆN SINH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 4. KIERKEGAARD ÔNG TỔ HIỆN SINH TRUNG THỰC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 5. NIETZSCHE ÔNG TỔ HIỆN SINH VÔ THẦN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 6. HUSSERL ~ ÔNG TỔ VĂN CHƯƠNG TRIẾT LÝ HIỆN TƯỢNG HỌC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 7. JASPERS HIỆN SINH VÀ SIÊU VIỆT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 8. MARCEL HIỆN SINH VÀ HUYỀN NHIỆM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 9. SARTRE - HIỆN SINH PHI LÝ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/triet-hoc-hien-sinh/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chương 10. HEIDEGGER HIỆN SINH VÀ HIỆN HỮU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4_1" id="__nav_6_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Seneca - Những bức thư đạo đức (Tập 1)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Seneca - Những bức thư đạo đức (Tập 1)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời tựa
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 7
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 8
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 9
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/14/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/15/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/16/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/17/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 17
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/20/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/21/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/22/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/23/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/24/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/25/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/26/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/27/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 27
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/28/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 28
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/30/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/31/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/32/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 32
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/33/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 33
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/34/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 34
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/35/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 35
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/36/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 36
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/37/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 37
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/38/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 38
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/39/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 39
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/40/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 40
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/41/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 41
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/42/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 42
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Philosophy/seneca-nhung-buc-thu-dao-duc-1/43/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bức thư số 43
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Bài Báo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bài Báo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/paper-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Câu chuyện về crypto duy nhất bạn cần
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Câu chuyện về crypto duy nhất bạn cần
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    I. Sổ cái - Bitcoin và Blockchain
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    II. Nó có nghĩa là gì
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    III. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IV. Sự tin tưởng - Tiền Bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    V. Hệ thống tài chính crypto
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/cau-chuyen-ve-crypto-duy-nhat-ban-can/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VI. Sự tin tưởng - Tiền bạc - Cộng đồng
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Android Binder
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Android Binder
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2. Multitasking, Processes and Threads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3. Android
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4. Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5. Implementation of the Binder Framework
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6. Example IPC Message Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/android-binder/6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    7. Discussion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Paper/stoic-virtue-and-mental-health/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chủ nghĩa khắc kỷ, Đức hạnh và Sức khỏe tâm thần
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tâm Lý Học
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tâm Lý Học
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/psychology-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Psychology/stoic-virtue-and-mental-health.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh Sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    NonFig
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            NonFig
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nonfig-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Danh sách
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Thiên Nga Đen
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Thiên Nga Đen
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LỜI BẠT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Mở Đầu - XOAY QUANH BỘ LÔNG CHIM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/thien-nga-den/2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Phần Một - PHẢN THƯ VIỆN CỦA UMBERTO ECO HAY CÁCH CHÚNG TA TÌM KIẾM SỰ PHÊ CHUẨN
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../NonFig/nhung-quy-luat-cua-ban-chat-con-nguoi/0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Những Quy Luật Của Bản Chất Con Người - Robert Greene
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tư Duy
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Tư Duy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Nghệ Thuật Tư Duy Rành Mạch
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_1">
+            <span class="md-nav__icon md-icon"></span>
+            Nghệ Thuật Tư Duy Rành Mạch
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/begin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lởi Mở Đầu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/toc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mục Lục
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/contents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Nội Dung
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Thinking/nghe-thua-tu-duy-ranh-mach/end/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lời Kết
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chuong-4-tien-oan-tuong-lai">CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI</h1>
+<figure>
+    <img alt="alt text" src="../img/image-87.png" />\
+    <img alt="alt text" src="../img/image-88.png" />
+    <figcaption>Sự biến mất của thông tin trong các hố đen có thể làm giảm khả năng tiên đoán tương lai của chúng ta như thế nào.</figcaption>
+</figure>
+<p>Nhân loại luôn mong muốn điều khiển tương lai, hoặc ít nhất là đoán trước được điều gì sẽ xảy ra. Đó là lý do tại sao ngành chiêm tinh học lại phổ biến đến thế. Chiêm tinh học cho rằng các sự kiện xảy ra trên trái đất đều liên quan đến chuyển động của các hành tinh trên bầu trời. Đây là một giả thiết có thể kiểm chứng một cách khoa học, à không, nó sẽ là một giả thiết có thế kiểm chứng một cách khoa học nếu như các nhà chiêm tinh dám mạo hiểm nói một dự đoán chắc chắn mà có thể kiểm tra được. Tuy nhiên, họ cũng đủ thông minh để chỉ nói những dự đoán mơ hồ có thể đúng với bất kỳ kết quả nào. Những phát biểu kiểu như “Các mối quan hệ cá nhân có thể trở lên mãnh liệt hơn” hoặc là “Bạn sẽ có một cơ may về tài chính” sẽ không bao giờ bị chứng minh là sai cả.</p>
+<figure>
+    <img alt="alt text" src="../img/image-89.png" />
+    <figcaption>“Tháng này sao Hỏa chiếm cung Nhân mã, đó là thời gian tốt để bạn tự học. Sao Hỏa yêu cầu bạn sống một cuộc sống theo cách bạn cho là đúng và thường những người khác cho là sai. Và những điều đó sẽ xảy ra. 
+Vào ngày 20, sao Hỏa sẽ đi đến phần học vấn của bạn, nó liên quan đến nghề nghiệp và bạn sẽ học để nhận lấy trách nhiệm và giải quyết các quan hệ khó khăn. Tuy vậy, đến kỳ trăng rằm bạn sẽ có được một sự thông suốt và tầm bao quát tuyệt vời về toàn bộ cuộc đời mà bạn sẽ nhận được.”</figcaption>
+</figure>
+<p>Nhưng lý do mà phần đông các nhà khoa học không tin vào chiêm tinh học không phải là những bằng chứng phi khoa học hoặc thiếu những bằng chứng khoa học mà vì nó không phù hợp với những lý thuyết khác đã được kiểm chứng bằng thực nghiệm. Khi Copernicus và Galileo phát hiện ra rằng các hành tinh quay quanh mặt trời chứ không phải quay quanh trái đất, và Newton tìm ra định luật hấp dẫn điều khiển chuyển động của các hành tinh thì chiêm tinh học trở lên cực kỳ đáng ngờ.</p>
+<p>Tại sao vị trí của các hành tinh khác trên nền trời khi chúng được nhìn từ trái đất lại có những mối tương quan với những đại phân tử tự gọi là sinh vật có trí tuệ sống trên một tiểu hành tinh? (hình 4.1) Chiêm tinh học còn phải làm cho chúng ta tin vào sự tương quan đó. Các lý thuyết được trình bày trong cuốn sách này cũng không hơn gì chiêm tinh học ở chỗ không có thêm các bằng chứng thực nghiệm để củng cố các lý thuyết đó, nhưng ta vẫn tin vì các lý thuyết này phù hợp với các lý thuyết đã được kiểm chứng.</p>
+<figure>
+    <img alt="alt text" src="../img/image-90.png" />  <br />
+    <figcaption>(Hình 4.1) Một người quan sát trên trái đất (màu xanh) đang chuyển động trên quĩ đạo xung quanh mặt trời sẽ thấy sao Hỏa (màu đỏ) in trên vòng cầu các sao.</figcaption>
+    <figcaption>Chuyển động biểu kiến phức tạp của các hành tinh có thể được giải thích bằng các định luật của Newton và không có ảnh hưởng gì đến số phận của con người.</figcaption>
+</figure>
+<p>Sự thành công của các định luật của Newton và các lý thuyết vật lý khác dẫn đến ý tưởng về quyết định luận khoa học (scientific determinism). Ý tưởng này được một nhà khoa học người Pháp tên là Marquis de Laplace đưa ra lần đầu tiên vào đầu thế kỷ thứ mười chín. Laplace cho rằng nếu chúng ta biết được vị trí và tọa độ của tất cả các hạt trong vũ trụ tại một thời điểm thì các định luật vật lý sẽ cho phép chúng ta đoán được trạng thái của vũ trụ sẽ như thế nào tại bất kỳ một thời điểm nào khác trong quá khứ và tương lai (hình 4.2).</p>
+<figure>
+    <img alt="alt text" src="../img/image-91.png" />\
+    <img alt="alt text" src="../img/image-92.png" />
+    <figcaption>(Hình 4.2) Nếu bạn biết vị trí và tốc độ của quả bóng mà bạn ném đi, bạn có thể tính được nó sẽ đi đến đâu.</figcaption>
+</figure>
+<p>Nói cách khác, nếu quyết định luận khoa học mà đúng thì chúng ta có thể đoán trước được tương lai và không cần đến chiêm tinh học. Tất nhiên là trên thực tế ngay cả những cái đơn giản như định luật hấp dẫn của Newton cũng dẫn đến các phương trình mà chúng ta không thể giải một cách chính xác cho hệ có nhiều hơn hai hạt được. Hơn nữa, các phương trình này thường có một tính chất được biết là hỗn loạn, do đó, một thay đổi nhỏ về vị trí và vận tốc tại một thời điểm có thể dẫn đến một tính chất hoàn toàn khác tại các thời điểm tiếp theo. Những người đã xem phim Công viên kỷ Jura (Jurassic Park, hình 4.3) đều biết, một xáo trộn nhỏ ở một nơi này có thể gây ra một thay đổi lớn ở một nơi khác. Một con bướm vỗ cánh ở Tokoy có thể gây ra mưa ở công viên trung tâm ở New York. Điều phiền phức là chuỗi sự kiện đó không có tính lặp lại. Lần sau con bướm vỗ cánh, một loạt các sự kiện khác sẽ khác đi và các sự kiện này sẽ ảnh hưởng đến thời tiết. Đó là lý do tại sao các dự báo thời tiết rất không đáng tin cậy.</p>
+<figure>
+    <img alt="alt text" src="../img/image-93.png" />  <br />
+    <figcaption>(Hình 4.3)</figcaption>
+</figure>
+<p>Do vậy, mặc dù về nguyên lý thì các định luật của điện động lực học lượng tử sẽ cho phép chúng ta tính toán được tất cả mọi thứ trong hóa học và sinh học, nhưng chúng ta vẫn không có nhiều thành công trong việc đoán trước được hành vi con người từ các phương trình toán học. Tuy nhiên, mặc dù gặp phải những khó khăn trên thực tiễn như thế, nhưng về nguyên tắc, phần lớn các nhà khoa học vẫn được an ủi với ý tưởng cho rằng tương lai vẫn có thể dự báo được.</p>
+<p>Thoạt nhìn thì quyết định luận khoa học có vẻ như bị nguyên lý bất định đe dọa. Nguyên lý bất định nói rằng chúng ta không thể đo chính xác vị trí và vận tốc của một hạt tại một thời điểm. Chúng ta đo ví trí càng chính xác bao nhiêu thì chúng ta xác định vận tốc càng kém chính xác bấy nhiêu, và ngược lại. Lối giải thích về quyết định luận khoa học của Laplace cho rằng nếu chúng ta biết vị trí và vận tốc của các hạt tại một thời điểm thì chúng ta có thể xác định được vị trí và vận tốc của chúng tại bất kỳ thời điểm nào trong quá khứ và tương lai. Nhưng làm thế nào mà chúng ta có thể làm được điều đó nếu như ngay từ đầu nguyên lý bất định đã không cho chúng ta biết được vị trí và vận tốc tại một thời điểm? Dù máy tính của chúng ta tốt thế nào đi chăng nữa, nếu chúng ta cung cấp dữ liệu đầu vào sai thì chúng ta sẽ nhận được các dự đoán sai lầm.</p>
+<figure>
+    <img alt="alt text" src="../img/image-94.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Tuy vậy, quyết định luận được khôi phục dưới một dạng khác trong một lý thuyết mới được gọi là cơ học lượng tử, tương thích với nguyên lý bất định. Trong cơ học lượng tử, nói một cách gần đúng, ta có thể dự đoán một cách chính xác một nửa những điều mà ta mong muốn thực hiện trên quan điểm Laplace cổ điển. Trong cơ học lượng tử, một hạt không có vị trí hoặc vận tốc xác định nhưng trạng thái của hạt có thể được biểu diễn bằng một cái gọi là hàm sóng (hình 4.4).</p>
+<figure>
+    <img alt="alt text" src="../img/image-95.png" />  <br />
+    <figcaption>(Hình 4.4) Hàm sóng xác định xác suất mà hạt sẽ có các vị trí và vận tốc khác nhau theo cách mà chúng phải tuân theo nguyên lý bất định.</figcaption>
+</figure>
+<p>Tại mỗi vị trí trong không gian, một hàm sóng là một con số cho biết xác xuất mà hạt có thể được tìm thấy tại vị trí đó. Tốc độ thay đổi của hàm sóng từ điểm này đến điểm khác cho biết khả năng để hạt có các vận tốc khác nhau. Một số hàm sóng có một đỉnh rất nhọn tại một điểm cụ thể trong không gian. Trong trường hợp này, độ bất định về vị trí của hạt là rất nhỏ. Trên giản đồ ta cũng có thể thấy trong những trường hợp đó, hàm sóng thay đổi rất nhanh gần đỉnh của sóng, hàm sóng tăng nhanh ở một sườn và giảm nhanh ở phía sườn kia. Điều này có nghĩa là phân bố xác suất của vận tốc được trải trên một vùng giá trị rất lớn. Hay nói một cách khác, độ bất định về vận tốc rất lớn. Mặt khác, chúng ta hãy xem các hàm sóng thoai thoải thì độ bất định về vị trí lớn nhưng độ bất định về vận tốc lại nhỏ. Vậy nên, việc mô tả các hạt bằng hàm sóng không cho ta vị trí và vận tốc chính xác. Giờ đây ta thấy rằng hàm sóng là tất cả những gì mà ta có thể xác định. Thậm chí chúng ta cũng không thể cho rằng Chúa biết vị trí và vận tốc của các hạt nhưng giấu không cho chúng ta biết. Các lý thuyết “biến số ẩn” (hidden variable) như thế không phù hợp với các quan sát thực nghiệm. Hơn thế nữa, Chúa bị giới hạn bởi nguyên lý bất định và không thể biết vị trí và vận tốc của hạt; Chúa chỉ có thể biết hàm sóng của hạt mà thôi.</p>
+<p>Tốc độ thay đổi của hàm sóng theo thời gian được cho bởi một phương trình gọi là phương trình Schrodinger (hình 4.5). Nếu ta biết hàm sóng tại một thời điểm thì chúng ta có thể dùng phương trình Schrodinger để tính hàm sóng tại bất kỳ thời điểm nào khác trong quá khứ và tương lai. Vậy nên, quyết định luận khoa học vẫn đúng trong lý thuyết lượng tử nhưng với một mức độ thấp hơn. Thay cho khả năng đoán trước được cả vị trí và vận tốc, chúng ta chỉ có thể biết được hàm sóng. Hàm sóng chỉ cho biết chính xác vị trí hoặc vận tốc chứ không thể biết được cả hai. Do đó, trong cơ học lượng tử, khả năng tiên đoán chính xác chỉ bằng một nửa khả năng tiên đoán trong thế giới quan Laplace cổ điển. Với ý nghĩa giới hạn này, ta có thể nói quyết định luận khoa học vẫn đúng.</p>
+<figure>
+    <img alt="alt text" src="../img/image-96.png" />  <br />
+    <figcaption>(Hình 4.5)</figcaption>
+    <figcaption>PHƯƠNG TRÌNH SCHRODINGER</figcaption>
+    <figcaption>Sự phụ thuộc của hàm sóng Ψ theo thời gian được xác định bởi toán tử H liên quan đến năng lượng của hệ đang xét</figcaption>
+</figure>
+<p>Tuy nhiên, việc dùng phương trình Schrodinger tính hàm sóng theo thời gian (tức là dự đoán những điều sẽ xảy ra trong tương lai) hiển nhiên thừa nhận rằng thời gian trôi đi một cách trơn tru mãi mãi tại khắp các điểm trong không gian. Điều này rõ ràng là đúng trong vật lý Newton. Thời gian được cho là tuyệt đối, tức là mỗi sự kiện trong lịch sử của vũ trụ được đánh dấu bởi một con số được gọi là thời gian và chuỗi con số đó trôi một cách trơn tru từ vô hạn trong quá khứ đến vô hạn trong tương lai. Đó có thể nói là cảm nhận chung về thời gian và là cách nhìn mà phần đông mọi người thậm chí là phần đông các nhà vật lý tâm niệm. Tuy nhiên vào năm 1905, như chúng ta đã thấy, thuyết tương đối hẹp đã vứt bỏ khái niệm thời gian tuyệt đối, trong đó, thời gian tự nó không còn là một đại lượng độc lập của một thể liên tục bốn chiều được gọi là không thời gian. Trong thuyết tương đối hẹp, các nhà quan sát khác nhau chuyển động với các vận tốc khác nhau trong không thời gian theo các hướng khác nhau. Mỗi nhà quan sát có phép đo thời gian riêng của anh ta hoặc cô ta dọc theo hướng mà anh hoặc cô ta đang chuyển động. Và các nhà quan sát khác nhau sẽ đo được các khoảng thời gian khác nhau giữa các sự kiện (hình 4.6).</p>
+<figure>
+    <img alt="alt text" src="../img/image-97.png" />  <br />
+    <figcaption>(Hình 4.6)</figcaption>
+    <figcaption>Trong không thời gian phẳng của thuyết tương đối hẹp, những người quan sát chuyển động với các tốc độ khác nhau sẽ có các phép đo thời gian khác nhau, nhưng chúng ta có thể dùng phương trình Schrodinger trong bất kỳ thời gian nào để đoán được hàm sóng trong tương lai.</figcaption>
+</figure>
+<p>Do đó, trong thuyết tương đối hẹp, không có thời gian tuyệt đối để chúng ta có thể đánh dấu các sự kiện. Tuy nhiên không thời gian trong thuyết tương đối hẹp lại phẳng. Điều này có nghĩa là, trong thuyết tương đối hẹp, thời gian được đo bởi bất kỳ nhà quan sát chuyển động tự do sẽ tăng một cách trơn tru trong không thời gian từ âm vô cùng của quá khứ vô cùng đến dương vô cùng của tương lai vô cùng. Chúng ta có thể dùng bất kỳ phép đo thời gian nào trong phương trình Schrodinger để tính sự phụ thuộc của hàm sóng vào thời gian. Vậy nên, trong thuyết tương đối hẹp, chúng ta vẫn có một kiểu quyết định luận lượng tử.</p>
+<p>Trong thuyết tương đối rộng thì tình huống lại khác đi vì không thời gian không còn phẳng mà bị bẻ cong bởi vật chất và năng lượng trong đó. Trong hệ mặt trời của chúng ta, ít nhất là trên nấc thang vĩ mô, độ cong của không thời gian nhỏ đến nỗi nó không ảnh hưởng đến quan niệm chung của chúng ta về thời gian. Trong trường hợp đó, chúng ta vẫn có thể dùng thời gian trong phương trình Schrodinger để biết sự phụ thuộc của hàm sóng vào thời gian. Tuy nhiên, một khi chúng ta cho phép không thời gian có thể bị cong thì khả năng, trong đó không thời gian có một cấu trúc không cho phép thời gian tăng một cách trơn tru đối với mỗi nhà quan sát như chúng ta trông đợi, có thể xảy ra. Ví dụ, không thời gian giống như một hình trụ thẳng đứng (hình 4.7).</p>
+<figure>
+    <img alt="alt text" src="../img/image-98.png" />  <br />
+    <figcaption>(Hình 4.7)</figcaption>
+    <figcaption>THỜI GIAN DỪNG</figcaption>
+    <figcaption>Một phép đo thời gian có thể nhất thiết phải có một điểm dừng mà tại đó quai cầm của chiếc cốc tiếp xúc với phần trụ chính: tại các điểm đó, thời gian sẽ dừng. Tại các điểm như thế, thời gian không tăng theo bất kỳ hướng nào. Do đó, ta có thể dùng phương trình Schrodinger để tiên đoán hàm sóng trong tương lai.</figcaption>
+</figure>
+<p>Chiều cao của hình trụ có thể là phép đo thời gian, thời gian tăng đối với mỗi người quan sát và chạy từ âm vô cùng đến dương vô cùng. Tuy nhiên, hãy tưởng tượng rằng, thay cho hình trụ đó là một hình trụ với một cái quai (hoặc là một “hố giun” (wormhole)) tách rời khỏi hình trụ sau đó lại nhập lại. Do đó, bất kỳ phép đo thời gian nào đều có các điểm dừng tại nơi mà cái quai nhập vào hình trụ chính: các điểm mà tại đó thời gian dừng lại. Tại các điểm này thời gian không tăng đối với bất kỳ người quan sát nào. Trong một không thời gian như vậy chúng ta không thể dùng phương trình Schrodinger để biết được sự phụ thuộc của hàm sóng vào thời gian. Hãy cẩn thận với các hố giun: bạn không bao giờ biết được cái gì sẽ chui ra từ đó.</p>
+<p>Các hố đen là nguyên nhân để chúng ta nghĩ thời gian không tăng đối với các nhà quan sát. Thảo luận đầu tiên về hố đen xuất hiện vào năm 1783. Một cựu giáo sư của đại học Cambridge, John Michell đã trình bày luận cứ sau đây: nếu ai đó bắn một hạt, như là một viên đạn đại bác chẳng hạn, thẳng lên trời thì chuyển động lên trên sẽ bị chậm lại do lực hấp dẫn và cuối cùng là hạt sẽ dừng chuyển động lên trên và sẽ rơi trở lại (hình 4.8). Tuy vậy nếu vận tốc bắn ban đầu lớn hơn một vận tốc tới hạn được gọi là vận tốc thoát thì lực hấp dẫn sẽ không đủ mạnh để dừng hạt đó lại và hạt đó sẽ bay đi. Trên trái đất, vận tốc thoát vào khoảng 12 km/giây; trên mặt trời thì giá trị đó vào khoảng 618 km/giây.</p>
+<figure>
+    <img alt="alt text" src="../img/image-99.png" />
+    <figcaption>(Hình 4.8)</figcaption>
+</figure>
+<p>Cả hai vận tốc thoát đó đều lớn hơn nhiều vận tốc của các viên đạn đại bác nhưng lại nhỏ hơn vận tốc ánh sáng (vào khoảng 300.000 km/giây). Vậy nên ánh sáng có thể thoát khỏi trái đất và mặt trời một cách không mấy khó khăn. Nhưng Michell lại lý luận rằng có thể có các ngôi sao lớn hơn nhiều lần mặt trời và có vận tốc thoát lớn hơn vận tốc ánh sáng (hình 4.9). Chúng ta không thể nhìn thấy các ngôi sao đó vì bất kỳ tia sáng nào được phóng đi sẽ bị lực hấp dẫn của ngôi sao kéo trở lại.</p>
+<figure>
+    <img alt="alt text" src="../img/image-100.png" />
+    <figcaption>(Hình 4.9)</figcaption>
+</figure>
+<p>Ý tưởng về các ngôi sao tối của Michell dựa trên nền vật lý của Newton, trong đó thời gian là tuyệt đối và thời gian không đếm xỉa đến những sự kiện xảy ra. Vậy nên, trong bức tranh vật lý cổ điển của Newton, các ngôi sao đen không ảnh hưởng đến khả năng tiên đoán tương lai của chúng ta. Nhưng trong thuyết tương đối rộng, trong các vật thể khổng lồ làm cong không thời gian thì tình huống lại khác hẳn.</p>
+<p>Năm 1916, ngay sau khi thuyết tương đối rộng được đưa ra lần đầu tiên, Karl Schwarzschild (ông đã mất ngay sau khi mắc bệnh ở mặt trận với Nga trong đại chiến thế giới lần thứ nhất) đã tìm thấy một nghiệm của các phương trình trường của thuyết tương đối rộng biểu diễn cho một hố đen. Trong rất nhiều năm, người ta không hiểu hoặc không nhận ra tầm quan trọng của những điều mà Schwarzschild đã tìm ra. Bản thân Einstein cũng không bao giờ tin vào các hố đen và quan điểm của ông cũng được phần lớn các nhà khoa học có uy tín về thuyết tương đối chia sẻ. Tôi còn nhớ chuyến đi Paris để trình bày một báo cáo về phát hiện của tôi cho rằng thuyết lượng tử ngụ ý các hố đen không hoàn toàn đen. Báo cáo của tôi khá tẻ nhạt vì vào lúc đó gần như không có ai ở Paris tin vào các hố đen. Người Pháp còn cảm thấy rằng cái tên trou noir mà họ dịch ra tiếng Pháp có nghĩa hơi tục tĩu và nên thay bằng cái tên astre occlu tức là “ngôi sao ẩn” (hidden star). Tuy vậy, dù là ngôi sao ẩn hoặc bất kỳ tên nào khác cũng không nhận được sự nhìn nhận của công chúng bằng cái tên hố đen. Đây là tên do Archibald Wheeler đưa ra. Ông là một nhà vật lý Mỹ, người đã gây nhiều cảm hứng cho các công trình trong lĩnh vực này.</p>
+<p><em>JOHN WHEELER</em></p>
+<p><em>John Chibald Wheeler sinh năm 1911 tại Jacksonville, Florida, Hoa Kỳ. Ông lấy bằng tiến sỹ về tán xạ của ánh sáng lên nguyên tử Helium ở đại học John Hopkins năm 1933. Năm 1938 ông làm việc cùng nhà vật lý Đan Mạch Niels Bohr để phát triển lý thuyết phân hạch. Sau đó một thời gian, ông làm việc cùng với sinh viên của ông là Richard Feynman, tập trung nghiên cứu nhiệt động học; nhưng ngay sau khi Hoa Kỳ tham gia đại chiến thế giới 2, cả hai đều đóng góp vào sự án Mahattan.</em></p>
+<p><em>Vào những năm đầu thập kỷ 50, lấy cảm hứng từ công trình về sự suy sụp hấp dẫn của những ngôi sao nặng của Robert Oppenheimer vào năm 1939, Wheeler chuyển sang thuyết tương đối rộng của Einstein. Vào thời gian đó, phần lớn các nhà vật lý đều nghiên cứu vật lý hạt nhân và thuyết tương đối rộng không thực sự được coi là phù hợp với thế giới vật lý. Nhưng gần như một mình Wheeler đơn thương độc mã làm thay đổi lĩnh vực nghiên cứu thông qua các công trình của ông và thông qua việc giảng dạy khóa học đầu tiên về thuyết tương đối ở đại học Princeton.</em></p>
+<p><em>Rất lâu sau, vào năm 1969, ông đưa ra khái niệm “hố đen”, mà lúc bấy giờ chỉ có một số ít người tin rằng nó tồn tại, để chỉ trạng thái suy sụp của vật chất. Và từ công trình của Werner Israel, ông dự đoán rằng hố đen không có tóc, ám chỉ trạng thái suy sụp cả bất kỳ ngôi sao nặng không quay nào cũng có thể được mô tả bằng nghiệm Schswarzschild.</em></p>
+<p>Sự phát hiện ra các quasar vào năm 1963 đã gây ra một cuộc bùng phát các nghiên cứu lý thuyết về hố đen và các nỗ lực quan sát để nhìn thấy chúng (hình 4.10). Đây là bức tranh được ghép lại. Hãy xem xét những điều chúng ta tin về lịch sử của một ngôi sao có khối lượng lớn gấp hai mươi lần khối lượng mặt trời. Các ngôi sao như vậy được hình thành từ các đám mây khí như là các ngôi sao trong tinh vân Thiên Lang (Orion, hình 4.11). Khi các đám mây khí co lại dưới lực hấp dẫn của chính bản thân chúng, các khí này sẽ nung nóng và thậm chí trở nên đủ nóng để khởi động phản ứng nhiệt hạch biến hydro thành helium. Nhiệt tạo bởi quá trình này gây nên một áp suất giúp ngôi sao chống trọi lại lực hấp dẫn của nó và làm cho ngôi sao không bị co thêm nữa. Ngôi sao sẽ ở trạng thái này trong một thời gian dài, đốt cháy hydro và bức xạ ánh sáng vào không gian.</p>
+<figure>
+    <img alt="alt text" src="../img/image-101.png" />  <br />
+    <figcaption>(Hình 4.10)</figcaption>
+    <figcaption>Quasar 3C273, nguồn phát sóng vô tuyến giả sao đầu tiên được phát hiện, phát ra một năng lượng rất lớn trong một vùng nhỏ. Cơ chế duy nhất để giải thích hiện tượng độ sáng cao như thế là vật chất đang rơi vào hố đen.</figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-102.png" />
+    <figcaption>(Hình 4.11)</figcaption>
+    <figcaption>Các ngôi sao được hình thành từ các đám bụi khí giống như tinh vân Thiên Lang.</figcaption>
+</figure>
+<p>Trường hấp dẫn của ngôi sao sẽ ảnh hưởng đến đường truyền của chùm sáng phát ra từ ngôi sao đó. Ta có thể vẽ một giản đồ với thời gian là trục thẳng đứng, khoảng cách từ tâm của ngôi sao là trục nằm ngang (hình 4.12). Trong giản đồ này, bề mặt của ngôi sao được biểu diễn bằng hai đường thẳng đứng nằm hai bên của tâm sao. Ta có thể đo thời gian bằng giây và khoảng cách bằng “giây ánh sáng” - khoảng cách mà ánh sáng đi được trong một giây. Khi ta dùng các đơn vị này thì tốc độ của ánh sáng là 1; tức là, tốc độ của ánh sáng là một giây ánh sáng trên giây. Giản đồ ngụ rằng, ở phía xa ngôi sao, xa trường hấp dẫn của nó thì đường truyền của tia sáng trên giản đồ là một đường thẳng tạo với trục thẳng đứng một góc 45 độ. Tuy nhiên, gần ngôi sao thì độ cong của không thời gian do khối lượng của ngôi sao gây ra sẽ làm thay đổi đường truyền của các tia sáng và làm cho chúng tạo với phương thẳng đứng một góc hẹp hơn.</p>
+<figure>
+    <img alt="alt text" src="../img/image-103.png" />
+    <figcaption>(Hình 4.12)</figcaption>
+    <figcaption>Không thời gian xung quanh một ngôi sao không bị suy sập. Ánh sáng có thể thoát ra từ bề mặt ngôi sao (đường thẳng đứng màu đỏ). Ở xa ngôi sao, ánh sáng tạo với phương thẳng đứng một góc 45 độ, nhưng ở gần ngôi sao, khối lượng của ngôi sao làm cong không thời gian làm cho các tia sáng làm một góc nhỏ hơn với phương thẳng đứng.</figcaption>
+</figure>
+<p>Các ngôi sao nặng sẽ đốt cháy hydro thành helium nhanh hơn mặt trời rất nhiều. Điều này có nghĩa là chúng sẽ cạn kiệt hydro chỉ trong một thời gian ngắn khoảng vài trăm triệu năm. Sau đó, các ngôi sao này sẽ đối mặt với một cuộc khủng hoảng. Chúng có thể đốt helium thành các nguyên tố nặng hơn như là carbon và oxygen, nhưng các phản ứng hạt nhân này không giải thoát nhiều năng lượng, do đó các ngôi sao sẽ mất nhiệt và mất đi áp suất nhiệt giúp ngôi sao chống lại lực hấp dẫn. Do đó các ngôi sao trở nên nhỏ hơn. Nếu khối lượng của chúng lớn hơn hai lần khối lượng mặt trời thì áp suất sẽ không bao giờ đủ để ngăn chặn quá trình co lại. Chúng sẽ suy sụp thành một điểm với mật độ vô hạn tạo nên cái gọi là điểm kỳ dị (hình 4.13). Trong giản đồ thời gian theo khoảng cách từ tâm ngôi sao, khi một ngôi sao co lại thì đường truyền của các tia sáng từ bề mặt ngôi sao sẽ tạo với đường thẳng đứng những góc nhỏ hơn và nhỏ hơn. Khi ngôi sao đạt đến một bán kính tới hạn xác định thì các đường truyền của tia sáng sẽ là đường thẳng đứng trên giản đồ, tức là ánh sáng sẽ đi trên một khoảng các cố định với tâm ngôi sao mà không bao giờ có thể thoát đi được. Đường truyền tới hạn của tia sáng sẽ lướt trên một bề mặt được gọi là chân trời sự kiện (event horizon) phân cách vùng không thời gian mà ánh sáng có thể thoát khỏi ngôi sao và vùng không thời gian mà ánh sáng không thể thoát được. Bất kỳ một tia sáng nào được ngôi sao phát đi sau khi đi qua chân trời sự kiện sẽ bị bẻ cong trở lại bởi độ cong của không thời gian. Ngôi sao sẽ trở thành một trong những ngôi sao đen của Michell, hoặc như ngày nay chúng ta nói, một hố đen.</p>
+<figure>
+    <img alt="alt text" src="../img/image-104.png" />  <br />
+    <figcaption>(Hình 4.13)</figcaption>
+    <figcaption>Nếu một ngôi sao suy sập (đường màu đỏ cắt nhau tại một điểm) không thời gian bị bẻ cong đến nỗi ánh sáng gần bề mặt bị hướng vào trong. Một hố đen được hình thành, một vùng không thời gian mà ánh sáng từ đó không thể thoát ra được.</figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-105.png" />
+    <figcaption>Chân trời là vùng biên giới của một hố đen được hình thành bởi các tia sáng chỉ chớm không thoát khỏi hố đen và giữ một khoảng cách không đổi với tâm của hố đen.</figcaption>
+</figure>
+<p>Làm thế nào để có thể ghi nhận một hố đen nếu không một tia sáng nào có thể thoát khỏi nó? Câu trả lời là hố đen vẫn tạo ra một lực hút hấp dẫn không đổi lên các vật thể lân cận khi ngôi sao bị suy sụp. Nếu mặt trời là một hố đen hoặc trở thành một hố đen mà không mất đi khối lượng của nó thì thì các hành tinh vẫn quay như chúng đang quay hiện nay.</p>
+<p>Có một cách để tìm kiếm các hố đen đó là tìm kiếm vật chất quay xung quanh một vật thể khổng lồ, đặc và không nhìn thấy. Người ta đã quan sát rất nhiều các hệ như thế. Có lẽ ấn tượng nhất là các hố đen khổng lồ xuất hiện ở tâm của các thiên hà và các quasar (hình 4.15).</p>
+<figure>
+    <img alt="alt text" src="../img/image-106.png" />
+    <figcaption>(Hình 4.15) MỘT HỐ ĐEN Ở TÂM THIÊN HÀ</figcaption>
+</figure>
+<ul>
+<li>Trái: Phát hiện thiên hà NGC 4151 từ ống kính thiên hà trường rộng.</li>
+<li>Giữa: Đường nằm ngang bức hình là ánh sáng phát ra từ một hố đen ở tâm thiên hà 4151.</li>
+<li>Phải: Hình này cho thấy tốc độ phát ra oxygen. Tất cả các bằng chứng đều cho thấy rằng NGC 4151 có chứa một hố đen có khối lượng bằng một trăm triệu lần khối lượng mặt trời.</li>
+</ul>
+<p>Các tính chất của hố đen đã được thảo luận cho đến nay không gây nên vấn đề lớn nào cho quyết định luận. Thời gian sẽ kết thúc đối với nhà du hành vũ trụ rơi vào hố đen và chạm vào điểm kỳ dị. Tuy nhiên, trong thuyết tương đối, người ta hoàn toàn tự do khi đo thời gian với các tốc độ khác nhau và tại các địa điểm khác nhau. Do đó, người ta có thể tăng tốc đồng hồ của nhà du hành vũ trụ khi anh ta hoặc cô ta tiến đến gần điểm kỳ dị, vậy nên, người ta vẫn ghi nhận được khoảng thời gian vô tận. Trên giản đồ thời gian - khoảng cách (hình 4.14), các mặt phẳng mà tại đó thời gian là hằng số sẽ rất dày đặc tại trung tâm - bên dưới điểm mà tại đó kỳ dị xuất hiện. Nhưng các mặt phẳng đó lại phù hợp với phép đo thời gian thông thường tại vùng không thời gian gần phẳng cách xa hố đen.</p>
+<figure>
+    <img alt="alt text" src="../img/image-107.png" />\
+    <img alt="alt text" src="../img/image-108.png" />
+    <figcaption>Hình minh họa một nhà du hành hạ cách xuống một ngôi sao đang suy sập vào hồi 11 giờ 59 phút 57 giây và chạm vào ngôi sao đang co lại tới bán kính tới hạn mà tại đó hấp dẫn mạnh đến nỗi không một tín hiệu nào có thể thoát ra được. Nhà du hành gửi tín hiệu từ đồng hồ của anh ta về phi thuyền đang quay cách quanh ngôi sao một khoảng cách tương đối lớn.</figcaption>
+    <figcaption>Một ai đó đang nhìn ngôi sao từ phía xa sẽ không bao giờ nhìn thấy nó đi qua đường chân trời vào hố đen. Thay vào đó, ngôi sao có vẻ như lượn lờ bên ngoài kích thước tới hạn và đồng hồ trên bề mặt ngôi sao sẽ chậm dần rồi tắt hẳn.</figcaption>
+</figure>
+<p>Ta có thể dùng thời gian trong vùng không thời gian gần phẳng cho phương trình Schrodinger và tình hàm sóng tại các thời điểm sau đó nếu ta biết thời gian trước đó. Do đó, ta vẫn có quyết định luận. Tuy vậy, cũng đáng lưu ý rằng, tại các thời điểm sau, một phần của hàm sóng lại ở bên trong hố đen - nơi mà không ai bên ngoài có thể quan sát thấy hàm sóng đó. Vì thế, một người quan sát - người đủ nhạy cảm để không bị rơi vào hố đen, không thể chạy ngược phương trình Schrodinger để tính hàm sóng tại các thời điểm trước đó. Để làm điều đó, anh ta hoặc cô ta cần biết phần của hàm sóng nằm bên trong hố đen. Phần hàm sóng này có chứa các thông tin về những cái rơi vào hố đen. Rất có khả năng đó là một lượng lớn các thông tin vì hố đen với khối lượng và tốc độ quay đã cho có thể được tạo thành từ rất nhiều tập hợp các hạt khác nhau; hố đen không phụ thuộc vào bản chất vật thể suy sụp để tạo nên nó. John Wheeler gọi kết quả này là “hố đen không có tóc”. Đối với người Pháp, điều này khẳng định các mối nghi ngờ của họ.</p>
+<figure>
+    <img alt="alt text" src="../img/image-109.png" />
+    <figcaption>Hố đen không có tóc</figcaption>
+</figure>
+<p>Khó khăn cho quyết định luận xuất hiện khi tôi thấy rằng các hố đen không phải là hoàn toàn đen. Như là ta đã thấy trong chương 2, thuyết lượng tử ngụ ý rằng các trường có thể không hoàn toàn bằng không ngay cả trong cái mà ta gọi là chân không. Nếu chúng bằng không thì chúng sẽ có cả vị trí tại điểm không và tốc độ thay đổi hay còn gọi là vận tốc cũng bằng không. Điều ngày vi phạm nguyên lý bất định nói rằng người ta không thể xác định chính xác vận tốc và vị trí. Thay vào đó, tất cả các trường cần phải có một cái gọi là thăng giáng chân không nhất định (tương tự như là con quay trong chương 2 phải có thăng giáng điểm không). Thăng giáng chân không có thể được giải thích theo một vài cách có vẻ khác nhau nhưng thực tế là chúng tương đương với nhau về mặt toán học. Trên quan điểm thực chứng, ta không bị bó buộc khi sử dụng bất kỳ mô hình nào hiệu quả nhất cho bài toán đặt ra. Trong trường hợp này, sẽ rất có ích khi coi thăng giáng chân không như các cặp hạt ảo xuất hiện cùng nhau tại một điểm trong không thời gian, chuyển động ra xa nhau rồi quay trở lại với nhau và hủy nhau lẫn nhau. “Ảo” có nghĩa là các hạt này không thể được quan sát một cách trực tiếp, nhưng ta có thể đo được các hiệu ứng gián tiếp, và các phép đo này phù hợp với các tiên đoán lý thuyết với một độ chính xác đáng kể (hình 4.16).</p>
+<figure>
+    <img alt="alt text" src="../img/image-110.png" />  <br />
+    <figcaption>(Hình 4.16) Trong không gian trống rỗng, các cặp hạt xuất hiện trong khoảnh khắc rồi hủy lẫn nhau.</figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-111.png" />  <br />
+    <figcaption>(Hình 4.17) Các hạt ảo xuất hiện và hủy lẫn nhau ở gần chân trời sự kiện của hố đen.</figcaption>
+    <figcaption>Một hạt bị rơi vào hố đen trong khi hạt kia thoát ra ngoài. Từ bên ngoài chân trời sự kiện dường như hố đen đang bức xạ các hạt ra không gian.</figcaption>
+</figure>
+<p>Nếu hố đen hiện diện thì một thành phần của cặp hạt có thể bị rơi vào hố đen để lại thành phần kia tự do thoát vào vô tận (hình 4.17). Đối với một người ở phía xa hố đen thì hạt thoát ra kia dường như được phát xạ từ hố đen. Ta trông đợi phổ của hố đen chính là phổ của một vật nóng với nhiệt độ tỷ lệ với trường hấp dẫn tại chân trời sự kiện - biên giới của hố đen. Nói cách khác, nhiệt độ của hố đen phụ thuộc vào kích thước của nó.</p>
+<div style="text-align: center;">NHIỆT ĐỘ CỦA HỐ ĐEN</div>
+
+<p>Hố đen phát xạ giống như một vật nóng có nhiệt độ (<span class="arithmatex">\(T\)</span>) và chỉ phụ thuộc vào khối lượng của nó. Nói chính xác hơn là nhiệt độ đó cho bởi công thức sau:</p>
+<div class="arithmatex">\[
+T = $\dfrac{hc3}{8{\pi}kGM}
+\]</div>
+<p>Trong công thức này:
+- (<span class="arithmatex">\(c\)</span>) là vận tốc ánh sáng
+- (<span class="arithmatex">\(h\)</span>) là hằng số Plank
+- (<span class="arithmatex">\(G\)</span>) là hằng số hấp dẫn Newton
+- (<span class="arithmatex">\(k\)</span>) là hằng số Boltzman.</p>
+<p>Cuối cùng là (<span class="arithmatex">\(M\)</span>) là khối lượng của hố đen, do đó, hố đen càng nhỏ thì nhiệt độ càng cao. Công thức này cho chúng ta thấy rằng, nhiệt độ của một hố đen có khối lượng bằng vài lần khối lượng mặt trời có nhiệt độ chỉ khoảng một phần triệu độ trên không độ tuyệt đối.</p>
+<p>Một hố đen có khối lượng gấp vài lần khối lượng mặt trời sẽ có nhiệt độ khoảng một phần triệu độ trên không độ tuyệt đối, và một hố đen lớn hơn lại có nhiệt độ thấp hơn. Do vậy, bất kỳ bức xạ lượng tử nào từ các hố đen như thế sẽ bị chìm hoàn toàn trong bức xạ 2,7 độ còn sót lại từ vụ nổ lớn - bức xạ phông vũ trụ mà ta đã thảo luận trong chương 2. Ta có thể ghi được bức xạ từ các hố đen nhỏ hơn và nóng hơn, nhưng dường như không có nhiều các hố đen như thế. Thật đáng tiếc! Nếu người ta phát hiện ra một hố đen thì tôi sẽ được giải Nobel. Tuy nhiên chúng ta vẫn có những bằng chứng khả quan gián tiếp về bức xạ này, bằng chứng này đến từ vũ trụ sơ khai. Như đã mô tả trong chương 3, người ta cho rằng vào những giai đoạn rất sớm trong lịch sử, vũ trụ trải qua một thời kỳ lạm phát, khi đó vũ trụ giãn nở với một tốc độ chưa từng có. Quá trình giãn nở trong thời kỳ này nhanh đến nỗi một số vật thể ở quá xa chúng ta và ánh sáng của chúng không bao giờ đến được với chúng ta. Vũ trụ giản nở quá nhiều và quá nhanh trong khi ánh sáng từ chúng truyền vẫn hướng về chúng ta. Do đó sẽ có một chân trời trong vũ trụ giống như chân trời của hố đen, phân cách vùng mà ánh sáng từ đó có thể đến với chúng ta và vùng mà ánh sáng không thể đến với ta được (hình 4.18).</p>
+<figure>
+    <img alt="alt text" src="../img/image-112.png" />  <br />
+    <figcaption>(Hình 4.18) Nghiệm “de Sitter” của các phương trình trường của thuyết tương đối biểu diễn một vũ trụ giãn nở theo kiểu lạm phát. Trên giản đồ, thời gian hướng lên trên và kích thước của vũ trụ theo phương nằm ngang. Khoảng cách về không gian tăng nhanh đến mức ánh sáng từ các thiên hà xa xôi không bao giờ có thể đến với chúng ta, và do đó, có một chân trời sự kiện giống chân trời sự kiện của hố đen, một biên giới ngăn cách những vùng vũ trụ ta không thể quan sát được.</figcaption>
+</figure>
+<p>Các lập luận tương tự cho thất rằng có một bức xạ nhiệt từ chân trời này giống như bức xạ nhiệt từ chân trời của hố đen. Từ bức xạ nhiệt, chúng ta muốn biết phổ đặc trưng của các thăng giáng mật độ. Ở đây, các thăng giáng mật độ này cũng giãn nở cùng vũ trụ. Khi kích thước của chúng trở lên lớn hơn kích thước của chân trời sự kiện thì chúng sẽ bị đóng băng, cho nên ngày nay ta có thể thấy chúng như là những thăng giáng nhỏ trong nhiệt độ của bức xạ phông vũ trụ còn lại từ thời kỳ sơ khai của vũ trụ. Các thăng giáng quan sát phù hợp với các tiên đoán về thăng giáng nhiệt với độ chính xác cao.</p>
+<p>Thậm chí nếu bằng chứng thực nghiệm về bức xạ của hố đen không trực tiếp cho lắm thì tất cả những ai nghiên cứu vấn đề này đều đồng ý rằng bằng chứng đó cần phải phù hợp với các lý thuyết khác mà đã được kiểm chứng bằng các quan sát. Điều này có ý nghĩa rất quan trọng đối với quyết định luận. Bức xạ từ hố đen sẽ mang năng lượng đi, điều này có nghĩa là hố đen sẽ mất năng lượng và trở nên nhỏ đi. Và sự nhỏ đi này, đến lượt nó, có nghĩa là nhiệt độ của hố đen sẽ tăng và tốc độ bức xạ cũng sẽ tăng. Cuối cùng thì hố đen sẽ giảm đến khối lượng bằng không. Lúc đó thì ta không biết làm thế nào để có thể tính được việc gì sẽ xảy ra, nhưng kết quả duy nhất hợp lý và đương nhiên là hố đen dường như biến mất hoàn toàn. Thế thì cái gì sẽ xảy ra sau đó đối với phần hàm sóng nằm trong hố đen và thông tin về những cái đã rơi vào hố đen mà phần hàm sóng đó có? Dự đoán đầu tiên có thể là phần hàm sóng này, và các thông tin mà nó mang, sẽ thoát ra khi hố đen cuối cùng thì cũng biến mất. Tuy nhiên, thông tin không được truyền đi một cách miễn phí, người ta nhận ra điều đó khi nhận được hóa đơn điện thoại!</p>
+<figure>
+    <img alt="alt text" src="../img/image-113.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Thông tin cần năng lượng mang nó đi và lại có rất ít năng lượng còn sót lại ở trạng thái cuối cùng của hố đen. Cách duy nhất có vẻ hợp lý để thông tin bên trong có thể đi được ra ngoài là nó sẽ thoát ra liên tục với bức xạ chứ không đợi đến trạng thái cuối cùng này. Tuy nhiên, theo bức tranh về một hạt của cặp hạt ảo bị rơi vào hố đen và hạt kia thoát ra ngoài, ta không trông đợi hạt thoát ra ngoài có liên hệ với hạt bị rơi vào hố đen hoặc mang đi thông tin về hạt bị rơi vào hố đen. Do vậy câu trả lời duy nhất dường như là thông tin của phần hàm sóng bên trong hố đen bị mất (hình 4.19).</p>
+<figure>
+    <img alt="alt text" src="../img/image-114.png" />  <br />
+    <figcaption>(Hình 4.19) Bức xạ nhiệt từ chân trời sự kiện của hố đen mang năng lượng dương đi làm giảm khối lượng của nó. Vì mất đi khối lượng, nhiệt độ của hố đen tăng lên và tốc độ bức xạ cũng gia tăng làm cho khối lượng của nó giảm đi càng nhanh. Chúng ta không biết điều gì xảy ra nếu khối lượng trở lên cực nhỏ, nhưng kết quả hợp lý nhất có thể là hố đen biến mất hoàn toàn.</figcaption>
+</figure>
+<p>Sự mất mát thông tin như thế có hàm ý rất quan trọng với quyết định luận. Để bắt đầu, ta hãy lưu ý rằng, thậm chí, nếu bạn biết hàm sóng sau khi hố đen biến mất thì bạn cũng không thể chạy ngược phương trình Schrodinger và tính xem hàm sóng đó như thế nào trước khi hố đen được hình thành. Hàm sóng trước đó phụ thuộc một phần vào hàm sóng bị mất trong hố đen. Chúng ta đã từng nghĩ là chúng ta biết quá khứ một cách chính xác. Tuy nhiên, nếu thông tin bị mất trong hố đen thì suy nghĩ đó không còn đúng nữa. Bất kỳ điều gì cũng có thể xảy ra.</p>
+<p>Mặc dù vậy thì nói chung mọi người như là các nhà du hành vũ trụ và những người tư vấn cho họ quan tâm đến việc tiên đoán tương lai hơn là xem xét lại quá khứ. Thoạt nhìn, có vẻ như là việc mất một phần hàm sóng trong hố đen không ngăn cản chúng ta tiên đoán hàm sóng bên ngoài hố đen. Nhưng hóa ra sự mất mát này lại tác động đến tiên đoán như thế, như chúng ta sẽ thấy khi ta xem xét một thí nghiệm về tư duy do Einstein, Boris Podolsky và Nathan Rosen đề xuất vào những năm 1930.</p>
+<p>Hãy hình dung một nguyên tử phóng xạ phân rã và phát ra hai hạt đi theo hai hướng ngược nhau với spin cũng ngược nhau. Một người quan sát mà chỉ nhìn vào một hạt thì không thể tiên đoán hạt đó sẽ quay phải hay quay trái. Nếu người quan sát đo được một hạt quay phải thì anh ta hoặc cô ta có thể đoán chắc chắn là hạt kia sẽ quay trái, và ngược lại (hình 4.20). Einstein cho rằng điều này chứng minh thuyết lượng tử thật nực cười: giả sử bây giờ hạt kia ở phía bên kia của thiên hà, người ta vẫn có thể biết ngay tức thì hướng quay của nó. Tuy vậy, phần lớn các nhà khoa học đồng ý rằng chính Einstein lầm lẫn chứ không phải thuyết lượng tử. Thí nghiệm về tư duy Einstein-Podolsky-Rosen không chứng minh rằng người ta có thể gửi thông tin nhanh hơn ánh sáng. Mà đó chính là điều nực cười. Người ta không thể chọn hạt quay phải để quan sát nên người ta không thể đoán trước được hạt ở phía xa người quan sát sẽ quay trái.</p>
+<figure>
+    <img alt="alt text" src="../img/image-115.png" />  <br />
+    <figcaption>(Hình 4.20) Trong thí nghiệm tư duy Einstein-Podolsky-Rosen, một người quan sát đo spin của một hạt sẽ biết hướng spin của hạt thứ hai.</figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-116.png" />  <br />
+    <figcaption>(Hình 4.21) Một cặp hạt ảo có một hàm sóng tiên đoán cả hai hạt có spin ngược nhau. Nhưng nếu một hạt bị rơi vào hố đen thì ta không thể đoán được chắc chắn spin của hạt còn lại</figcaption>
+</figure>
+<p>Trên thực tế, thí nghiệm về tư duy này chính là những điều xảy ra với bức xạ hố đen. Cặp hạt ảo sẽ có một hàm sóng tiên đoán rằng hai hạt đó sẽ mãi có spin ngược nhau (hình 4.21). Điều mà chúng ta muốn làm đó là đoán spin và hàm sóng của hạt thoát ra. Ta có thể làm được điều này nếu ta có thể quan sát được hạt bị rơi vào hố đen. Nhưng hạt đó ở trong hố đen thì ta không thể đo được spin và hàm sóng của nó. Vậy nên ta không thể tiên đoán spin và hàm sóng của hạt thoát ra. Hạt đó có thể có các spin khác, các hàm sóng khác với các xác suất khác nhau, nhưng nó không có một spin hoặc một hàm sóng duy nhất. Vậy nên, khả năng tiên đoán tương lai của chúng ta dường như bị giới hạn hơn. Ý tưởng cổ điển của Laplace về việc ta có thể tiên đoán cả vị trí và vận tốc của hạt cần phải thay đổi khi nguyên lý bất định cho thấy rằng ta không thể đo chính xác cả vị trí và vận tốc. Tuy nhiên, người ta vẫn có thể đo được hàm sóng và sử dụng phương trình Schrodinger để biết tương lai sẽ như thế nào. Điều này cho phép ta chắc chắn đoán được tổ hợp của vị trí và vận tốc - đó là một nửa của những điều có thể đoán trước theo ý tưởng của Laplace. Chắc chắn là ta có thể tiên đoán các hạt có spin ngược nhau, nhưng nếu một hạt bị rơi vào hố đen thì chúng ta không thể tiên đoán chắc chắn về hạt còn lại. Điều này có nghĩa là người ta không thể tiên đoán chắc chắn bất kỳ phép đo nào bên ngoài hố đen: khả năng tiên đoán chắc chắn của chúng ta bị giảm về không. Do vậy ngành chiêm tinh học có thể tiên đoán tương lai không tồi hơn các định luật khoa học.</p>
+<p>Nhiều nhà vật lý không thích sự suy giảm trong quyết định luận và do đó, họ cho rằng thông tin về những thứ bên trong có thể thoát ra ngoài bằng cách nào đó. Trong nhiều năm, người ta hảo vọng tìm thấy cách để cứu lấy thông tin. Nhưng vào năm 1996, Andrew Strominger và Cumrun Vafa đã thực hiện một cải tiến quan trọng. Họ coi một hố đen được tạo nên bởi các thành phần được gọi là các màng-p (p-branne: xem trang 54).</p>
+<figure>
+    <img alt="alt text" src="../img/image-117.png" />  <br />
+    <figcaption>(Hình 4.22) Các hố đen có thể được coi như là phần giao nhau của các màng-p trong các chiều bổ sung của không thời gian. Thông tin về các trạng thái bên trong hố đen có thể được lưu trữ dưới dạng các sóng trên màng-p.</figcaption>
+</figure>
+<p>Nhắc lại là ta có thể hình dung về các màng-p như là các tấm chuyển động trong không gian ba chiều và trong bảy chiều bổ sung mà ta không để ý (hình 4.22). Trong một số trường hợp nhất định, ta có thể chứng minh rằng số các sóng trên các màng-p bằng lượng thông tin mà ta trông đợi hố đen có. Nếu các hạt đập vào màng-p, các hạt đó sẽ tạo ra thêm các sóng trên các màng đó. Tương tự, nếu các sóng đang chuyển động theo các hướng khác nhau trên các màng-p mà gặp nhau tại một điểm nào đó thì chúng có thể tạo nên một đỉnh sóng lớn đến nỗi làm cho một phần của màng-p bị đứt và thoát ra ngoài như một hạt. Vậy nên các màng-p có thể hấp thụ và phát xạ các hạt giống như hố đen (hình 4.23).</p>
+<figure>
+    <img alt="alt text" src="../img/image-119.png" />
+    <figcaption>(Hình 4.23) Một hạt bị rơi vào hố đen có thể được coi như một vòng dây kín đập vào màng-p (1). Nó kích thích một sóng trên màng-P (2). Các sóng đó có thể đi với nhau làm cho một phần của màng-p bị đứt ra tạo một vòng dây kín (3). Đấy là một hạt thoát ra khỏi hố đen.</figcaption>
+</figure>
+<figure>
+    <img alt="alt text" src="../img/image-118.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Ta có thể coi các màng-p như là một lý thuyết hiệu dụng; tức là, chúng ta không cần tin rằng thực sự có các màng tí hon chuyển động trong một không thời gian phẳng hay không, thì các hố đen vẫn có thể xử sự như thể chúng được tạo thành từ các màng như vậy. Giống như nước vậy, nước được tạo thành từ hàng tỷ tỷ các phân tử H2O với các tương tác phức tạp. Nhưng mô hình chất lỏng liên tục là mô hình hiệu dụng rất tốt. Mô hình toán học về các hố đen cho rằng chúng được tạo thành từ các màng-p cho các kết quả tương tự với mô hình cặp hạt ảo được mô tả trước đây. Do đó, trên quan điểm thực chứng, đây cũng là một mô hình rất tốt, ít nhất là đối với một số loại hố đen nhất định. Đối với loại hố đen đó, mô hình màng-p tiên đoán một cách chính xác tốc độ phát xạ mà mô hình cặp hạt ảo đưa ra. Tuy nhiên, có một sự khác nhau quan trọng: trong mô hình màng-p, thông tin về những cái rơi vào hố đen được lưu trữ bởi hàm sóng của các sóng trên các màng-p. Các màng-p được coi như là các tấm trong không gian phẳng, và vì lý do đó, thời gian sẽ trôi đi một cách trơn tru, đường truyền của các tia sáng sẽ không bị bẻ cong, và thông tin trong các sóng sẽ không bị mất. Thay vào đó, cuối cùng thì thông tin hiện ra từ hố đen theo các bức xạ từ các màng-p. Vậy nên, theo mô hình màng-p, chúng ta có thể sử dụng phương trình Schrodinger để tính hàm sóng tại các thời điểm sau đó. Không có gì bị mất cả, thời gian sẽ quay đều đặn. Chúng ta sẽ có một quyết định luận hoàn hảo theo nghĩa lượng tử.</p>
+<figure>
+    <img alt="alt text" src="../img/image-120.png" />  <br />
+    <figcaption></figcaption>
+</figure>
+<p>Thế thì bức tranh nào trong hai bức tranh trên là đúng? Một phần hàm sóng sẽ bị mất trong hố đen hay tất cả các thông tin sẽ thoát ra như màng-p dự đoán? Đây là một trong những câu hỏi nổi cộm nhất trong vật lý lý thuyết ngày nay. Nhiều người tin rằng công trình gầy đây cho thấy thông tin sẽ không bị mất. Thế giới là an toàn và có thể dự đoán được, sẽ không có gì bất ngờ xảy ra. Nhưng điều đó vẫn chưa rõ ràng. Nếu ta chọn thuyết tương đối rộng của Einstein một cách nghiêm túc thì ta phải thừa nhận xác xuất mà không thời gian tự trói mình như một cái nơ và thông tin bị mất trong những nếp gấp. Khi phi thuyền Enterprise đi qua một hố giun, vài điều bất ngờ đã xảy ra. Tôi biết điều đó vì chính tôi đã ở trên phi thuyền đó chơi bài với Newton, Einstein và Data. Tôi đã rất ngạc nhiên. Hãy xem cái gì đã xảy ra ở đầu gối của tôi này!</p>
+<figure>
+    <img alt="alt text" src="../img/image-121.png" />  <br />
+    <figcaption>Một cảnh trong phim Star Trek: The Next Generation, 2001</figcaption>
+</figure>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../5/" class="md-footer__link md-footer__link--next" aria-label="Next: CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dothanhdathp" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.facebook.com/tad.zeila?locale=vi_VN" target="_blank" rel="noopener" title="www.facebook.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256c0 120 82.7 220.8 194.2 248.5V334.2h-52.8V256h52.8v-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4V172c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2V256h83.6l-14.4 78.2H287v175.9C413.8 494.8 512 386.9 512 256"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotation", "content.code.copy", "content.tabs.link", "navigation.tabs", "navigation.instant", "navigation.footer", "navigation.tracking"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.min.js"></script>
+      
+        <script src="../../../assets/scripts/tablesort.js"></script>
+      
+        <script src="../../../assets/scripts/katex.js"></script>
+      
+        <script src="../../../assets/scripts/keyevent.js"></script>
+      
+        <script src="../../../assets/scripts/katex.min.js"></script>
+      
+        <script src="../../../assets/scripts/auto-render.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>
