@@ -1,0 +1,211 @@
+site_name: Tad Zeila Book
+theme:
+  name: material
+  logo: assets/logo/cat_white.png
+  text: Noto Serif Medium
+  code: Roboto Mono Medium
+  highlightjs: true
+  hljs_style: github
+  hljs_style_dark: github-dark
+  palette:
+  - scheme: default
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/brightness-4
+      name: Switch to dark mode
+  - scheme: slate
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/brightness-7
+      name: Switch to light mode
+  features:
+    - content.code.annotation
+    - content.code.copy
+    - content.tabs.link
+    - navigation.tabs
+    - navigation.instant
+    - navigation.footer
+    - navigation.tracking
+
+plugins:
+  - search
+  - plantuml:
+      # puml_url: https://www.plantuml.com/plantuml/
+      puml_url: http://localhost:8080/
+  - graph
+  - macros
+
+nav:
+  # 📖📕📗📘📙📔📚
+  # 📒📓📃📜📄📑📰🔖
+  # ---------- Home ----------
+  - Home:
+    - About me: index.md
+    - Danh sách: list.md
+  - Văn Học:
+    - Danh Sách: Literature/literature-list.md
+    - Trung Quốc:
+      - Tác Giả: Literature/literature-china-author.md
+      - Quỷ Tiết: Literature/literature-china-quy-tiet.md
+  - Khoa Học:
+    - Danh sách: Science/science-list.md
+    - Vũ Trụ Trong Vỏ Hạt Dẻ:
+      - Overview: Science/vu-tru-trong-vo-hat-de/0.md
+      - CHƯƠNG 1 - LƯỢC SỬ VỀ THUYẾT TƯƠNG ĐỐI: Science/vu-tru-trong-vo-hat-de/1.md
+      - CHƯƠNG 2 - HÌNH DÁNG CỦA THỜI GIAN: Science/vu-tru-trong-vo-hat-de/2.md
+      - CHƯƠNG 3 - VŨ TRỤ TRONG MỘT VỎ HẠT: Science/vu-tru-trong-vo-hat-de/3.md
+      - CHƯƠNG 4 - TIÊN ĐOÁN TƯƠNG LAI: Science/vu-tru-trong-vo-hat-de/4.md
+      - CHƯƠNG 5 - BẢO VỆ QUÁ KHỨ: Science/vu-tru-trong-vo-hat-de/5.md
+      - CHƯƠNG 6 - TƯƠNG LAI CỦA CHÚNG TA? CÓ THỂ LÀ STARTREK HAY KHÔNG?: Science/vu-tru-trong-vo-hat-de/6.md
+      - CHƯƠNG 7 - MÀNG VŨ TRỤ MỚI: Science/vu-tru-trong-vo-hat-de/7.md
+      - THUẬT NGỮ: Science/vu-tru-trong-vo-hat-de/8.md
+  - Kỹ Thuật:
+    - Danh sách: Science/science-it-list.md
+    - Book:
+      - High Performance Browser Networking:
+        - Preface:  Science/high-performance-browser-networking/0.md
+        - Networking 101:
+          - 1. Primer on Latency and Bandwidth: Science/high-performance-browser-networking/1.md
+          - 2. Building Blocks of TCP: Science/high-performance-browser-networking/2.md
+          - 3. Building Blocks of UDP: Science/high-performance-browser-networking/3.md
+          - 4. Transport Layer Security (TLS): Science/high-performance-browser-networking/4.md
+          - 5. Introduction to Wireless Networks: Science/high-performance-browser-networking/5.md
+          - 6. Wifi: Science/high-performance-browser-networking/6.md
+          - 7. Mobile Networks: Science/high-performance-browser-networking/7.md
+      - Hiểu biết sâu sắc về Android:
+        - Overview:  Science/hieu-biet-sau-sac-ve-android/0.md
+        - "Chương 1: Chuẩn bị trước khi đọc": Science/hieu-biet-sau-sac-ve-android/1.md
+        - "Chương 2: Hiểu sâu sắc về JNI": Science/hieu-biet-sau-sac-ve-android/2.md
+      - The Scientist and Engineer's Guide to Digital Signal Processing:
+        - Preface: Science/the-scientist-and-engineer-guide-to-digital-signal-processing/0.md
+        - "Chapter 1: The Breadth and Depth of DSP": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/1.md
+        - "Chapter 2: Statistics, Probability and Noise": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/2.md
+    - Paper:
+      - Câu chuyện về Crypto duy nhất bạn cần:
+        - Overview: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/0.md
+        - I. Sổ cái - Bitcoin và Blockchain: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/1.md
+        - II. Nó có nghĩa là gì: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/2.md
+        - III. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/3.md
+        - IV. Sự tin tưởng - Tiền Bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/4.md
+        - V. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/5.md
+        - VI. Sự tin tưởng - Tiền bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/6.md
+      - Android Binder:
+        - 1. Introduction: Science/android-binder/0.md
+        - 2. Multitasking, Processes and Threads: Science/android-binder/1.md
+        - 3. Android: Science/android-binder/2.md
+        - 4. Binder: Science/android-binder/3.md
+        - 5. Implementation of the Binder Framework: Science/android-binder/4.md
+        - 6. Example IPC Message Flow: Science/android-binder/5.md
+        - 7. Discussion: Science/android-binder/6.md
+  - Lập Trình:
+    - Danh Sách: Program/program-list.md
+    - Competitive Programmer's Handbook:
+      - Preface: Program/competitive-programmers-handbook/preface.md
+      - Contents: Program/competitive-programmers-handbook/content.md
+      - Part I - Basic technique:
+        - "Chapter 1: Introduction": Program/competitive-programmers-handbook/1.md
+        - "Chapter 2: Time complexity": Program/competitive-programmers-handbook/2.md
+    - Rust by Example:
+      - Preface: Program/rust-by-example/rust-by-example-00.md
+      - Hello World: Program/rust-by-example/rust-by-example-01.md
+      - Primitives: Program/rust-by-example/rust-by-example-02.md
+      - Meta: Program/rust-by-example/rust-by-example-24.md
+    - "0.1 + 0.2 != 0.3?": Program/Paper/famous-floating-point-problem.md
+  - Bộ Sách:
+    - Khái Lược Những Tư Tưởng Lớn:
+      - Mô tả: Group/KLNTTL/klnttl.md
+      - Kinh Doanh:
+        - Mở đầu: Group/KLNTTL/Kinh-Doanh/0.md
+        - Giới Thiệu: Group/KLNTTL/Kinh-Doanh/1.md
+        - Khởi Đầu Nhỏ: Group/KLNTTL/Kinh-Doanh/2.md
+  - Triết Học:
+    - Overview: Philosophy/philosophy.md
+    - Paper:
+      - Stoicism, Virtue, and Mental Health: Philosophy/stoic-virtue-and-mental-health.md
+    - Chủ Nghĩa Khắc Kỷ:
+        - Chủ Nghĩa Khắc Kỷ - Phong Cách Sống Bản Lĩnh Và Bình Thản:
+          - Lời cảm ơn & Giới thiệu: Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/0.md
+          - "PHẦN MỘT: SỰ HÌNH THÀNH CỦA CHỦ NGHĨA KHẮC KỶ": Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/1.md
+          - "PHẦN HAI: CÁC KỸ THUẬT TÂM LÝ CỦA CHỦ NGHĨA KHẮC KỶ": Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/2.md
+          - "PHẦN BA: LỜI KHUYÊN CỦA CÁC NHÀ KHẮC KỶ": Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/3.md
+          - "PHẦN BỐN: CHỦ NGHĨA KHẮC KỶ TRONG CUỘC SỐNG HIỆN ĐẠI": Philosophy/chu-nghia-khac-ky-phong-cach-song-ban-linh-va-binh-than/4.md
+    - Triết học hiện sinh:
+        - Triết học hiện sinh:
+          - Preface: Philosophy/triet-hoc-hien-sinh/0.md
+          - Chương 1. TRIẾT HỌC HIỆN SINH LÀ GÌ?: Philosophy/triet-hoc-hien-sinh/1.md
+          - Chương 2. NHỮNG ĐỀ TÀI CHÍNH CỦA TRIẾT HIỆN SINH: Philosophy/triet-hoc-hien-sinh/2.md
+          - Chương 3. HAI NGÀNH CỦA PHONG TRÀO TRIẾT HIỆN SINH: Philosophy/triet-hoc-hien-sinh/3.md
+          - Chương 4. KIERKEGAARD ÔNG TỔ HIỆN SINH TRUNG THỰC: Philosophy/triet-hoc-hien-sinh/4.md
+          - Chương 5. NIETZSCHE ÔNG TỔ HIỆN SINH VÔ THẦN: Philosophy/triet-hoc-hien-sinh/5.md
+          - Chương 6. HUSSERL ~ ÔNG TỔ VĂN CHƯƠNG TRIẾT LÝ HIỆN TƯỢNG HỌC: Philosophy/triet-hoc-hien-sinh/6.md
+          - Chương 7. JASPERS HIỆN SINH VÀ SIÊU VIỆT: Philosophy/triet-hoc-hien-sinh/7.md
+          - Chương 8. MARCEL HIỆN SINH VÀ HUYỀN NHIỆM: Philosophy/triet-hoc-hien-sinh/8.md
+          - Chương 9. SARTRE - HIỆN SINH PHI LÝ: Philosophy/triet-hoc-hien-sinh/9.md
+          - Chương 10. HEIDEGGER HIỆN SINH VÀ HIỆN HỮU: Philosophy/triet-hoc-hien-sinh/10.md
+    - "Seneca - Những bức thư đạo đức":
+      - "Seneca - Những bức thư đạo đức (Tập 1)": Philosophy/seneca-nhung-buc-thu-dao-duc-1.md
+  - Bài Viết:
+    - Danh sách: Paper/paper.md
+    - Triết Học:
+      - Chủ nghĩa khắc kỷ, Đức hạnh và Sức khỏe tâm thần: Paper/stoic-virtue-and-mental-health.md
+    - Khoa Học:
+      - Quantum teleportation ...: Paper/paper-240410738.md
+  - Tâm Lý Học:
+    - Danh Sách: Psychology/psychology-list.md
+  - NonFig:
+    - Danh sách: NonFig/nonfig-list.md
+    - Thiên Nga Đen:
+      - LỜI BẠT: NonFig/thien-nga-den/0.md
+      - Phần Mở Đầu - XOAY QUANH BỘ LÔNG CHIM: NonFig/thien-nga-den/1.md
+      - Phần Một - PHẢN THƯ VIỆN CỦA UMBERTO ECO HAY CÁCH CHÚNG TA TÌM KIẾM SỰ PHÊ CHUẨN: NonFig/thien-nga-den/2.md
+    - Những Quy Luật Của Bản Chất Con Người - Robert Greene: NonFig/nhung-quy-luat-cua-ban-chat-con-nguoi/0.md
+  - Tư Duy:
+    - Nghệ Thuật Tư Duy Rành Mạch:
+      - Lởi Mở Đầu: Thinking/nghe-thua-tu-duy-ranh-mach/begin.md
+      - Mục Lục: Thinking/nghe-thua-tu-duy-ranh-mach/toc.md
+      - Nội Dung: Thinking/nghe-thua-tu-duy-ranh-mach/contents.md
+      - Lời Kết: Thinking/nghe-thua-tu-duy-ranh-mach/end.md
+
+extra_css:
+  - assets/stylesheets/theme.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+
+extra_javascript:
+  - assets/scripts/tablesort.min.js
+  - assets/scripts/tablesort.js
+  - assets/scripts/katex.js
+  - assets/scripts/keyevent.js
+  - assets/scripts/katex.min.js
+  - assets/scripts/auto-render.min.js
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/dothanhdathp
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/tad.zeila?locale=vi_VN
+
+copyright:
+  ☕ Made by Tad Zeila!
