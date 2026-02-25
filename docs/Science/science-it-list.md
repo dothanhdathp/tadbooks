@@ -28,6 +28,11 @@
     "android-binder/image/cover.png",
     "/Science/android-binder/0/"
 )}}
+{{ book_card(
+    "Practical Deep Learning for Coders",
+    "fastai/image/cover.webp",
+    "/Science/fastai/0/"
+)}}
 ///
 
 <!-- (https://www.dspguide.com/) -->

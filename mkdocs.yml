@@ -82,6 +82,8 @@ nav:
         - Preface: Science/the-scientist-and-engineer-guide-to-digital-signal-processing/0.md
         - "Chapter 1: The Breadth and Depth of DSP": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/1.md
         - "Chapter 2: Statistics, Probability and Noise": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/2.md
+      - Practical Deep Learning for Coders:
+        - Practical Deep Learning: Science/fastai/0.md
     - Paper:
       - Câu chuyện về Crypto duy nhất bạn cần:
         - Overview: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/0.md

@@ -172,9 +172,17 @@ label.md-nav__link::before {
 img.small-icon {
   width: 120px;
 }
-div.grid.cards {
+img.medium-icon {
+  width: 600px;
+}
+
+.md-typeset div.grid.cards {
   background-color: hsl(var(--h), var(--s), var(--l), 0.2);
 }
+.md-typeset .grid.cards {
+  display: -webkit-box;
+}
+
 .md-typeset .grid.cards-table>ol, .md-typeset .grid.cards-table>ul {
   display: ruby;
   text-align-last: center;
