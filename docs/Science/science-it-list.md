@@ -33,6 +33,11 @@
     "fastai/image/cover.webp",
     "/Science/fastai/0/"
 )}}
+{{ book_card(
+    "SocketCAN Documentation",
+    "img/cover-text.png",
+    "/Science/paper/socketcan-documentation/"
+)}}
 ///
 
 <!-- (https://www.dspguide.com/) -->

@@ -101,6 +101,7 @@ nav:
         - 5. Implementation of the Binder Framework: Science/android-binder/4.md
         - 6. Example IPC Message Flow: Science/android-binder/5.md
         - 7. Discussion: Science/android-binder/6.md
+      - SocketCAN Documentation: Science/paper/socketcan-documentation.md
   - Lập Trình:
     - Danh Sách: Program/program-list.md
     - Competitive Programmer's Handbook:
