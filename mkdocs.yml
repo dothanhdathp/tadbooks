@@ -36,6 +36,7 @@ plugins:
       puml_url: http://localhost:8080/
   - graph
   - macros
+  - markmap
 
 nav:
   # 📖📕📗📘📙📔📚
@@ -46,6 +47,7 @@ nav:
     - Danh sách: list.md
   - Văn Học:
     - Danh Sách: Literature/literature-list.md
+    - Bảng: Literature/literature-table.md
     - Trung Quốc:
       - Tác Giả: Literature/literature-china-author.md
       - Quỷ Tiết: Literature/literature-china-quy-tiet.md
@@ -63,45 +65,43 @@ nav:
       - THUẬT NGỮ: Science/vu-tru-trong-vo-hat-de/8.md
   - Kỹ Thuật:
     - Danh sách: Science/science-it-list.md
-    - Book:
-      - High Performance Browser Networking:
-        - Preface:  Science/high-performance-browser-networking/0.md
-        - Networking 101:
-          - 1. Primer on Latency and Bandwidth: Science/high-performance-browser-networking/1.md
-          - 2. Building Blocks of TCP: Science/high-performance-browser-networking/2.md
-          - 3. Building Blocks of UDP: Science/high-performance-browser-networking/3.md
-          - 4. Transport Layer Security (TLS): Science/high-performance-browser-networking/4.md
-          - 5. Introduction to Wireless Networks: Science/high-performance-browser-networking/5.md
-          - 6. Wifi: Science/high-performance-browser-networking/6.md
-          - 7. Mobile Networks: Science/high-performance-browser-networking/7.md
-      - Hiểu biết sâu sắc về Android:
-        - Overview:  Science/hieu-biet-sau-sac-ve-android/0.md
-        - "Chương 1: Chuẩn bị trước khi đọc": Science/hieu-biet-sau-sac-ve-android/1.md
-        - "Chương 2: Hiểu sâu sắc về JNI": Science/hieu-biet-sau-sac-ve-android/2.md
-      - The Scientist and Engineer's Guide to Digital Signal Processing:
-        - Preface: Science/the-scientist-and-engineer-guide-to-digital-signal-processing/0.md
-        - "Chapter 1: The Breadth and Depth of DSP": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/1.md
-        - "Chapter 2: Statistics, Probability and Noise": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/2.md
-      - Practical Deep Learning for Coders:
-        - Practical Deep Learning: Science/fastai/0.md
-    - Paper:
-      - Câu chuyện về Crypto duy nhất bạn cần:
-        - Overview: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/0.md
-        - I. Sổ cái - Bitcoin và Blockchain: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/1.md
-        - II. Nó có nghĩa là gì: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/2.md
-        - III. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/3.md
-        - IV. Sự tin tưởng - Tiền Bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/4.md
-        - V. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/5.md
-        - VI. Sự tin tưởng - Tiền bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/6.md
-      - Android Binder:
-        - 1. Introduction: Science/android-binder/0.md
-        - 2. Multitasking, Processes and Threads: Science/android-binder/1.md
-        - 3. Android: Science/android-binder/2.md
-        - 4. Binder: Science/android-binder/3.md
-        - 5. Implementation of the Binder Framework: Science/android-binder/4.md
-        - 6. Example IPC Message Flow: Science/android-binder/5.md
-        - 7. Discussion: Science/android-binder/6.md
-      - SocketCAN Documentation: Science/paper/socketcan-documentation.md
+    - High Performance Browser Networking:
+      - Preface:  Science/high-performance-browser-networking/0.md
+      - Networking 101:
+        - 1. Primer on Latency and Bandwidth: Science/high-performance-browser-networking/1.md
+        - 2. Building Blocks of TCP: Science/high-performance-browser-networking/2.md
+        - 3. Building Blocks of UDP: Science/high-performance-browser-networking/3.md
+        - 4. Transport Layer Security (TLS): Science/high-performance-browser-networking/4.md
+        - 5. Introduction to Wireless Networks: Science/high-performance-browser-networking/5.md
+        - 6. Wifi: Science/high-performance-browser-networking/6.md
+        - 7. Mobile Networks: Science/high-performance-browser-networking/7.md
+    - Hiểu biết sâu sắc về Android:
+      - Overview:  Science/hieu-biet-sau-sac-ve-android/0.md
+      - "Chương 1: Chuẩn bị trước khi đọc": Science/hieu-biet-sau-sac-ve-android/1.md
+      - "Chương 2: Hiểu sâu sắc về JNI": Science/hieu-biet-sau-sac-ve-android/2.md
+    - The Scientist and Engineer's Guide to Digital Signal Processing:
+      - Preface: Science/the-scientist-and-engineer-guide-to-digital-signal-processing/0.md
+      - "Chapter 1: The Breadth and Depth of DSP": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/1.md
+      - "Chapter 2: Statistics, Probability and Noise": Science/the-scientist-and-engineer-guide-to-digital-signal-processing/2.md
+    - Practical Deep Learning for Coders:
+      - Practical Deep Learning: Science/fastai/0.md
+    - Câu chuyện về Crypto duy nhất bạn cần:
+      - Overview: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/0.md
+      - I. Sổ cái - Bitcoin và Blockchain: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/1.md
+      - II. Nó có nghĩa là gì: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/2.md
+      - III. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/3.md
+      - IV. Sự tin tưởng - Tiền Bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/4.md
+      - V. Hệ thống tài chính crypto: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/5.md
+      - VI. Sự tin tưởng - Tiền bạc - Cộng đồng: Science/cau-chuyen-ve-crypto-duy-nhat-ban-can/6.md
+    - Android Binder:
+      - 1. Introduction: Science/android-binder/0.md
+      - 2. Multitasking, Processes and Threads: Science/android-binder/1.md
+      - 3. Android: Science/android-binder/2.md
+      - 4. Binder: Science/android-binder/3.md
+      - 5. Implementation of the Binder Framework: Science/android-binder/4.md
+      - 6. Example IPC Message Flow: Science/android-binder/5.md
+      - 7. Discussion: Science/android-binder/6.md
+    - SocketCAN Documentation: Science/paper/socketcan-documentation.md
   - Lập Trình:
     - Danh Sách: Program/program-list.md
     - Competitive Programmer's Handbook:
@@ -202,6 +202,11 @@ extra_javascript:
   - assets/scripts/keyevent.js
   - assets/scripts/katex.min.js
   - assets/scripts/auto-render.min.js
+
+graph:
+  enabled: true
+  output_file: assets/network/graph.json
+  include_homepage: true
 
 extra:
   generator: false
