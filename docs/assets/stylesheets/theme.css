@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: "PrimaryFont";
-  src: url("/assets/fonts/Barlow-Medium.ttf") format("truetype");
+  src: url("/assets/fonts/NotoSerif-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -165,7 +165,7 @@ label.md-nav__link::before {
 :not(pre):not(.hljs) > code {
   color: var(--code-color);
   background-color: var(--code-background-color);
-  font-family: var(--code-font-bold);
+  font-family: var(--md-code-font-family);
 }
 
 /* For git movie display */
