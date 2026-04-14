@@ -4,6 +4,7 @@ theme:
   logo: assets/logo/cat_white.png
   text: Noto Serif Medium
   code: Roboto Mono Medium
+  custom_dir: custom_theme
   highlightjs: true
   hljs_style: github
   hljs_style_dark: github-dark

@@ -227,3 +227,89 @@ img.medium-icon {
     text-transform: uppercase;
   }
 }
+
+
+/* Giao diện vùng nền mờ */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+/* Giao diện khung chứa slide */
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height: auto;
+	background: transparent;
+	border-radius: 0px;
+	overflow: hidden;
+}
+
+/* Giao diện khung chứa slide */
+.modal-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height: auto;
+	background: transparent;
+	border-radius: 0px;
+	overflow: hidden;
+}
+
+/* Close button */
+.close-modal {
+	position: absolute;
+	top: -20px;
+	right: 20px;
+	font-size: 40px;
+	cursor: pointer;
+	color: black;
+	z-index: 1001;
+}
+
+iframe {
+	width: 100%;
+	height: fit-content;
+	border: none;
+	aspect-ratio: 16/9;
+}
+
+/* Giao diện khung chứa book */
+.book-content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 90%;
+	height: auto;
+	background: transparent;
+	border-radius: 0px;
+	overflow: hidden;
+}
+
+/* Close button */
+.book-modal {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	font-size: 0px;
+	cursor: pointer;
+	color: black;
+	z-index: 1001;
+}
+
+iframe.bookframe {
+	width: 100%;
+	height: fit-content;
+	border: none;
+	aspect-ratio: 16/9;
+}
