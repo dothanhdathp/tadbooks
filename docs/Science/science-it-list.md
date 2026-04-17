@@ -26,7 +26,7 @@
 {{ book_card(
     "Android Binder",
     "android-binder/image/cover.png",
-    "/Science/android-binder/0/"
+    "http://localhost:65000/book/android-binder/"
 )}}
 {{ book_card(
     "Practical Deep Learning for Coders",
