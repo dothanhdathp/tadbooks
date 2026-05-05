@@ -41,5 +41,5 @@ def define_env(env):
             </div>'''
     
     @env.macro
-    def book(title, book):
-        return f'''<a href="javascript:void(0);" onclick="openBook('http://localhost:65000/book/{book}/index.html')">⧉ {title}</a>'''
+    def book(title, book, page=""):
+        return f'''[{title}](http://localhost:65000/book/{book}/{page})'''

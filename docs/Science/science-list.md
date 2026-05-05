@@ -104,35 +104,35 @@
     |     | Xin bạn hãy ôm trái tim mình trước đã                       |                  | Chữa Lành |  x  |     |     |     |
     |     | Người nhạy cảm, món quà hay lời nguyền                      |                  | Chữa Lành |  x  |     |     |     |
 === "Khoa Học Kỹ Thuật"
-    |     | Tác Phẩm                                                    |     Tác Gỉả      |  Chủ Đề  |  A  |  B  |  C  |  D  |
-    | :-: | :---------------------------------------------------------- | :--------------: | :------: | :-: | :-: | :-: | :-: |
-    |     | Kỹ Thuật ghi âm                                             |                  | Âm Thanh |     |  x  |     |  x  |
-    |     | Kỹ Thuật trộn và biên tập âm thanh                          |                  | Âm Thanh |     |  x  |     |  x  |
-    |     | 1000 Câu hỏi về tình dục dành cho các cặp đôi               |                  |  Y Sinh  |     |  x  |     |  x  |
-    |     | Khoa học về lối sống                                        |                  |  Y Sinh  |     |  x  |     |  x  |
-    |     | Hiệu ứng Telomere                                           |                  |  Y Sinh  |     |  x  |     |  x  |
-    |     | Cơ sở vật lý I - Cơ học 1                                   |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Cơ sở vật lý II - Cơ học 2                                  |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Cơ sở vật lý III - Nhiệt học                                |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Cơ sở vật lý IV - Điện học 1                                |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Cơ sở vật lý V - Điện học 2                                 |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Cơ sở vật lý VI - Quang học và vật lý lượng tử              |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Sự tiến hóa của vật lý                                      |                  | Khoa Học |     |  x  |     |  x  |
-    |     | Từ điển thiên văn học và vật lý thiên văn                   |                  | Khoa Học |     |  x  |     |  x  |
-    |  x  | [Vũ Trụ trong vỏ hạt dẻ](/Science/vu-tru-trong-vo-hat-de/0) |                  | Khoa Học |  x  |     |     |     |
-    |  x  | Lược sử thời gian                                           |                  | Khoa Học |  x  |     |     |     |
-    |  x  | Các thế giới song song                                      |                  | Khoa Học |  x  |     |     |     |
-    |  x  | Lịch sử vạn vật                                             |                  | Khoa Học |  x  |     |     |     |
-    |     | Thế giới lượng tử kỳ bí                                     |                  | Khoa Học |  x  |     |     |     |
-    |     | Vũ Trụ - Carl Sagan                                         |                  | Khoa Học |  x  |     |     |     |
-    |     | Một vũ trụ khác thường                                      |                  | Khoa Học |  x  |     |     |     |
-    |     | Thuyết tương đối hẹp và rộng                                |                  | Khoa Học |  x  |     |     |     |
-    |  x  | Cuộc chiến lỗ đen                                           |                  | Khoa Học |  x  |     |     |     |
-    |     | Chữ Số Và Thế Giới                                          |                  | Khoa Học |  x  |     |     |     |
-    |     | Geomancia                                                   |                  | Khoa Học |  x  |     |     |     |
-    |     | Sciencia                                                    |                  | Khoa Học |  x  |     |     |     |
-    |     | Hỗn độn và hài hòa                                          | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
-    |     | Những con đường của ánh sáng I                              | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
-    |     | Những con đường của ánh sáng II                             | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
-    |     | Từ hiệu ứng con bướm đến lý thuyết hỗn độn                  | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
-    |     | Niềm vui khám phá                                           |                  | Khoa Học |  x  |     |     |     |
+    |     | Tác Phẩm                                                       |     Tác Gỉả      |  Chủ Đề  |  A  |  B  |  C  |  D  |
+    | :-: | :------------------------------------------------------------- | :--------------: | :------: | :-: | :-: | :-: | :-: |
+    |     | Kỹ Thuật ghi âm                                                |                  | Âm Thanh |     |  x  |     |  x  |
+    |     | Kỹ Thuật trộn và biên tập âm thanh                             |                  | Âm Thanh |     |  x  |     |  x  |
+    |     | 1000 Câu hỏi về tình dục dành cho các cặp đôi                  |                  |  Y Sinh  |     |  x  |     |  x  |
+    |     | Khoa học về lối sống                                           |                  |  Y Sinh  |     |  x  |     |  x  |
+    |     | Hiệu ứng Telomere                                              |                  |  Y Sinh  |     |  x  |     |  x  |
+    |     | Cơ sở vật lý I - Cơ học 1                                      |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Cơ sở vật lý II - Cơ học 2                                     |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Cơ sở vật lý III - Nhiệt học                                   |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Cơ sở vật lý IV - Điện học 1                                   |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Cơ sở vật lý V - Điện học 2                                    |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Cơ sở vật lý VI - Quang học và vật lý lượng tử                 |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Sự tiến hóa của vật lý                                         |                  | Khoa Học |     |  x  |     |  x  |
+    |     | Từ điển thiên văn học và vật lý thiên văn                      |                  | Khoa Học |     |  x  |     |  x  |
+    |  x  | {{ book("Vũ Trụ trong vỏ hạt dẻ", "vu-tru-trong-vo-hat-de") }} |                  | Khoa Học |  x  |     |     |     |
+    |  x  | Lược sử thời gian                                              |                  | Khoa Học |  x  |     |     |     |
+    |  x  | Các thế giới song song                                         |                  | Khoa Học |  x  |     |     |     |
+    |  x  | Lịch sử vạn vật                                                |                  | Khoa Học |  x  |     |     |     |
+    |     | Thế giới lượng tử kỳ bí                                        |                  | Khoa Học |  x  |     |     |     |
+    |     | Vũ Trụ - Carl Sagan                                            |                  | Khoa Học |  x  |     |     |     |
+    |     | Một vũ trụ khác thường                                         |                  | Khoa Học |  x  |     |     |     |
+    |     | Thuyết tương đối hẹp và rộng                                   |                  | Khoa Học |  x  |     |     |     |
+    |  x  | Cuộc chiến lỗ đen                                              |                  | Khoa Học |  x  |     |     |     |
+    |     | Chữ Số Và Thế Giới                                             |                  | Khoa Học |  x  |     |     |     |
+    |     | Geomancia                                                      |                  | Khoa Học |  x  |     |     |     |
+    |     | Sciencia                                                       |                  | Khoa Học |  x  |     |     |     |
+    |     | Hỗn độn và hài hòa                                             | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
+    |     | Những con đường của ánh sáng I                                 | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
+    |     | Những con đường của ánh sáng II                                | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
+    |     | Từ hiệu ứng con bướm đến lý thuyết hỗn độn                     | Trịnh Xuân Thuận | Khoa Học |  x  |     |     |     |
+    |     | Niềm vui khám phá                                              |                  | Khoa Học |  x  |     |     |     |
